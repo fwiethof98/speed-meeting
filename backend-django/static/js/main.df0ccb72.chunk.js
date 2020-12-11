@@ -1,2 +1,0 @@
-(this["webpackJsonpreact-frontend"]=this["webpackJsonpreact-frontend"]||[]).push([[0],{9:function(e,t,n){"use strict";n.r(t);var r=n(0),a=n.n(r),c=n(2),s=n.n(c),o=n(3);var d=function(e){return Object(o.jsx)("div",{})},i=a.a.createElement,u=document.getElementById("home");u&&s.a.render(i(d,u.dataset),u)}},[[9,1,2]]]);
-//# sourceMappingURL=main.df0ccb72.chunk.js.map
