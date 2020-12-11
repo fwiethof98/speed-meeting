@@ -1,10 +1,10 @@
 import getCookie from './getCookie'
 
-function lookup(method, url, data, callback) {
+export function djangoLookup(method, url, data, callback) {
     const xhr = new XMLHttpRequest()
     const jsonData = JSON.stringify(data)
     xhr.responseType = "json"
-    xhr.open(method,`https://bbb.fs.ei.tum.de/bigbluebutton/api/${url}`)
+    xhr.open(method,`${window.location.hostname}/api/${url}`)
     const csrftoken = getCookie('csrftoken')
     if (method === "POST" || method === "DELETE"){
       xhr.setRequestHeader("Content-Type", "application/json")
@@ -17,4 +17,13 @@ function lookup(method, url, data, callback) {
     }
     xhr.send(jsonData)
 }
-export default lookup
+
+export function bbbLookup(method, url, callback) {
+    const xhr = new XMLHttpRequest();
+    xhr.open(method, url);
+    xhr.onload = function () {
+      callback(xhr.response, xhr.status);
+    }
+    xhr.send();
+}
+
