@@ -1,25 +1,21 @@
 import React, { useState } from 'react'
 import './Home.css'
-import {bbbLookup, djangoLookup} from '../functions/lookup'
-import {urlCall} from '../functions/createApiCall'
+import {joinMainMeeting} from '../functions/bbbApiFunctions'
+import { djangoLookup } from '../functions/lookup'
 
 // require('dotenv').config();
 
 function Home(props){
     const [nextEvents, setNextEvents] = useState(false)
 
-    const params = {
-        name: "Test+Meeting",
-        meetingID: "abc123",
-        attendeePW: "111222",
-        moderatorPW: "333444"
+    if(!nextEvents) {
+        djangoLookup("GET", "/events/?action=all", {}, (response, status) => {
+            setNextEvents(response)
+        })
     }
 
     const handleJoinMeetingButton = () => {
-        // console.log(urlCall("create", params));
-        bbbLookup("POST", urlCall("create", params), (response, status) => {
-            console.log(response);
-        })
+        joinMainMeeting()
     }
 
     return <div className="container" style={{textAlign: "center", marginTop: 50}}>

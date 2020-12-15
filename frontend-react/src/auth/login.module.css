@@ -1,0 +1,13 @@
+.orRegisterHere {
+  margin-left: 130px;
+  margin-top: 0px;
+}
+
+.loginButton {
+  color: white;
+  background-color: lightskyblue;
+  border-color: lightskyblue;
+  border-radius: 5pt;
+  margin-left: 15pt;
+  width: 60px;
+}

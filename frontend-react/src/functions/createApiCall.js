@@ -19,10 +19,14 @@ export function createApiCall(api_call, params, secret) {
     param_call = param_call.slice(0, -1);
     const checksum = hashSecret(api_call, param_call, secret);
 
-    return api_call + "?" + param_call + "&checksum=" + checksum;    
+    return param_call + "&checksum=" + checksum;    
 }
 
 export function urlCall(api_call, params) {
     console.log(process.env.REACT_APP_BBB_TEST_SECRET);
-    return "https://" + process.env.REACT_APP_BBB_HOST + "/bigbluebutton/api/" + createApiCall(api_call, params, process.env.REACT_APP_BBB_SECRET);
+    return process.env.REACT_APP_BBB_PROXY + "/" + api_call + "/?" + createApiCall(api_call, params, process.env.REACT_APP_BBB_SECRET);
+}
+
+export function bbbCall(api_call, params) {
+    return process.env.REACT_APP_BBB_HOST + "/bigbluebutton/api/" + api_call + "?" + createApiCall(api_call, params, process.env.REACT_APP_BBB_SECRET);
 }

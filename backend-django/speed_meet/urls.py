@@ -30,7 +30,9 @@ urlpatterns = [
 # APIs
 
 urlpatterns += [
-    path('/api/users/', include('accounts.accounts_api.urls'))
+    path('api/', include('accounts.api.urls')),
+    path('api/', include('meetings.api.urls')),
+    path('api/', include('matching.api.urls'))
 ]
 
 # Static files
