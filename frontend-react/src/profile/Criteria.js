@@ -1,6 +1,7 @@
-import React, { useEffect, useReducer, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {djangoLookup} from '../functions/lookup'
 import {Dropdown} from '../general/Dropdowns'
+import './Profile.css'
 
 function Criteria(props) {
     const [showNote, setShowNote] = useState(false)
@@ -44,11 +45,11 @@ function CriteriaForm(props) {
 
     useEffect(() => {
         djangoLookup("GET", "/criteria/?action=user", {}, (response, status) => {
-            if(response.length === 0) {
-                djangoLookup("GET", "/criteria/?action=example", {}, (exResponse, exStatus) => {
-                    setMyCriteria(exResponse)
-                })
-            }
+            // if(response.length === 0) {
+            //     djangoLookup("GET", "/criteria/?action=example", {}, (exResponse, exStatus) => {
+            //         setMyCriteria(exResponse)
+            //     })
+            // }
             setMyCriteria(response)
         })
         djangoLookup("GET", "/criteria/?action=exclude-user", {}, (response, status) => {
@@ -61,7 +62,7 @@ function CriteriaForm(props) {
     useEffect(() => {
         if(myCriteria.length > 0) {
             setOpenCriteria((openCriteriaRef.current.filter(item => {
-                if(myCriteria[myCriteria.length - 1].name == item.name) {
+                if(myCriteria[myCriteria.length - 1].name === item.name) {
                     return false
                 }
                 return true
@@ -70,7 +71,7 @@ function CriteriaForm(props) {
     }, [myCriteria])
 
     const handleNewCriteria = () => {
-        if(selectRef.current.value != '') {
+        if(selectRef.current.value !== '') {
             setMyCriteria(prevState => [...prevState, {name: selectRef.current.value}])
         }
     }
@@ -79,7 +80,7 @@ function CriteriaForm(props) {
         event.preventDefault()
         openCriteriaRef.current.push({name: event.target.name})
         setMyCriteria(myCriteria.filter(item => {
-            if(item.name == openCriteriaRef.current[openCriteriaRef.current.length - 1].name) {
+            if(item.name === openCriteriaRef.current[openCriteriaRef.current.length - 1].name) {
                 return false
             }
             return true
@@ -105,13 +106,13 @@ function SingleCriteria(props) {
     let values = Array.from(Array(10).keys())
     values = values.map((value, index) => {
         if(index === checkVal) {
-            return <input key={name + value} type="radio" name={name} value={value} defaultChecked />
+            return <input key={name + value + index} type="radio" name={name} value={value} defaultChecked />
         } else if(index === 0) {
-            return <input key={name + value} type="radio" name={name} value={value} defaultChecked />
+            return <input key={name + value + index} type="radio" name={name} value={value} defaultChecked />
         }
-        return <input key={name + value} type="radio" name={name} value={value} />
+        return <input key={name + value + index} type="radio" name={name} value={value} />
     })
-    return <div className="form-inline">
+    return <div>
         <label>{name}</label>
         {values}
         <button name={name} className="btn btn-danger" onClick={handleRemoveCriteria} style={{width:30, marginLeft: 20, height: 20, paddingTop:0, paddingBottom:0, fontSize: 10}}>-</button>

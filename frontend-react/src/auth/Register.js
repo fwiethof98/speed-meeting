@@ -31,7 +31,7 @@ function Register(props) {
     </div> 
 }
 
-function PersonalForm(props) {
+export function PersonalForm(props) {
     let entries = [{name: "First name", type: "text"},
                     {name: "Last name", type: "text"},
                     {name: "Birthday", type: "date"},
@@ -42,7 +42,7 @@ function PersonalForm(props) {
 
     return <div>
         {entries && entries.map((item, index) => {
-            return <FormEntry key={item.name + index} entry={item} />
+            // return <FormEntry key={item.name + index} entry={item} values={} />
         })}
     </div>
 }
