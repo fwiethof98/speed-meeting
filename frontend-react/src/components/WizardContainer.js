@@ -16,11 +16,9 @@ function WizardFormTab(props) {
                         {name: "Learn together", type: "checkbox"},
                         {name: "Do sports", type: "checkbox"},]
     
-    const profileEntries = []
-
 
     let tabEntries = [{name: 'Person', subtitle: 'Some information to verify your account', component: <PersonForm entries={personEntries} />},
-                    {name: 'Intent', subtitle: 'What are you looking for?', component: <PersonForm entries={intentEntries} />},
+                    {name: 'Intent', subtitle: 'What are you looking for?', component: <IntentForm entries={intentEntries} />},
                     {name: 'Profile', subtitle: 'Help us to match people to you', component: <CriteriaForm />}]
     let tabNames = tabEntries.map(entry => {
         return entry.name;
