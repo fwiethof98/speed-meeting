@@ -4,6 +4,8 @@ import Home from './meetings/Home'
 import Manage from './manage/Manage'
 import Profile from './profile/Profile'
 import {Register, Login} from './auth'
+import WizardContainer from './components/WizardContainer'
+import 'react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css';
 
 
 const e = React.createElement
@@ -30,4 +32,9 @@ if(registerEl) {
 const loginEl = document.getElementById("login")
 if(loginEl) {
   ReactDOM.render(e(Login, loginEl.dataset), loginEl)
+}
+
+const wizardContainerEl = document.getElementById("wizard-container")
+if(wizardContainerEl) {
+  ReactDOM.render(e(WizardContainer, wizardContainerEl.dataset), wizardContainerEl)
 }
