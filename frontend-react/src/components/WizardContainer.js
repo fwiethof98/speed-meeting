@@ -8,12 +8,12 @@ import { djangoLookup } from '../functions/lookup'
 function WizardFormTab(props) {
     const title = "Welcome to Gathr!"
     const subtitle = "Tell us some things about yourself"
-    const personEntries = [{first_name: "First Name", type: "text"},
-                           {last_name: "Last Name", type: "text"},
-                           {first_name: "First Name", type: "text"},
-                           {email: "E-Mail", type: "text"},
+    const personEntries = [{name: "First Name", type: "text"},
+                           {name: "Last Name", type: "text"},
+                           {name: "E-Mail", type: "text"},
                     {name: "Password", type: "password"},
-                          {check_privay: "I agree with the privacy stuff", type: "checkbox"}]
+                          {name: "By clicking on the “Submit”-button, I confirm that my data can be used for purposes described in the Privacy Policy.", type: "checkbox"},
+                          {name: "I agree to receive E-Mails reminding me of upcoming events and other useful information related to the services of Gathr.de", type: "checkbox"}]
 
     const intentEntries = [{name: "Find co-founders", type: "checkbox"},
                         {name: "Find friends", type: "checkbox"},
