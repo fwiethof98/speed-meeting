@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import {djangoLookup} from '../../functions/lookup'
+import {djangoLookup} from '../functions/lookup'
 import {Dropdown} from './Dropdowns'
 import RangeSlider from 'react-bootstrap-range-slider'
 

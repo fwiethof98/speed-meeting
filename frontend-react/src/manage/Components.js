@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import { djangoLookup } from '../functions/lookup';
-import {DropdownAllItems} from '../general/Dropdowns'
+import {Dropdown} from './Dropdowns'
 
 export function ManageItemDatabase(props) {
     const {name, fields} = props
@@ -50,7 +50,7 @@ export function DeleteExistingItem(props) {
     }
 
     return <div>
-        <DropdownAllItems url={url + "/?action=all"} selectRef={selectRef} field={field} />
+        <Dropdown url={url + "/?action=all"} selectRef={selectRef} field={field} />
         <button className="btn btn-danger" onClick={handleDeleteButton}>Delete</button>
     </div>
 }

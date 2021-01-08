@@ -1,25 +1,17 @@
 import React from 'react'
-import PageLogo from './PageLogo'
-import PersonForm from './forms/PersonForm'
-import CriteriaForm from './forms/CriteriaForm'
-import IntentForm from './forms/IntentForm'
+import PageLogo from '../components/PageLogo'
 import { djangoLookup } from '../functions/lookup'
+import Criteria from './Criteria'
+import Event from './Event'
+import Voting from './Voting'
 
 function WizardFormTab(props) {
     const title = "Welcome to Gathr!"
     const subtitle = "Tell us some things about yourself"
-    const personEntries = [{name: "Username", type: "text"},
-                    {name: "Password", type: "password"}]
 
-    const intentEntries = [{name: "Find co-founders", type: "checkbox"},
-                        {name: "Find friends", type: "checkbox"},
-                        {name: "Learn together", type: "checkbox"},
-                        {name: "Do sports", type: "checkbox"},]
-    
+    let tabEntries = [{name: 'Matching', subtitle: 'Who do you want to meet?', component: <Criteria />},
+                    {name: 'Event', subtitle: '', component: <Event /> }]
 
-    let tabEntries = [{name: 'Person', subtitle: 'Some information to verify your account', component: <PersonForm entries={personEntries} />},
-                    {name: 'Intent', subtitle: 'What are you looking for?', component: <IntentForm entries={intentEntries} />},
-                    {name: 'Profile', subtitle: 'Help us to match people to you', component: <CriteriaForm />}]
     let tabNames = tabEntries.map(entry => {
         return entry.name;
     })
@@ -57,7 +49,6 @@ function WizardFormTab(props) {
         <div className="tab-content">
             {tabEntries}
         </div>
-        <WizardNavButtons handleFormSubmitButton={handleFormSubmitButton} />
     </form>
 }
 
@@ -96,23 +87,7 @@ function WizardTabLine(props) {
     </div>
 }
 
-function WizardNavButtons(props) {
-    const {handleFormSubmitButton} = props
-
-    return <div className="wizard-footer">
-        <div className="pull-right">
-            <input type='button' className='btn btn-next btn-fill btn-success btn-wd' name='next' value='Next' />
-            <input type='button' onClick={handleFormSubmitButton} className='btn btn-finish btn-fill btn-success btn-wd' name='finish' value='Finish' />
-        </div>
-
-        <div className="pull-left">
-            <input type='button' className='btn btn-previous btn-fill btn-default btn-wd' name='previous' value='Previous' />
-        </div>
-        <div className="clearfix"></div>
-    </div>
-}
-
-function WizardContainer(props) {
+function RegisterContainer(props) {
     return <div>
         <PageLogo />
         <div className="container">
@@ -129,4 +104,4 @@ function WizardContainer(props) {
     </div>
 }
 
-export default WizardContainer
+export default RegisterContainer

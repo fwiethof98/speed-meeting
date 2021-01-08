@@ -1,40 +1,29 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Home from './meetings/Home'
 import Manage from './manage/Manage'
-import Profile from './profile/Profile'
-import {Register, Login} from './auth'
-import WizardContainer from './components/WizardContainer'
-import 'react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css';
-
+import RegisterContainer from './register/RegisterContainer'
+import EventContainer from './event/EventContainer'
+import SuccessPage from './feedback/SuccessPage'
 
 const e = React.createElement
-const homeEl = document.getElementById('home')
-if(homeEl) {
-  ReactDOM.render(e(Home, homeEl.dataset), homeEl)
-}
 
 const manageEl = document.getElementById("manage")
 if(manageEl) {
   ReactDOM.render(e(Manage, manageEl.dataset), manageEl)
 }
 
-const profileEl = document.getElementById("profile")
-if(profileEl) {
-  ReactDOM.render(e(Profile, profileEl.dataset), profileEl)
+const registerContainerEl = document.getElementById("register-container")
+if(registerContainerEl) {
+  ReactDOM.render(e(RegisterContainer, registerContainerEl.dataset), registerContainerEl)
 }
 
-const registerEl = document.getElementById("register")
-if(registerEl) {
-  ReactDOM.render(e(Register, registerEl.dataset), registerEl)
+const successPageEl = document.getElementById("success-page")
+if(successPageEl) {
+  ReactDOM.render(e(SuccessPage, successPageEl.dataset), successPageEl)
 }
 
-const loginEl = document.getElementById("login")
-if(loginEl) {
-  ReactDOM.render(e(Login, loginEl.dataset), loginEl)
+const eventContainerEl = document.getElementById("event-container")
+if(eventContainerEl) {
+  ReactDOM.render(e(EventContainer, eventContainerEl.dataset), eventContainerEl)
 }
 
-const wizardContainerEl = document.getElementById("wizard-container")
-if(wizardContainerEl) {
-  ReactDOM.render(e(WizardContainer, wizardContainerEl.dataset), wizardContainerEl)
-}

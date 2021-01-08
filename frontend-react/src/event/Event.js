@@ -1,9 +1,9 @@
 import React from 'react'
 
-function Logout(props) {
+function Event(props) {
     return <div>
 
     </div>
 }
 
-export default Logout
+export default Event
