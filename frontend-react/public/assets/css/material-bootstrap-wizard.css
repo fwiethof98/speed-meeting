@@ -16,11 +16,33 @@
 
 /* changes Sven */
 
+html {zoom: 10%;}
+
+.image-container{
+    background-attachment: fixed;
+}
+.explainer{
+    width: 90%;
+}
+.info-text{
+    margin-bottom: 0px !important;
+    
+}
+.flash_art{
+    width: 50%;
+    margin: auto;
+    margin-top: -1%;
+    padding-bottom: 2%;
+}
 
 .col-sm-4{
     width: 24%;
     margin:auto;
 }
+.bold{
+    font-weight: bold !important;
+}
+
 .unterschrift {
     text-align:center;
     font-size: large;
@@ -30,7 +52,7 @@
 }
 
 .logo {
-    width: 60% !important;
+    width: 40% !important;
 }
 
 .logo-container .logo {

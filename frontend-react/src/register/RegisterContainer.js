@@ -27,8 +27,8 @@ function WizardFormTab(props) {
     
                         
 
-    let tabEntries = [{name: 'HOME', subtitle: 'What is Gathr about?', component: <AboutPage />},
-                    {name: 'SIGN-UP', subtitle: 'Register within 3 minutes and connect with new people! HIER NOCH BILD DAZU', component: <PersonForm entries={personEntries} />},
+    let tabEntries = [{name: 'HOME', subtitle: 'GET TO KNOW OTHER STUDENTS!', component: <AboutPage />},
+                    {name: 'SIGN-UP', subtitle: '', component: <PersonForm entries={personEntries} />},
                     {name: 'MATCHING', subtitle: 'During the event, we will match you with other students from Munich :)', component: <IntentForm entries={intentEntries} />}]
 
     let tabNames = tabEntries.map(entry => {
