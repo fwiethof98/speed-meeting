@@ -16,7 +16,9 @@
 
 /* changes Sven */
 
-
+li{
+    line-height: 40px;
+}
 .image-container{
     background-attachment: fixed;
 }
