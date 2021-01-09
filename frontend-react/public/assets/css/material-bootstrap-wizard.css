@@ -20,6 +20,10 @@
     display: flex;
     align-content: center;
 }
+.unterschrift {
+    text-align:center;
+    font-size: large;
+}
 .brand {
     display: none;
 }
