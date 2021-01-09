@@ -7,15 +7,15 @@ import AboutPage from './AboutPage'
 import $ from 'jquery'
 
 function WizardFormTab(props) {
-    const title = "Welcome to Gathr!"
-    const subtitle = "Tell us some things about yourself"
+    const title = "GATHR Meet&Mingle Roulette"
+    const subtitle = "Next online event: 22nd of January, 7pm"
     const personEntries = [{name: "First Name", type: "text", required: true},
                     {name: "Last Name", type: "password", required: true},
                     {name: "Birthday", type: "date", required: true},
                     {name: "E-Mail", type: "email", required: true},
                     {name: "Phone number (+xx xxxx xxxxxxxx)", type: "text", required: true},
                     {name: "University", type: "text", required: true, entries: ["A) TUM", "B) LMU", "C) Hochschule München"]},
-                    {name: "Field of Studies", type: "text", required: true, entries: ["", "- Biology", "- Chemistry", "- Physics", "- Space Sciences", "- Informatics", "- Computer Engineering", "- Mathematics", "- Medicine & Health", "- Business & Management","- Economics","- Communication & Media", "- Political science", "- Mechanical Engineering", "- Law", "- Philosophy", "Other Social Sciences", "Other Humanities", "Other Engineering Sciences", "Other Natural Sciences", "Other Arts","Other Studies"]},
+                    {name: "Field of Studies", type: "text", required: true, entries: ["", "- Biology", "- Chemistry", "- Physics", "- Space Sciences", "- Informatics", "- Computer Engineering", "- Mathematics", "- Medicine & Health", "- Business & Management","- Economics","- Communication & Media", "- Political science", "- Mechanical Engineering", "- Law", "- Philosophy", "- Sport Sciences", "Other Social Sciences", "Other Humanities", "Other Engineering Sciences", "Other Natural Sciences", "Other Arts","Other Studies"]},
                     {name: "Level", type: "text", required: true, entries: ["Bachelor", "Master", "PhD"]},
                     {name: "Semester (in your current studies)", type: "text", required: true, entries: [1, 2, 3, 4, 5, 6, 7, 8, 9]}]
 
@@ -28,7 +28,7 @@ function WizardFormTab(props) {
                         
 
     let tabEntries = [{name: 'HOME', subtitle: 'What is Gathr about?', component: <AboutPage />},
-                    {name: 'SIGN-UP', subtitle: 'Register within 3 minutes and connect with new people!', component: <PersonForm entries={personEntries} />},
+                    {name: 'SIGN-UP', subtitle: 'Register within 3 minutes and connect with new people! HIER NOCH BILD DAZU', component: <PersonForm entries={personEntries} />},
                     {name: 'MATCHING', subtitle: 'During the event, we will match you with other students from Munich :)', component: <IntentForm entries={intentEntries} />}]
 
     let tabNames = tabEntries.map(entry => {

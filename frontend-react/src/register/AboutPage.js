@@ -14,7 +14,7 @@ function AboutPage(props) {
         <div class="col-sm-12">
             <div style={{textAlign: "center", marginRight: 50, marginLeft: 50}}>
                 <p>{description}</p>
-                <img src="" alt="Gathr pipeline" style={{marginTop:30}} />
+                <img src="/assets/img/explainer.png" alt="Gathr pipeline" style={{marginTop:30}} />
             </div>
         </div>
         <Accordion entries={entries} />

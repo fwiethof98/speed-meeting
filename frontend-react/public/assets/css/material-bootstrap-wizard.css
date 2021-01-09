@@ -16,9 +16,10 @@
 
 /* changes Sven */
 
-.col-sm-10{ 
-    display: flex;
-    align-content: center;
+
+.col-sm-4{
+    width: 24%;
+    margin:auto;
 }
 .unterschrift {
     text-align:center;

@@ -22,6 +22,7 @@ function PersonForm(props) {
     }
 
     return <div>
+        <img src="/assets/img/wizard-city.jpg" alt="Gathr pipeline" style={{marginTop:30}} />
         <div className="col-sm-6">
             {leftColumn}
         </div>
