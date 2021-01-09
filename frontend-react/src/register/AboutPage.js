@@ -3,9 +3,11 @@ import Accordion from './Accordion'
 
 function AboutPage(props) {
     const entries = [
-        {name: "test1", title: "Test 1", text: "This is test 1"},
-        {name: "test2", title: "Test 2", text: "This is test 2"},
-        {name: "test3", title: "Test 3", text: "This is test 3"}
+        {name: "faq1", title: "What is GATHR?", text: "This is test 1"},
+        {name: "faq2", title: "How does a GATHR event look like?", text: "This is test 2"},
+        {name: "faq3", title: "Who will I meet?", text: "This is test 2"},
+        {name: "faq4", title: "Do I need to prepare anything?", text: "This is test 3"},
+        {name: "faq5", title: "Is it free?", text: "This is test 3"}
     ]
 
     const description = ""
