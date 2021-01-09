@@ -16,6 +16,10 @@
 
 /* changes Sven */
 
+.col-sm-10{ 
+    display: flex;
+    align-content: center;
+}
 .brand {
     display: none;
 }

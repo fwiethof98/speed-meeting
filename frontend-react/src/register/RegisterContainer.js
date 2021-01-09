@@ -19,15 +19,17 @@ function WizardFormTab(props) {
                     {name: "Status", type: "text", required: true, entries: ["Bachelor", "Master"]},
                     {name: "Semester", type: "text", required: true, entries: [1, 2, 3, 4, 5, 6, 7, 8, 9]}]
 
-    const intentEntries = [{name: "Find co-founders", iconName: "business", description: "Click here to find people to start a company"},
-                        {name: "Find friends", iconName: "business", description: "Click here to meet new friends!"},
-                        {name: "Learn together", iconName: "business", description: "Click here to find new study pals!"},
-                        {name: "Do sports", iconName: "business", description: "Click here to get active with athletes around you!"},]
+    const intentEntries = [{name: "No, Simply Connect Me With Other Students", iconName: "groups", description: "Click here to get to know a variety of students from Munich!"},
+    {name: "Yes, Find Tandem Learning Partners", iconName: "menu_book", description: "Click here to find new study pals for university, languages, and skill exchanges!"},
+                        {name: "Yes, Find Sport Partners", iconName: "sports_handball", description: "Click here to get active with athletes and sport friends around you!"},
+                        {name: "Yes, Find Start-Up Co-Founders", iconName: "emoji_objects", description: "Click here to connect with start-up enthusiasts!"}
+                        ]
     
+                        
 
-    let tabEntries = [{name: 'ABOUT', subtitle: 'What is Gathr about?', component: <AboutPage />},
+    let tabEntries = [{name: 'HOME', subtitle: 'What is Gathr about?', component: <AboutPage />},
                     {name: 'SIGN-UP', subtitle: 'Some information to verify your account', component: <PersonForm entries={personEntries} />},
-                    {name: 'MATCHING', subtitle: 'What are you looking for?', component: <IntentForm entries={intentEntries} />}]
+                    {name: 'MATCHING', subtitle: 'During the event, we will match you with other students from Munich :)  Do you have any specific goal in mind?', component: <IntentForm entries={intentEntries} />}]
 
     let tabNames = tabEntries.map(entry => {
         return entry.name;
