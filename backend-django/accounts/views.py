@@ -37,3 +37,11 @@ def register_view(request, *args, **kwargs):
         'form': form
     }
     return render(request, 'auth/register.html', context=context)
+
+
+def submit_user_data_view(request, *args, **kwargs):
+    return render(request, 'auth/user_data.html')
+
+
+def submission_successful_view(request, *args, **kwargs):
+    return render(request, 'auth/submission_successful.html')

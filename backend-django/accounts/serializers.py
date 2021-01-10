@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from .models import UserProfile, Role
+from .models import UserDataEntry, UserProfile, Role
 from meetings.serializers import MeetingSerializer
 
 
@@ -8,6 +8,13 @@ class RoleSerializer(serializers.ModelSerializer):
     class Meta:
         model = Role
         fields = ['name']
+
+
+class UserDataEntrySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserDataEntry
+        fields = ['birthday', 'email', 'first_name', 'intent', 'last_name', 'mail_accept',
+                  'mobile_number', 'privacy_accept', 'semester', 'studies', 'study_level', 'university']
 
 
 class UserProfileSerializerWithoutFriends(serializers.ModelSerializer):

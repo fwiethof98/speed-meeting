@@ -2,30 +2,34 @@ import React from 'react'
 import { Dropdown } from './Dropdowns'
 
 export function FormEntry(props) {
-    const {name, type, iconName, required, entries} = props
+    const {name, type, iconName, required, entries, description} = props
     let requiredInput
-    console.log(entries)
     if (entries && entries.length > 0) {
-        requiredInput = <Dropdown options={entries} name={name} />
+        requiredInput = <Dropdown options={entries} description={description} name={name} />
     
-    } else if(type === "checkbox" || type === "radio") {
+    } else if(type === "radio") {
         requiredInput = <div>
             <input name={name} type={type} className="form-control" required={true} />
-            <label className="">{name}<small></small></label>
+            <label className="">{description}<small></small></label>
+        </div>
+    } else if(type === "checkbox"){
+        requiredInput = <div>
+            <input id={name} type={type} className="form-control" required={true} />
+            <label className="">{description}<small></small></label>
         </div>
     } else if(type === "date") {
         requiredInput = <div>
-            <label className="">{name}<small></small></label>
+            <label className="">{description}<small></small></label>
             <input name={name} type={type} className="form-control" defaultValue="2020-01-01" required={true} />
         </div>
     } else if(required === true) {
         requiredInput = <div>
-            <label className="control-label">{name}<small>*</small></label>
+            <label className="control-label">{description}<small>*</small></label>
             <input name={name} type={type} className="form-control" required={true} />
         </div>
     } else {
         requiredInput = <div>
-            <label className="control-label">{name} </label>
+            <label className="control-label">{description} </label>
             <input name={name} type={type} className="form-control" />
         </div>
     }

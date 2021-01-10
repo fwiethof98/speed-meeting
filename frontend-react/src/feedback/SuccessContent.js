@@ -20,7 +20,7 @@ function SuccessContent(props) {
                 <h3>What else can I do?</h3>
                 <p class="unterschrift">Tell your friends! - The more people join the event, the more fun it will be!</p>
                 <a class="ref_link" target="_blank" href="https://rebrand.ly/gathr_join_codeWU34">https://rebrand.ly/gathr_join_codeWU34</a>
-                <p class="ref_text bold">Share this link, and they will receive prioritized acces to make sure all of you participate in the same event.</p>
+                <p class="ref_text bold">Share this link, and they will receive prioritized access to make sure all of you participate in the same event.</p>
                 
                 
             </div>

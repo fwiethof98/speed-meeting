@@ -4,7 +4,8 @@ from .views import (
     user_search_api_view,
     create_role_api_view,
     search_role_api_view,
-    delete_role_api_view
+    delete_role_api_view,
+    submit_user_data_api_view
 )
 
 urlpatterns = [
@@ -12,4 +13,5 @@ urlpatterns = [
     path('roles/create/', create_role_api_view),
     path('roles/', search_role_api_view),
     path('roles/delete/', delete_role_api_view),
+    path('users/submit_data/', submit_user_data_api_view)
 ]

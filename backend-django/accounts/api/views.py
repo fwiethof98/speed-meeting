@@ -6,7 +6,7 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
 
-from ..serializers import RoleSerializer
+from ..serializers import RoleSerializer, UserDataEntrySerializer
 from ..models import Role
 
 from django.contrib.auth.models import User
@@ -67,3 +67,12 @@ def delete_role_api_view(request, *args, **kwargs):
             return Response({'message': f'Role {name} was deleted.'}, status=200)
         return Response({'message': 'Role does not exist.'}, status=404)
     return Response({'message': 'No role name was passed.'}, status=400)
+
+
+@api_view(['POST'])
+def submit_user_data_api_view(request, *args, **kwargs):
+    serializer = UserDataEntrySerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data, status=200)
+    return Response({'message': 'Invalid user data.'}, status=200)

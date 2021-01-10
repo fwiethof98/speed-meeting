@@ -9,24 +9,23 @@ import $ from 'jquery'
 function WizardFormTab(props) {
     const title = "GATHR Meet&Mingle Roulette"
     const subtitle = "Next online event: 22nd of January, 7pm"
-    const personEntries = [{name: "First Name", type: "text", required: true},
-                    {name: "Last Name", type: "password", required: true},
-                    {name: "Birthday", type: "date", required: true},
-                    {name: "E-Mail", type: "email", required: true},
-                    {name: "Phone number (+xx xxxx xxxxxxxx)", type: "text", required: false},
+    const personEntries = [{name: "first_name", description: "First Name", type: "text", required: true},
+                    {name: "last_name", description: "Last Name", type: "password", required: true},
+                    {name: "birthday", description: "Birthday", type: "date", required: true},
+                    {name: "email", description: "E-Mail", type: "email", required: true},
+                    {name: "mobile_number", description: "Phone number (+xx xxxx xxxxxxxx)", type: "text", required: false},
                      // {name: "Pronouns", type: "text", required: false, entries: ["A) She/her", "B) He/him", "C) They/them", "D) Prefer not to say"]},
-                    {name: "University", type: "text", required: true, entries: ["A) TUM", "B) LMU", "C) Hochschule München", "D) Other"]},
-                    {name: "Field of Studies", type: "text", required: true, entries: ["", "- Biology", "- Chemistry", "- Physics", "- Space Sciences", "- Informatics", "- Computer Engineering", "- Mathematics", "- Medicine & Health", "- Business & Management","- Economics","- Communication & Media", "- Political science", "- Mechanical Engineering", "- Law", "- Philosophy", "- Sport Sciences", "Other Social Sciences", "Other Humanities", "Other Engineering Sciences", "Other Natural Sciences", "Other Arts","Other Studies"]},
-                    {name: "Level", type: "text", required: true, entries: ["Bachelor", "Master", "PhD"]},
-                    {name: "Semester (in your current studies)", type: "text", required: true, entries: [1, 2, 3, 4, 5, 6, 7, 8, 9]},
-                    {name: "By clicking on the “Submit”-button, I confirm that my data can be used for purposes described in the Privacy Policy.*", type: "checkbox", required: true},
-                    {name: "I agree to receive E-Mails reminding me of upcoming events and other useful information related to the services of Gathr.de*", type: "checkbox", required: true}]
+                    {name: "university", description: "University", type: "text", required: true, entries: ["A) TUM", "B) LMU", "C) Hochschule München", "D) Other"]},
+                    {name: "studies", description: "Field of Studies", type: "text", required: true, entries: ["", "- Biology", "- Chemistry", "- Physics", "- Space Sciences", "- Informatics", "- Computer Engineering", "- Mathematics", "- Medicine & Health", "- Business & Management","- Economics","- Communication & Media", "- Political science", "- Mechanical Engineering", "- Law", "- Philosophy", "- Sport Sciences", "Other Social Sciences", "Other Humanities", "Other Engineering Sciences", "Other Natural Sciences", "Other Arts","Other Studies"]},
+                    {name: "study_level", description: "Level", type: "text", required: true, entries: ["Bachelor", "Master", "PhD"]},
+                    {name: "semester", description: "Semester (in your current studies)", type: "text", required: true, entries: [1, 2, 3, 4, 5, 6, 7, 8, 9]},
+                    {name: "privacy_accept", description: "By clicking on the “Submit”-button, I confirm that my data can be used for purposes described in the Privacy Policy.*", type: "checkbox", required: true},
+                    {name: "mail_accept", description: "I agree to receive E-Mails reminding me of upcoming events and other useful information related to the services of Gathr.de*", type: "checkbox", required: true}]
 
-    const intentEntries = [{name: "No, Simply Connect Me With Other Students", iconName: "groups", description: "Click here to get to know a variety of students from Munich!"},
-                        {name: "Yes, Find Tandem Learning Partners", iconName: "menu_book", description: "Click here to find new study pals for university, languages, and skill exchanges!"},
-                        {name: "Yes, Find Sport Partners", iconName: "sports_handball", description: "Click here to get active with athletes and sport friends around you!"},
-                        {name: "Yes, Find Start-Up Co-Founders", iconName: "emoji_objects", description: "Click here to connect with start-up enthusiasts!"}
-                        ]
+    const intentEntries = [{name: "students", description: "No, Simply Connect Me With Other Students", iconName: "groups", text_box: "Click here to get to know a variety of students from Munich!"},
+                        {name: "tandem", description: "Yes, Find Tandem Learning Partners", iconName: "menu_book", text_box: "Click here to find new study pals for university, languages, and skill exchanges!"},
+                        {name: "sports", description: "Yes, Find Sport Partners", iconName: "sports_handball", text_box: "Click here to get active with athletes and sport friends around you!"},
+                        {name: "founder", description: "Yes, Find Start-Up Co-Founders", iconName: "emoji_objects", text_box: "Click here to connect with start-up enthusiasts!"}]
     
                         
 
@@ -52,11 +51,18 @@ function WizardFormTab(props) {
         })
         profileData['university'] = $('#university option:selected').val()
         profileData['studies'] = $('#studies option:selected').val()
-        profileData['status'] = $('#status option:selected').val()
+        profileData['study_level'] = $('#study_level option:selected').val()
         profileData['semester'] = $('#semester option:selected').val()
+        profileData['privacy_accept'] = $('#privacy_accept').prop('checked')
+        profileData['mail_accept'] = $('#mail_accept').prop('checked')
         profileData['intent'] = $('input[name="intent"][checked=checked]').val()
-        djangoLookup("POST", "/users/", {data: profileData, action: "create"}, (response, status) => {
+        if(typeof profileData.intent === 'undefined') {
+            profileData.intent = 'students'
+        }
+        
+        djangoLookup("POST", "/users/submit_data/", profileData, (response, status) => {
             console.log(response)
+            window.location.href = "/submission_successful/"
         })
     }
 

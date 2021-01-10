@@ -3,13 +3,11 @@ import {FormEntry} from './General'
 
 function PersonForm(props) {
     const {entries} = props
-    console.log(entries.entries)
-
     const formEntries = entries.map(entry => {
         // if(entry.required === true) {
         //     return <FormEntry name={entry.name} type={entry.type} required={true} entries={entry.entries} />
         // } else {
-            return <FormEntry name={entry.name} type={entry.type} entries={entry.entries} /> 
+            return <FormEntry name={entry.name} description={entry.description} type={entry.type} entries={entry.entries} /> 
         // }
     })
     let leftColumn = [], rightColumn = []
