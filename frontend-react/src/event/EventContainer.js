@@ -9,7 +9,7 @@ function WizardFormTab(props) {
     const title = "Welcome to Gathr!"
     const subtitle = "Tell us some things about yourself"
 
-    let tabEntries = [{name: 'Matching', subtitle: 'Who do you want to meet?', component: <Criteria />},
+    let tabEntries = [{name: 'Matching', subtitle: '', component: <Criteria />},
                     {name: 'Event', subtitle: '', component: <Event /> }]
 
     let tabNames = tabEntries.map(entry => {

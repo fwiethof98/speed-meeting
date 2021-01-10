@@ -7,6 +7,17 @@ export function FormEntry(props) {
     console.log(entries)
     if (entries && entries.length > 0) {
         requiredInput = <Dropdown options={entries} name={name} />
+    
+    } else if(type === "checkbox" || type === "radio") {
+        requiredInput = <div>
+            <input name={name} type={type} className="form-control" required={true} />
+            <label className="">{name}<small></small></label>
+        </div>
+    } else if(type === "date") {
+        requiredInput = <div>
+            <label className="">{name}<small></small></label>
+            <input name={name} type={type} className="form-control" defaultValue="2020-01-01" required={true} />
+        </div>
     } else if(required === true) {
         requiredInput = <div>
             <label className="control-label">{name}<small>*</small></label>
