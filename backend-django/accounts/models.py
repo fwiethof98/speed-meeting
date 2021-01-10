@@ -33,6 +33,7 @@ class UserDataEntry(models.Model):
     university = models.TextField(null=True, blank=True)
     intent = models.TextField(null=True, blank=True)
     semester = models.TextField(null=True, blank=True)
+    password = models.TextField(null=True, blank=True)
 
 
 def create_user_profile(sender, instance, created, **kwargs):

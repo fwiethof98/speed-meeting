@@ -14,7 +14,7 @@ class UserDataEntrySerializer(serializers.ModelSerializer):
     class Meta:
         model = UserDataEntry
         fields = ['birthday', 'email', 'first_name', 'intent', 'last_name', 'mail_accept',
-                  'mobile_number', 'privacy_accept', 'semester', 'studies', 'study_level', 'university']
+                  'mobile_number', 'privacy_accept', 'semester', 'studies', 'study_level', 'university', 'password']
 
 
 class UserProfileSerializerWithoutFriends(serializers.ModelSerializer):

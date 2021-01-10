@@ -13,6 +13,7 @@ function WizardFormTab(props) {
                     {name: "last_name", description: "Last Name", type: "password", required: true},
                     {name: "birthday", description: "Birthday", type: "date", required: true},
                     {name: "email", description: "E-Mail", type: "email", required: true},
+                    {name: "password", description: "Password", type: "password", required: true},
                     {name: "mobile_number", description: "Phone number (+xx xxxx xxxxxxxx)", type: "text", required: false},
                      // {name: "Pronouns", type: "text", required: false, entries: ["A) She/her", "B) He/him", "C) They/them", "D) Prefer not to say"]},
                     {name: "university", description: "University", type: "text", required: true, entries: ["A) TUM", "B) LMU", "C) Hochschule München", "D) Other"]},
