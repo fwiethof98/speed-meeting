@@ -21,12 +21,11 @@ from django.conf.urls.static import static
 
 # PAGES
 
-from accounts.views import submit_user_data_view
-from accounts.views import submission_successful_view
+from accounts.views import submit_user_data_view, submission_successful_view
 
 urlpatterns = [
     # path('admin/', admin.site.urls),
-    path('', include('meetings.urls')),
+    # path('', include('meetings.urls')),
     path('', include('accounts.urls')),
     path('', submit_user_data_view),
     path('submission_successful/', submission_successful_view)

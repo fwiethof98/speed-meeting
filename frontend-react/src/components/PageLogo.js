@@ -4,7 +4,7 @@ function PageLogo(props) {
     return <a href="https://www.gathr.de">
         <div class="logo-container">
             <div class="logo">
-                <img src="assets/img/new_logo.png" />
+                <img src="/static/assets/img/new_logo.png" />
             </div>
             <div class="brand">
                 GATHR

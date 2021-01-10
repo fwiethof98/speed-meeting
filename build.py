@@ -1,17 +1,17 @@
-# Get JS from react
-f = open('frontend-react/build/index.html', 'r')
-data = f.read()
 
-prefix = '</div>'
-suffix = '</script>'
-index1 = (data.find('</div><script>')) + len(prefix)
-index2 = (data.find('</script></body>')) + len(suffix)
+def transferReactBuildToDjango(source, target, firstDelimiter, firstIndexShift, secondDelimiter, secondIndexShift):
+    with open(source, 'r') as f:
+        data = f.read()
+        index1 = data.find(firstDelimiter) + firstIndexShift
+        index2 = data.find(secondDelimiter) + secondIndexShift
 
-data = data[index1:index2]
-f.close()
+    with open(target, 'w') as f:
+        f.write(data[index1:index2])
 
-# Write to js.html
-f = open('backend-django/templates/react/js.html', 'w')
-f.write(data)
 
-f.close()
+transferReactBuildToDjango('frontend-react/build/index.html', 'backend-django/templates/react/js.html',
+                           '</div><script>', len('</div>'), '</script></body>', len('</script>'))
+transferReactBuildToDjango('frontend-react/build/index.html', 'backend-django/templates/react/js_add.html',
+                           '</body><script', len('</body>'), '</script></html>', len('</script>'))
+transferReactBuildToDjango('frontend-react/build/index.html',
+                           'backend-django/templates/react/head.html', '<head>', len('<head>'), '</head>', 0)
