@@ -3,10 +3,10 @@ import PageLogo from '../components/PageLogo'
 import SuccessContent from './SuccessContent'
 
 function WizardFormTab(props) {
-    const title = "Welcome to Gathr!"
-    const subtitle = "Tell us some things about yourself"
+    const title = "Your registration was successful!"
+    const subtitle = "We will help you GATHR!"
 
-    let tabEntries = [{name: 'WELCOME', subtitle: 'Your registration was successful!', component: <SuccessContent />}]
+    let tabEntries = [{name: 'WELCOME', subtitle: '', component: <SuccessContent />}]
 
     let tabNames = tabEntries.map(entry => {
         return entry.name;

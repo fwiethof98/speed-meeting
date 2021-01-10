@@ -7,27 +7,32 @@ import AboutPage from './AboutPage'
 import $ from 'jquery'
 
 function WizardFormTab(props) {
-    const title = "Welcome to Gathr!"
-    const subtitle = "Tell us some things about yourself"
+    const title = "GATHR Meet&Mingle Roulette"
+    const subtitle = "Next online event: 22nd of January, 7pm"
     const personEntries = [{name: "First Name", type: "text", required: true},
                     {name: "Last Name", type: "password", required: true},
                     {name: "Birthday", type: "date", required: true},
                     {name: "E-Mail", type: "email", required: true},
-                    {name: "Phone number", type: "text", required: true},
-                    {name: "University", type: "text", required: true, entries: ["TUM", "LMU", "HM"]},
-                    {name: "Studies", type: "text", required: true, entries: ["Informatik", "BWL", "Maschinenbau"]},
-                    {name: "Status", type: "text", required: true, entries: ["Bachelor", "Master"]},
-                    {name: "Semester", type: "text", required: true, entries: [1, 2, 3, 4, 5, 6, 7, 8, 9]}]
+                    {name: "Phone number (+xx xxxx xxxxxxxx)", type: "text", required: false},
+                     // {name: "Pronouns", type: "text", required: false, entries: ["A) She/her", "B) He/him", "C) They/them", "D) Prefer not to say"]},
+                    {name: "University", type: "text", required: true, entries: ["A) TUM", "B) LMU", "C) Hochschule München", "D) Other"]},
+                    {name: "Field of Studies", type: "text", required: true, entries: ["", "- Biology", "- Chemistry", "- Physics", "- Space Sciences", "- Informatics", "- Computer Engineering", "- Mathematics", "- Medicine & Health", "- Business & Management","- Economics","- Communication & Media", "- Political science", "- Mechanical Engineering", "- Law", "- Philosophy", "- Sport Sciences", "Other Social Sciences", "Other Humanities", "Other Engineering Sciences", "Other Natural Sciences", "Other Arts","Other Studies"]},
+                    {name: "Level", type: "text", required: true, entries: ["Bachelor", "Master", "PhD"]},
+                    {name: "Semester (in your current studies)", type: "text", required: true, entries: [1, 2, 3, 4, 5, 6, 7, 8, 9]},
+                    {name: "By clicking on the “Submit”-button, I confirm that my data can be used for purposes described in the Privacy Policy.*", type: "checkbox", required: true},
+                    {name: "I agree to receive E-Mails reminding me of upcoming events and other useful information related to the services of Gathr.de*", type: "checkbox", required: true}]
 
-    const intentEntries = [{name: "Find co-founders", iconName: "business", description: "Click here to find people to start a company"},
-                        {name: "Find friends", iconName: "business", description: "Click here to meet new friends!"},
-                        {name: "Learn together", iconName: "business", description: "Click here to find new study pals!"},
-                        {name: "Do sports", iconName: "business", description: "Click here to get active with athletes around you!"},]
+    const intentEntries = [{name: "No, Simply Connect Me With Other Students", iconName: "groups", description: "Click here to get to know a variety of students from Munich!"},
+                        {name: "Yes, Find Tandem Learning Partners", iconName: "menu_book", description: "Click here to find new study pals for university, languages, and skill exchanges!"},
+                        {name: "Yes, Find Sport Partners", iconName: "sports_handball", description: "Click here to get active with athletes and sport friends around you!"},
+                        {name: "Yes, Find Start-Up Co-Founders", iconName: "emoji_objects", description: "Click here to connect with start-up enthusiasts!"}
+                        ]
     
+                        
 
-    let tabEntries = [{name: 'ABOUT', subtitle: 'What is Gathr about?', component: <AboutPage />},
-                    {name: 'SIGN-UP', subtitle: 'Some information to verify your account', component: <PersonForm entries={personEntries} />},
-                    {name: 'MATCHING', subtitle: 'What are you looking for?', component: <IntentForm entries={intentEntries} />}]
+    let tabEntries = [{name: 'HOME', subtitle: 'GET TO KNOW OTHER STUDENTS!', component: <AboutPage />},
+                    {name: 'SIGN-UP', subtitle: '', component: <PersonForm entries={personEntries} />},
+                    {name: 'MATCHING', subtitle: 'During the event, we will match you with other students from Munich :)', component: <IntentForm entries={intentEntries} />}]
 
     let tabNames = tabEntries.map(entry => {
         return entry.name;

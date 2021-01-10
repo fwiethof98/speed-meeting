@@ -16,12 +16,70 @@
 
 /* changes Sven */
 
+
+
+h3{
+    font-weight: bold !important;
+    color: #3C4858;
+}
+
+.ref_text{
+    margin-top:3% !important;
+}
+.ref_link{
+    font-size: larger;
+    margin-bottom: 4%;
+}
+.container{
+    padding-bottom: 70px;
+}
+input[type="checkbox"]{
+    margin-top: 7% !important;
+    height: 20px !important;
+}
+li{
+    line-height: 40px;
+}
+.image-container{
+    background-attachment: fixed;
+}
+.explainer{
+    width: 90%;
+}
+.info-text{
+    margin-bottom: 0px !important;
+    font-weight: bold !important;
+    color: #3C4858;
+}
+.flash_art{
+    width: 50%;
+    margin: auto;
+    margin-top: -1%;
+    padding-bottom: 2%;
+}
+
+.col-sm-4{
+    width: 24%;
+    margin:auto;
+}
+.bold{
+    font-weight: bold !important;
+    
+}
+
+.unterschrift {
+    text-align:center;
+    font-size: large;
+    margin-top: 2%;
+    margin-bottom: 4%;
+    color: #3C4858;
+}
 .brand {
     display: none;
 }
 
 .logo {
-    width: 60% !important;
+    width: 40% !important;
 }
 
 .logo-container .logo {
@@ -75,13 +133,13 @@ h6,
 .h2,
 .h3,
 .h4 {
-    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-family: "Lato", "Roboto", "Helvetica", "Arial", sans-serif;
     font-weight: 300;
     line-height: 1.5em;
 }
 
 .serif-font {
-    font-family: "Roboto Slab", "Times New Roman", serif;
+    font-family: "Lato", "Roboto Slab", "Times New Roman", serif;
 }
 
 a {
@@ -283,7 +341,7 @@ h6,
 .card-title a,
 .wizard-title,
 .wizard-title a {
-    color: #3C4858;
+    color: #4caf50;
     text-decoration: none;
 }
 
