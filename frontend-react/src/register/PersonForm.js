@@ -21,7 +21,7 @@ function PersonForm(props) {
 
     return <div>
         <div class="flash_art">
-            <img src="/assets/img/flash_art.png" alt="GATHR" />
+            <img src="/static/assets/img/flash_art.png" alt="GATHR" />
         </div>
         <div class="unterschrift"><p>Register within 3 minutes and connect with new people!</p></div>
        

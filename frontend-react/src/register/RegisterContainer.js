@@ -62,7 +62,9 @@ function WizardFormTab(props) {
         
         djangoLookup("POST", "/users/submit_data/", profileData, (response, status) => {
             console.log(response)
-            // window.location.href = "/submission_successful/"
+            if(status === 200) {
+                window.location.href = "/submission_successful/"
+            }
         })
     }
 

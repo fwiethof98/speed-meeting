@@ -8,10 +8,13 @@
     <!-- <img src="/static/assets/img/explainer.png"/> -->
     <div class="image-container set-full-height" style="background-image: url('/static/assets/img/wizard-profile.jpg')">
     {% block content %}
-
+      
     {% endblock content %}
+    {% include "components/footer.html" %}
     </div>
+    
     {% include "react/js.html" %}
+    
   </body>
   {% include "react/js_add.html" %}
 </html>
