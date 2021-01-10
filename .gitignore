@@ -1,2 +1,4 @@
 frontend-react/.eslintcache
 *.env
+*.pyc
+*.sqlite3
