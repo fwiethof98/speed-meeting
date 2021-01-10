@@ -14,7 +14,7 @@ function WizardFormTab(props) {
                     {name: "Birthday", type: "date", required: true},
                     {name: "E-Mail", type: "email", required: true},
                     {name: "Phone number (+xx xxxx xxxxxxxx)", type: "text", required: true},
-                    // {name: "Pronouns", type: "text", required: true, entries: ["A) She/her", "B) He/him", "C) They/them", "D) Prefer not to say"]},
+                    // {name: "Pronouns", type: "text", required: false, entries: ["A) She/her", "B) He/him", "C) They/them", "D) Prefer not to say"]},
                     {name: "University", type: "text", required: true, entries: ["A) TUM", "B) LMU", "C) Hochschule München"]},
                     {name: "Field of Studies", type: "text", required: true, entries: ["", "- Biology", "- Chemistry", "- Physics", "- Space Sciences", "- Informatics", "- Computer Engineering", "- Mathematics", "- Medicine & Health", "- Business & Management","- Economics","- Communication & Media", "- Political science", "- Mechanical Engineering", "- Law", "- Philosophy", "- Sport Sciences", "Other Social Sciences", "Other Humanities", "Other Engineering Sciences", "Other Natural Sciences", "Other Arts","Other Studies"]},
                     {name: "Level", type: "text", required: true, entries: ["Bachelor", "Master", "PhD"]},
