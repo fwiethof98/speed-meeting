@@ -13,12 +13,14 @@ function WizardFormTab(props) {
                     {name: "Last Name", type: "password", required: true},
                     {name: "Birthday", type: "date", required: true},
                     {name: "E-Mail", type: "email", required: true},
-                    {name: "Phone number (+xx xxxx xxxxxxxx)", type: "text", required: true},
-                    // {name: "Pronouns", type: "text", required: false, entries: ["A) She/her", "B) He/him", "C) They/them", "D) Prefer not to say"]},
-                    {name: "University", type: "text", required: true, entries: ["A) TUM", "B) LMU", "C) Hochschule München"]},
+                    {name: "Phone number (+xx xxxx xxxxxxxx)", type: "text", required: false},
+                     // {name: "Pronouns", type: "text", required: false, entries: ["A) She/her", "B) He/him", "C) They/them", "D) Prefer not to say"]},
+                    {name: "University", type: "text", required: true, entries: ["A) TUM", "B) LMU", "C) Hochschule München", "D) Other"]},
                     {name: "Field of Studies", type: "text", required: true, entries: ["", "- Biology", "- Chemistry", "- Physics", "- Space Sciences", "- Informatics", "- Computer Engineering", "- Mathematics", "- Medicine & Health", "- Business & Management","- Economics","- Communication & Media", "- Political science", "- Mechanical Engineering", "- Law", "- Philosophy", "- Sport Sciences", "Other Social Sciences", "Other Humanities", "Other Engineering Sciences", "Other Natural Sciences", "Other Arts","Other Studies"]},
                     {name: "Level", type: "text", required: true, entries: ["Bachelor", "Master", "PhD"]},
-                    {name: "Semester (in your current studies)", type: "text", required: true, entries: [1, 2, 3, 4, 5, 6, 7, 8, 9]}]
+                    {name: "Semester (in your current studies)", type: "text", required: true, entries: [1, 2, 3, 4, 5, 6, 7, 8, 9]},
+                    {name: "By clicking on the “Submit”-button, I confirm that my data can be used for purposes described in the Privacy Policy.*", type: "checkbox", required: true},
+                    {name: "I agree to receive E-Mails reminding me of upcoming events and other useful information related to the services of Gathr.de*", type: "checkbox", required: true}]
 
     const intentEntries = [{name: "No, Simply Connect Me With Other Students", iconName: "groups", description: "Click here to get to know a variety of students from Munich!"},
                         {name: "Yes, Find Tandem Learning Partners", iconName: "menu_book", description: "Click here to find new study pals for university, languages, and skill exchanges!"},

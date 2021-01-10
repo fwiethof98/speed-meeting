@@ -16,6 +16,13 @@
 
 /* changes Sven */
 
+.container{
+    padding-bottom: 70px;
+}
+input[type="checkbox"]{
+    margin-top: 7% !important;
+    height: 20px !important;
+}
 li{
     line-height: 40px;
 }
