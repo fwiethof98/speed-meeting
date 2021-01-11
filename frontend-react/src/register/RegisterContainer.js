@@ -25,7 +25,7 @@ function WizardFormTab(props) {
 
     const intentEntries = [{name: "students", description: "No, Simply Connect Me With Other Students", iconName: "groups", text_box: "Choose to get to know a variety of students from Munich!"},
                         {name: "tandem", description: "Yes, Find Tandem Learning Partners", iconName: "menu_book", text_box: "Choose to find new study pals for university, languages, and skill exchanges!"},
-                        {name: "sports", description: "Yes, Find Sport Partners", iconName: "sports_handball", text_box: "Choose to get active with athletes and sport friends around you!"},
+                        {name: "sports", description: "Yes, Find Sport Partners", iconName: "sports_handball", text_box: "Choose to get connected with athletes and sport friends around you!"},
                         {name: "founder", description: "Yes, Find Start-Up Co-Founders", iconName: "emoji_objects", text_box: "Choose to connect with start-up enthusiasts!"}]
     
                         
