@@ -23,10 +23,10 @@ function WizardFormTab(props) {
                     {name: "semester", description: "Semester (in your current studies)", type: "text", required: true, entries: [1, 2, 3, 4, 5, 6, 7, 8, 9]},
                     {name: "mail_accept", description: "I agree to receive E-Mails reminding me of upcoming events and other useful information related to the services of Gathr.de*", type: "checkbox", required: true}]
 
-    const intentEntries = [{name: "students", description: "No, Simply Connect Me With Other Students", iconName: "groups", text_box: "Click here to get to know a variety of students from Munich!"},
-                        {name: "tandem", description: "Yes, Find Tandem Learning Partners", iconName: "menu_book", text_box: "Click here to find new study pals for university, languages, and skill exchanges!"},
-                        {name: "sports", description: "Yes, Find Sport Partners", iconName: "sports_handball", text_box: "Click here to get active with athletes and sport friends around you!"},
-                        {name: "founder", description: "Yes, Find Start-Up Co-Founders", iconName: "emoji_objects", text_box: "Click here to connect with start-up enthusiasts!"}]
+    const intentEntries = [{name: "students", description: "No, Simply Connect Me With Other Students", iconName: "groups", text_box: "Choose to get to know a variety of students from Munich!"},
+                        {name: "tandem", description: "Yes, Find Tandem Learning Partners", iconName: "menu_book", text_box: "Choose to find new study pals for university, languages, and skill exchanges!"},
+                        {name: "sports", description: "Yes, Find Sport Partners", iconName: "sports_handball", text_box: "Choose to get active with athletes and sport friends around you!"},
+                        {name: "founder", description: "Yes, Find Start-Up Co-Founders", iconName: "emoji_objects", text_box: "Choose to connect with start-up enthusiasts!"}]
     
                         
 
