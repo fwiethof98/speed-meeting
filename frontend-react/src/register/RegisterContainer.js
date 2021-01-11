@@ -14,24 +14,24 @@ function WizardFormTab(props) {
                     {name: "birthday", description: "Birthday", type: "date", required: true},
                     {name: "email", description: "E-Mail", type: "email", required: true},
                     {name: "password", description: "Password", type: "password", required: true},
+                    {name: "privacy_accept", description: "By clicking on the “Finish”-button, I confirm that my data can be used for purposes described in the Privacy Policy.*", type: "checkbox", required: true},
                     {name: "mobile_number", description: "Phone number (+xx xxxx xxxxxxxx)", type: "text", required: false},
                      // {name: "Pronouns", type: "text", required: false, entries: ["A) She/her", "B) He/him", "C) They/them", "D) Prefer not to say"]},
                     {name: "university", description: "University", type: "text", required: true, entries: ["A) TUM", "B) LMU", "C) Hochschule München", "D) Other"]},
                     {name: "studies", description: "Field of Studies", type: "text", required: true, entries: ["", "- Biology", "- Chemistry", "- Physics", "- Space Sciences", "- Informatics", "- Computer Engineering", "- Mathematics", "- Medicine & Health", "- Business & Management","- Economics","- Communication & Media", "- Political science", "- Mechanical Engineering", "- Law", "- Philosophy", "- Sport Sciences", "Other Social Sciences", "Other Humanities", "Other Engineering Sciences", "Other Natural Sciences", "Other Arts","Other Studies"]},
                     {name: "study_level", description: "Level", type: "text", required: true, entries: ["Bachelor", "Master", "PhD"]},
                     {name: "semester", description: "Semester (in your current studies)", type: "text", required: true, entries: [1, 2, 3, 4, 5, 6, 7, 8, 9]},
-                    {name: "privacy_accept", description: "By clicking on the “Submit”-button, I confirm that my data can be used for purposes described in the Privacy Policy.*", type: "checkbox", required: true},
                     {name: "mail_accept", description: "I agree to receive E-Mails reminding me of upcoming events and other useful information related to the services of Gathr.de*", type: "checkbox", required: true}]
 
-    const intentEntries = [{name: "students", description: "No, Simply Connect Me With Other Students", iconName: "groups", text_box: "Click here to get to know a variety of students from Munich!"},
-                        {name: "tandem", description: "Yes, Find Tandem Learning Partners", iconName: "menu_book", text_box: "Click here to find new study pals for university, languages, and skill exchanges!"},
-                        {name: "sports", description: "Yes, Find Sport Partners", iconName: "sports_handball", text_box: "Click here to get active with athletes and sport friends around you!"},
-                        {name: "founder", description: "Yes, Find Start-Up Co-Founders", iconName: "emoji_objects", text_box: "Click here to connect with start-up enthusiasts!"}]
+    const intentEntries = [{name: "students", description: "No, Simply Connect Me With Other Students", iconName: "groups", text_box: "Choose to get to know a variety of students from Munich!"},
+                        {name: "tandem", description: "Yes, Find Tandem Learning Partners", iconName: "menu_book", text_box: "Choose to find new study pals for university, languages, and skill exchanges!"},
+                        {name: "sports", description: "Yes, Find Sport Partners", iconName: "sports_handball", text_box: "Choose to get connected with athletes and sport friends around you!"},
+                        {name: "founder", description: "Yes, Find Start-Up Co-Founders", iconName: "emoji_objects", text_box: "Choose to connect with start-up enthusiasts!"}]
     
                         
 
     let tabEntries = [{name: 'HOME', subtitle: 'GET TO KNOW OTHER STUDENTS!', component: <AboutPage />},
-                    {name: 'SIGN-UP', subtitle: '', component: <div><PersonForm entries={personEntries} /><IntentForm entries={intentEntries} /></div>}]
+                    {name: 'SIGN-UP', subtitle: '', component: <div id="combiner"><PersonForm entries={personEntries} /><IntentForm entries={intentEntries} /></div>}]
 
     let tabNames = tabEntries.map(entry => {
         return entry.name;
