@@ -75,4 +75,4 @@ def submit_user_data_api_view(request, *args, **kwargs):
     if serializer.is_valid():
         serializer.save()
         return Response(serializer.data, status=200)
-    return Response({'message': 'Invalid user data.'}, status=200)
+    return Response({'message': 'Invalid user data.'}, status=400)
