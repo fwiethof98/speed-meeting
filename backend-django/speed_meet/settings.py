@@ -134,6 +134,7 @@ STATICFILES_DIRS = [
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, "static-root")
 
+
 # Allow access to all pages from other origin
 CORS_ORIGIN_ALLOW_ALL = True
 
