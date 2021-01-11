@@ -111,8 +111,9 @@ li{
     display: grid;
 }
 
-.abstand_oben{
+.titel_trenner{
     margin-top: 5%;
+    font-size:xx-large;
 }
 @media only screen and (max-width: 1000px) {
     #content_aboutus{
@@ -136,6 +137,11 @@ li{
     }
     .ref_link{
         font-size: small;
+    }
+    .titel_trenner{
+        padding-left: 5%;
+        padding-right: 5%;
+        font-size: larger;
     }
 }
 
