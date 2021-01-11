@@ -17,7 +17,10 @@
 /* changes Sven */
 
 
-
+#accordion{
+    margin-left: 10%!important;
+    margin-right: 10%!important;
+}
 h3{
     font-weight: bold !important;
     color: #3C4858;
