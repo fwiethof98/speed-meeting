@@ -16,9 +16,9 @@ function AboutPage(props) {
 
     return <div className="row">
         <div class="col-sm-12">
-            <div style={{textAlign: "center", marginRight: 50, marginLeft: 50}}>
+            <div id="content_aboutus">
                 <p class="unterschrift">{description}</p>
-                <img src="/static/assets/img/explainer.png" alt="Gathr pipeline" class="explainer"/>
+                <img src="/static/assets/img/explainer_low_qual_jpg_res15_qual80.jpg" alt="Gathr pipeline" class="explainer"/>
             </div>
         </div>
         
