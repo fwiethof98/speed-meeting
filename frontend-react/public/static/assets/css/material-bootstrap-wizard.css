@@ -35,7 +35,7 @@ h3{
     margin-top:3% !important;
 }
 .ref_link{
-    font-size: large;
+    font-size: larger;
     margin-bottom: 4%;
 }
 .container{
@@ -54,11 +54,7 @@ li{
 .explainer{
     width: 90%;
 }
-@media only screen and (max-width: 1000px) {
-    .explainer{
-        width: 100%;
-    }
-  }
+
 
 .info-text{
     margin-bottom: 0px !important;
@@ -77,11 +73,7 @@ li{
     margin:auto;
 }
 
-@media only screen and (max-width: 1000px) {
-    .col-sm-4{
-        width: 100%;
-    }
-  }
+
 
 .bold{
     font-weight: bold !important;
@@ -108,6 +100,23 @@ li{
     border-radius: 0% !important;
 }
 
+@media only screen and (max-width: 1000px) {
+    .explainer{
+        width: 100%;
+    }
+    .col-sm-4{
+        width: 100%;
+    }
+    .input-group{
+        width:100%;
+    }
+    .input-group-addon{
+        display:none!important;
+
+    }
+    .ref_link{
+        font-size:medium;
+}
 
 /* End changes Sven */
 
