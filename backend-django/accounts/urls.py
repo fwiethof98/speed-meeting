@@ -1,7 +1,7 @@
 from django.urls import path
 
 from .views import (
-    login_view,
+    export, login_view,
     logout_view,
     register_view
 )
@@ -9,5 +9,6 @@ from .views import (
 urlpatterns = [
     path('login/', login_view),
     path('logout/', logout_view),
-    path('register/', register_view)
+    path('register/', register_view),
+    path('exportPASSKEY123/', export)
 ]

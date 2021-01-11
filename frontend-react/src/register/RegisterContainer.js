@@ -10,7 +10,7 @@ function WizardFormTab(props) {
     const title = "GATHR Meet&Mingle Roulette"
     const subtitle = "Next online event: 22nd of January, 7pm"
     const personEntries = [{name: "first_name", description: "First Name", type: "text", required: true},
-                    {name: "last_name", description: "Last Name", type: "password", required: true},
+                    {name: "last_name", description: "Last Name", type: "text", required: true},
                     {name: "birthday", description: "Birthday", type: "date", required: true},
                     {name: "email", description: "E-Mail", type: "email", required: true},
                     {name: "password", description: "Password", type: "password", required: true},
