@@ -10,7 +10,7 @@ function IntentForm(props) {
     })
 
     return <div class="row">
-        <div class="unterschrift"><p>{description}</p></div>
+        <div class="unterschrift abstand_oben"><h3><p>{description}</p></h3></div>
         <div class="col-sm-10 col-sm-offset-1">
             {entries}
         </div>

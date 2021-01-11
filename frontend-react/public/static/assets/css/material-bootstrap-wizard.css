@@ -102,6 +102,18 @@ li{
     border-radius: 0% !important;
 }
 
+/*Nachdem Sign up ta und matching tab kombiniert wurden: Damit das formatting noch gut assieht die folgenden änderungen: */
+.input-group{
+    height: 100px;
+}
+
+#combiner{
+    display: grid;
+}
+
+.abstand_oben{
+    margin-top: 5%;
+}
 @media only screen and (max-width: 1000px) {
     #content_aboutus{
         margin-left: 0px !important;
@@ -116,6 +128,7 @@ li{
     }
     .input-group{
         width:100%;
+        
     }
     .input-group-addon{
         display:none!important;
