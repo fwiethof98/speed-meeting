@@ -9,18 +9,18 @@ import $ from 'jquery'
 function WizardFormTab(props) {
     const title = "GATHR Meet&Mingle Roulette"
     const subtitle = "Next online event: 22nd of January, 7pm"
-    const personEntries = [{name: "first_name", description: "First Name", type: "text", required: true},
-                    {name: "last_name", description: "Last Name", type: "text", required: true},
-                    {name: "birthday", description: "Birthday", type: "date", required: true},
-                    {name: "email", description: "E-Mail", type: "email", required: true},
-                    {name: "password", description: "Password", type: "password", required: true},
+    const personEntries = [{name: "first_name", description: "First Name*", type: "text", required: true},
+                    {name: "last_name", description: "Last Name*", type: "text", required: true},
+                    {name: "birthday", description: "Birthday*", type: "date", required: true},
+                    {name: "email", description: "E-Mail*", type: "email", required: true},
+                    {name: "password", description: "Password*", type: "password", required: true},
                     {name: "privacy_accept", description: "By clicking on the “Finish”-button, I confirm that my data can be used for purposes described in the Privacy Policy.*", type: "checkbox", required: true},
-                    {name: "mobile_number", description: "Phone number (+xx xxxx xxxxxxxx)", type: "text", required: false},
+                    {name: "mobile_number", description: "Phone number* (+xx xxxx xxxxxxxx)", type: "text", required: false},
                      // {name: "Pronouns", type: "text", required: false, entries: ["A) She/her", "B) He/him", "C) They/them", "D) Prefer not to say"]},
-                    {name: "university", description: "University", type: "text", required: true, entries: ["A) TUM", "B) LMU", "C) Hochschule München", "D) Other"]},
-                    {name: "studies", description: "Field of Studies", type: "text", required: true, entries: ["", "- Biology", "- Chemistry", "- Physics", "- Space Sciences", "- Informatics", "- Computer Engineering", "- Mathematics", "- Medicine & Health", "- Business & Management","- Economics","- Communication & Media", "- Political science", "- Mechanical Engineering", "- Law", "- Philosophy", "- Sport Sciences", "Other Social Sciences", "Other Humanities", "Other Engineering Sciences", "Other Natural Sciences", "Other Arts","Other Studies"]},
-                    {name: "study_level", description: "Level", type: "text", required: true, entries: ["Bachelor", "Master", "PhD"]},
-                    {name: "semester", description: "Semester (in your current studies)", type: "text", required: true, entries: [1, 2, 3, 4, 5, 6, 7, 8, 9]},
+                    {name: "university", description: "University*", type: "text", required: true, entries: ["A) TUM", "B) LMU", "C) Hochschule München", "D) Other"]},
+                    {name: "studies", description: "Field of Studies*", type: "text", required: true, entries: ["", "- Biology", "- Chemistry", "- Physics", "- Space Sciences", "- Informatics", "- Computer Engineering", "- Mathematics", "- Medicine & Health", "- Business & Management","- Economics","- Communication & Media", "- Political science", "- Mechanical Engineering", "- Law", "- Philosophy", "- Sport Sciences", "Other Social Sciences", "Other Humanities", "Other Engineering Sciences", "Other Natural Sciences", "Other Arts","Other Studies"]},
+                    {name: "study_level", description: "Level*", type: "text", required: true, entries: ["Bachelor", "Master", "PhD"]},
+                    {name: "semester", description: "Semester* (in your current studies)", type: "text", required: true, entries: [1, 2, 3, 4, 5, 6, 7, 8, 9]},
                     {name: "mail_accept", description: "I agree to receive E-Mails reminding me of upcoming events and other useful information related to the services of Gathr.de*", type: "checkbox", required: true}]
 
     const intentEntries = [{name: "students", description: "No, Simply Connect Me With Other Students", iconName: "groups", text_box: "Click here to get to know a variety of students from Munich!"},
