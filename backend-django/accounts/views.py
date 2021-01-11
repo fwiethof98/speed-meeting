@@ -51,6 +51,10 @@ def submission_successful_view(request, *args, **kwargs):
     return render(request, 'auth/submission_successful.html')
 
 
+def data_privacy_view(request):
+    return render(request, 'components/data_privacy.html')
+
+
 def export(request):
     response = HttpResponse(content_type='text/csv')
     writer = csv.writer(response)
