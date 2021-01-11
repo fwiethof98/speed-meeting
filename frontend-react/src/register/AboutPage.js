@@ -10,7 +10,7 @@ function AboutPage(props) {
         {name: "faq5", title: "How does the voting work?", text: "The voting helps you and your conversation partners to quickly align on a common interest and on the next activity you want to do. After each video round, everyone gets to vote on whether you want to meet again. If two people select the same option, you get informed and can start organizing your next meeting!"},
         {name: "faq6", title: "Do I need to prepare anything?", text: "No :) You can just join our next online event, and we will connect you with other students in Munich! In order to help kickstart your conversations, we even provide you with ice-breaking questions!"},
         {name: "faq7", title: "Is it free?", text: "Yes, GATHR is free! Our goal is to become a plattform available for all Munich students to connect!"},
-        {name: "faq8", title: "Who can I contact for questions or feedback?", text: "We would love to hear from you! You can always write us at info@gathr.de !"}
+        {name: "faq8", title: "Who can I contact for questions or feedback?", text: "We would love to hear from you! You can always write us via e-mail at info@gathr.de !"}
     ]
 
     const description = "Munich Universities - Sport Partners - Learning Groups - Co-Founders - Friends"
