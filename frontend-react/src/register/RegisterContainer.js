@@ -60,8 +60,21 @@ function WizardFormTab(props) {
         if(typeof profileData.intent === 'undefined') {
             profileData.intent = 'students'
         }
-        
-        djangoLookup("POST", "/users/submit_data/", profileData, (response, status) => {
+
+        let complete = true
+        for(const [key, value] of Object.entries(profileData)) {
+            if(value === "") {
+                complete = false
+            }
+        }
+        if(complete === false) {
+            alert("Please fill all form entries!")
+        } else if(profileData.mail_accept === false || profileData.privacy_accept === false) {
+            alert("You have to accept the data policy and mail notifications!")
+            complete = false
+        }
+
+        complete && djangoLookup("POST", "/users/submit_data/", profileData, (response, status) => {
             console.log(response)
             if(status === 200) {
                 window.location.href = "/submission_successful/"
