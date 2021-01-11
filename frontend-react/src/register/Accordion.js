@@ -6,7 +6,7 @@ function Accordion(props) {
         return <AccordionElement name={entry.name} title={entry.title} text={entry.text} />
     })
 
-    return <div className="panel-group" id="accordion" style={{marginRight: 100, marginLeft: 100}}>
+    return <div className="panel-group" id="accordion">
         {entries}
     </div>
 }
