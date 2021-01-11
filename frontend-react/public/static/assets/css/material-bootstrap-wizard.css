@@ -60,6 +60,8 @@ li{
     margin-bottom: 0px !important;
     font-weight: bold !important;
     color: #3C4858;
+    padding-left: 5%;
+    padding-right: 5%;
 }
 .flash_art{
     width: 50%;
