@@ -14,7 +14,9 @@
  */
 
 
+
 /* changes Sven */
+/* For branding: Changed original template color  #4caf50 to color #00abbc */
 
 #content_aboutus{
     text-align: center;
@@ -398,7 +400,7 @@ h6,
 .card-title a,
 .wizard-title,
 .wizard-title a {
-    color: #4caf50;
+    color: #00abbc;
     text-decoration: none;
 }
 
@@ -425,7 +427,7 @@ h2.title {
 }
 
 .text-success {
-    color: #4caf50;
+    color: #00abbc;
 }
 
 .text-info {
@@ -516,34 +518,34 @@ h2.title {
 }
 
 .wizard-card[data-color="green"] .moving-tab {
-    background-color: #4caf50;
-    box-shadow: 0 16px 26px -10px rgba(76, 175, 80, 0.56), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(76, 175, 80, 0.2);
+    background-color: #00abbc;
+    box-shadow: 0 16px 26px -10px rgba(143, 197, 228, 0.56), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(76, 175, 80, 0.2);
 }
 
 .wizard-card[data-color="green"] .picture:hover {
-    border-color: #4caf50;
+    border-color: #00abbc;
 }
 
 .wizard-card[data-color="green"] .choice:hover .icon,
 .wizard-card[data-color="green"] .choice.active .icon {
-    border-color: #4caf50;
-    color: #4caf50;
+    border-color: #00abbc;
+    color: #00abbc;
 }
 
 .wizard-card[data-color="green"] .form-group .form-control {
-    background-image: linear-gradient(#4caf50, #4caf50), linear-gradient(#D2D2D2, #D2D2D2);
+    background-image: linear-gradient(#00abbc, #00abbc), linear-gradient(#D2D2D2, #D2D2D2);
 }
 
 .wizard-card[data-color="green"] .checkbox input[type=checkbox]:checked+.checkbox-material .check {
-    background-color: #4caf50;
+    background-color: #00abbc;
 }
 
 .wizard-card[data-color="green"] .radio input[type=radio]:checked~.check {
-    background-color: #4caf50;
+    background-color: #00abbc;
 }
 
 .wizard-card[data-color="green"] .radio input[type=radio]:checked~.circle {
-    border-color: #4caf50;
+    border-color: #00abbc;
 }
 
 .wizard-card[data-color="blue"] .moving-tab {
@@ -937,7 +939,7 @@ output {
 }
 
 .label.label-success {
-    background-color: #4caf50;
+    background-color: #00abbc;
 }
 
 .label.label-info {
@@ -1048,7 +1050,7 @@ fieldset[disabled] .form-group .form-control {
 }
 
 .form-group.is-focused.form-success .form-control {
-    background-image: linear-gradient(#4caf50, #4caf50), linear-gradient(#D2D2D2, #D2D2D2);
+    background-image: linear-gradient(#00abbc, #00abbc), linear-gradient(#D2D2D2, #D2D2D2);
 }
 
 .form-group.is-focused.form-warning .form-control {
@@ -1107,12 +1109,12 @@ fieldset[disabled] .form-group .form-control {
 }
 
 .form-group.has-success.is-focused .form-control {
-    background-image: linear-gradient(#4caf50, #4caf50), linear-gradient(#D2D2D2, #D2D2D2);
+    background-image: linear-gradient(#00abbc, #00abbc), linear-gradient(#D2D2D2, #D2D2D2);
 }
 
 .form-group.has-success label.control-label,
 .form-group.has-success .help-block {
-    color: #4caf50;
+    color: #00abbc;
 }
 
 .form-group.has-info .form-control {
@@ -1471,7 +1473,7 @@ select.form-control[multiple],
 }
 
 .has-success .form-control-feedback {
-    color: #4caf50;
+    color: #00abbc;
     opacity: 1;
 }
 
@@ -1756,7 +1758,7 @@ fieldset[disabled] .btn.btn-info.active {
 .open>.btn.btn-success.dropdown-toggle,
 .open>.btn.btn-success.dropdown-toggle:focus,
 .open>.btn.btn-success.dropdown-toggle:hover {
-    background-color: #4caf50;
+    background-color: #00abbc;
     color: #FFFFFF;
 }
 
@@ -1795,7 +1797,7 @@ fieldset[disabled] .btn.btn-success.active {
 
 .btn.btn-success.btn-simple {
     background-color: transparent;
-    color: #4caf50;
+    color: #00abbc;
     box-shadow: none;
 }
 
@@ -1803,7 +1805,7 @@ fieldset[disabled] .btn.btn-success.active {
 .btn.btn-success.btn-simple:focus,
 .btn.btn-success.btn-simple:active {
     background-color: transparent;
-    color: #4caf50;
+    color: #00abbc;
 }
 
 .btn.btn-warning {
