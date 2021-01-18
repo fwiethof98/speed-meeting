@@ -49,7 +49,7 @@ class UserProfile(models.Model):
         User, related_name="friends", blank=True)
     matches = models.ManyToManyField(
         "UserProfile", related_name="match", through="Match")
-    room = models.ForeignKey(Room, on_delete=models.CASCADE)
+    room = models.ForeignKey(Room, null=True, on_delete=models.CASCADE)
 
 
 class Match(models.Model):
