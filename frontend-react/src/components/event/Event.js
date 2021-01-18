@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { djangoLookup } from '../../functions/lookup'
 import EventWaiting from './EventWaiting'
 import EventCurrent from './EventCurrent'
@@ -9,6 +9,22 @@ import ContainerTemplate from '../templates/ContainerTemplate'
 function Event(props) {
     const [eventDisplay, setEventDisplay] = useState(false)
     const [feedbackDisplay, setFeedbackDisplay] = useState(true)
+
+    const [nextEvent, setNextEvent] = useState([])
+    const [nextRoom, setNextRoom] = useState([])
+    const [match, setMatch] = useState([])
+
+    useEffect(() => {
+        djangoLookup("GET", "/event/", {}, (response, status) => {
+            status === 200 && setNextEvent(response)
+        })
+        djangoLookup("GET", "/room/", {}, (response, status) => {
+            status === 200 && setNextRoom(response)
+        })
+        djangoLookup("GET", "/match/", {}, (response, status) => {
+            status === 200 && setMatch(response)
+        })
+    }, [])
 
     // false - true = Waiting, 
     // true - false = Current, 

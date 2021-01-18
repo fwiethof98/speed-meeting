@@ -14,16 +14,11 @@ function Register(props) {
         formData.forEach((value, key) => {
             profileData[key] = value
         })
-        console.log($('#university option:selected').val())
-        console.log(profile_entries)
         for(let i = 0; i < profile_entries.length; i++) {
-            console.log(profile_entries[i].type === "dropdown")
             if(profile_entries[i].type === "dropdown") {
-                console.log(i)
                 profileData[profile_entries[i].name] = $('#' + profile_entries[i].name + " option:selected").val()
             }
         }
-        console.log(profileData)
         // Form error handling
         // if(typeof profileData.intent === 'undefined') {
         //     profileData.intent = 'students'
@@ -45,7 +40,7 @@ function Register(props) {
         djangoLookup("POST", "/register/", profileData, (response, status) => {
             console.log(response)
             if(status === 200) {
-                window.location.href = "/submission_successful/"
+                window.location.href = ""
             }
         })
     }

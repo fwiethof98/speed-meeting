@@ -18,7 +18,7 @@ function Login(props) {
         djangoLookup("POST", "/login/", profileData, (response, status) => {
             console.log(response)
             if(status === 200) {
-                window.location.href = "/"
+                window.location.href = ""
             }
         })
     }

@@ -6,7 +6,8 @@ function LoginForm(props) {
     return <div>
         <form id="login-form">
             <PersonForm entries={entries} />
-            <button className="btn btn-primary" onClick={handleSubmit}>Submit</button>
+            <button className="btn btn-primary" onClick={handleSubmit}>Login</button>
+            <button className="btn btn-secondary" onClick={() => window.location.href = 'register/'}>Register</button>
         </form>
     </div>
 }

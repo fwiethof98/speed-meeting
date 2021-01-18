@@ -138,18 +138,18 @@ export const event = {
 
 
 // CONFIGURATION OF LOGIN PAGE
-export const login_entries = [{name: "username", displayName: "Username", type: "text", required: true},
+export const login_entries = [{name: "username", displayName: "Username (or mail address)", type: "text", required: true},
                     {name: "password", displayName: "Password", type: "password", required: true}]
 
 export const login = {
     title: "Login to your account!",
-    subtitle: "NOW!!",
+    subtitle: "",
     title_component: "",
     form_name: "",
     tab_names: ["LOGIN"],
     tabs: [{
             name: "LOGIN", 
-            subtitle: "Login",
+            subtitle: "",
             component: <PersonForm entries={login_entries} />
         }
     ]
