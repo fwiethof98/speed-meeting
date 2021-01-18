@@ -1,44 +1,49 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.db.models.signals import post_save
-from meetings.models import Meeting
+# from django.db.models.signals import post_save
 
 # Create your models here.
 
 
-class Role(models.Model):
-    name = models.TextField()
+class Hobby(models.Model):
+    name = models.TextField(null=True, blank=True)
+
+
+class Preference(models.Model):
+    language = models.TextField(null=True, blank=True)
+    studies = models.TextField(null=True, blank=True)
+    hobbies = models.ManyToManyField(Hobby)
 
 
 class UserProfile(models.Model):
+    # Link to user model
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    roles = models.ManyToManyField(Role, blank=True)
-    socket = models.TextField(null=True)
-    meeting = models.ForeignKey(
-        Meeting, blank=True, null=True, on_delete=models.CASCADE)
-    friends = models.ManyToManyField(
-        User, related_name="friends", blank=True)
 
-
-class UserDataEntry(models.Model):
-    birthday = models.TextField(null=True, blank=True)
+    # Set as username
     email = models.TextField(null=True, blank=True)
+
+    # All data from register form
     first_name = models.TextField(null=True, blank=True)
     last_name = models.TextField(null=True, blank=True)
-    mail_accept = models.BooleanField(null=True, blank=True)
-    mobile_number = models.TextField(null=True, blank=True)
-    privacy_accept = models.BooleanField(null=True, blank=True)
+    phone = models.TextField(null=True, blank=True)
+
+    # Relevant for matching
+    birthday = models.TextField(null=True, blank=True)
     studies = models.TextField(null=True, blank=True)
     study_level = models.TextField(null=True, blank=True)
     university = models.TextField(null=True, blank=True)
     intent = models.TextField(null=True, blank=True)
     semester = models.TextField(null=True, blank=True)
-    password = models.TextField(null=True, blank=True)
 
+    preference = models.OneToOneField(
+        Preference, null=True, on_delete=models.CASCADE)
 
-def create_user_profile(sender, instance, created, **kwargs):
-    if created:
-        profile, created = UserProfile.objects.get_or_create(user=instance)
+    # Mandatory checks
+    mail_check = models.BooleanField(null=True, blank=True)
+    data_check = models.BooleanField(null=True, blank=True)
 
-
-post_save.connect(create_user_profile, sender=User)
+    # Data for event conduction
+    participation = models.BooleanField(null=True, blank=True)
+    socket = models.TextField(null=True)
+    friends = models.ManyToManyField(
+        User, related_name="friends", blank=True)

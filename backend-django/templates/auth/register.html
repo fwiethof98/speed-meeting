@@ -1,19 +1,6 @@
 {% extends "base.html" %}
-
 {% block content %}
 
-<style>
-    h1 {
-        margin-bottom: 20pt;
-    }
-</style>
-<div class="container">
-    <h1>Register</h1>
-    <p>Are you sure you want to log out?</p>
-    <form method='POST'> {% csrf_token %}
-        {{ form.as_p }}
-        <button type='submit' class='btn btn-secondary'>Register</button>
-    </form>
-</div>
+<div id="register-container"></div>
 
 {% endblock content %}

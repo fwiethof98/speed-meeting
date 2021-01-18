@@ -21,22 +21,22 @@ from django.conf.urls.static import static
 
 # PAGES
 
-from accounts.views import submit_user_data_view, submission_successful_view
+from accounts.views import register_view, submission_successful_view
 
 urlpatterns = [
     # path('admin/', admin.site.urls),
     # path('', include('meetings.urls')),
-    path('', include('accounts.urls')),
-    path('', submit_user_data_view),
-    path('submission_successful/', submission_successful_view)
+    # path('', include('accounts.urls')),
+    path('register/', register_view),
+    path('', register_view),
+    # path('submission_successful/', submission_successful_view)
 ]
 
 # APIs
 
 urlpatterns += [
     path('api/', include('accounts.api.urls')),
-    path('api/', include('meetings.api.urls')),
-    path('api/', include('matching.api.urls'))
+    path('api/', include('event.api.urls'))
 ]
 
 # Static files

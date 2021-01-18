@@ -1,17 +1,19 @@
 from django.urls import path
 
 from .views import (
-    user_search_api_view,
-    create_role_api_view,
-    search_role_api_view,
-    delete_role_api_view,
-    submit_user_data_api_view
+    search_preference_api_view, user_assign_preference_api_view, user_login_api_view,
+    user_logout_api_view,
+    user_register_api_view,
+    search_hobbies_api_view
+    # user_search_api_view
 )
 
 urlpatterns = [
-    path('users/', user_search_api_view),
-    path('roles/create/', create_role_api_view),
-    path('roles/', search_role_api_view),
-    path('roles/delete/', delete_role_api_view),
-    path('users/submit_data/', submit_user_data_api_view)
+    path('login/', user_login_api_view),
+    path('logout/', user_logout_api_view),
+    path('register/', user_register_api_view),
+    path('preference/assign/', user_assign_preference_api_view),
+    path('hobbies/', search_hobbies_api_view),
+    path('preference/', search_preference_api_view)
+    # path('users/', user_search_api_view)
 ]

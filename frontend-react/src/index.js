@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Manage from './manage/Manage'
-import RegisterContainer from './register/RegisterContainer'
-import EventContainer from './event/EventContainer'
-import SuccessPage from './feedback/SuccessPage'
+import Manage from './components/manage/Manage'
+import Register from './components/auth/register/Register'
+import EventContainer from './components/event/Event'
+import SuccessPage from './components/auth/register/SuccessPage'
+import Login from './components/auth/login/Login'
 
 const e = React.createElement
 
@@ -14,7 +15,7 @@ if(manageEl) {
 
 const registerContainerEl = document.getElementById("register-container")
 if(registerContainerEl) {
-  ReactDOM.render(e(RegisterContainer, registerContainerEl.dataset), registerContainerEl)
+  ReactDOM.render(e(Register, registerContainerEl.dataset), registerContainerEl)
 }
 
 const successPageEl = document.getElementById("success-page")
@@ -25,5 +26,10 @@ if(successPageEl) {
 const eventContainerEl = document.getElementById("event-container")
 if(eventContainerEl) {
   ReactDOM.render(e(EventContainer, eventContainerEl.dataset), eventContainerEl)
+}
+
+const loginContainerEl = document.getElementById("login-container")
+if(loginContainerEl) {
+  ReactDOM.render(e(Login, loginContainerEl.dataset), loginContainerEl)
 }
 

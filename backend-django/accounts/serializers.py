@@ -1,61 +1,51 @@
 from rest_framework import serializers
-from django.contrib.auth.models import User
-from .models import UserDataEntry, UserProfile, Role
-from meetings.serializers import MeetingSerializer
+from .models import Hobby, Preference, UserProfile
+# from event.serializers import RoomSerializer
 
 
-class RoleSerializer(serializers.ModelSerializer):
+class HobbySerializer(serializers.ModelSerializer):
     class Meta:
-        model = Role
+        model = Hobby
         fields = ['name']
 
 
-class UserDataEntrySerializer(serializers.ModelSerializer):
+class PreferenceSerializer(serializers.ModelSerializer):
+    hobbies = HobbySerializer(many=True)
+
     class Meta:
-        model = UserDataEntry
-        fields = ['birthday', 'email', 'first_name', 'intent', 'last_name', 'mail_accept',
-                  'mobile_number', 'privacy_accept', 'semester', 'studies', 'study_level', 'university', 'password']
+        model = Preference
+        fields = ['language', 'studies', 'hobbies']
 
 
-class UserProfileSerializerWithoutFriends(serializers.ModelSerializer):
+class FriendSerializer(serializers.ModelSerializer):
     name = serializers.SerializerMethodField(read_only=True)
-    roles = serializers.SerializerMethodField(read_only=True)
 
     class Meta:
         model = UserProfile
-        fields = ['name', 'roles', 'socket']
+        fields = ['first_name', 'last_name', 'phone', 'university', 'studies', 'status', 'data_check', 'mail_check',
+                  'socket', 'participating', 'birthday', 'intent']
 
     def get_name(self, obj):
         return obj.user.username
-
-    def get_roles(self, obj):
-        serializer = RoleSerializer(obj.roles, many=True)
-        if serializer.is_valid():
-            return serializer.data
 
 
 class UserProfileSerializer(serializers.ModelSerializer):
     name = serializers.SerializerMethodField(read_only=True)
-    roles = serializers.SerializerMethodField(read_only=True)
     friends = serializers.SerializerMethodField(read_only=True)
-    meeting = MeetingSerializer(read_only=True)
+    # room = RoomSerializer(read_only=True)
 
     class Meta:
         model = UserProfile
-        fields = ['name', 'roles', 'socket', 'friends', 'meeting']
+        fields = ['first_name', 'last_name', 'phone', 'university', 'studies', 'status', 'data_check', 'mail_check',
+                  'socket', 'friends', 'participating', 'birthday']
 
     def get_name(self, obj):
         return obj.user.username
-
-    def get_roles(self, obj):
-        serializer = RoleSerializer(obj.roles, many=True)
-        if serializer.is_valid():
-            return serializer.data
 
     def get_friends(self, obj):
         qs = UserProfile.objects.none()
         for user in obj.friends:
             qs = qs | UserProfile.objects.filter(name=user.username).first()
-        serializer = UserProfileSerializerWithoutFriends(qs, many=True)
+        serializer = FriendSerializer(qs, many=True)
         if serializer.is_valid():
             return serializer.data
