@@ -29,7 +29,8 @@ SECRET_KEY = '56o!7q_54@1#t@gdl&jac0na9fh*612bgr9phwg24s%4w)-5kj'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['www.gathr.de', 'localhost', 'gathr.de', '127.0.0.1']
+ALLOWED_HOSTS = ['www.gathr.de', 'localhost',
+                 'gathr.de', '127.0.0.1', 'dev.gathr.de']
 
 
 # Application definition
