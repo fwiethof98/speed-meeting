@@ -6,8 +6,8 @@ from rest_framework.permissions import IsAuthenticated
 
 from django.contrib.auth.models import User
 from .forms import UserForm, UserProfileForm, LoginForm
-from ..serializers import HobbySerializer, PreferenceSerializer
-from ..models import Hobby, Preference
+from ..serializers import FriendSerializer, HobbySerializer, PreferenceSerializer
+from ..models import Hobby, Preference, UserProfile
 
 #### AUTHENTICATION ####
 # login, register, logout
@@ -84,12 +84,12 @@ def search_preference_api_view(request):
     serializer = PreferenceSerializer(request.user.userprofile.preference)
     return Response(serializer.data)
 
-    # @api_view(['GET'])
-    # @permission_classes([IsAuthenticated])
-    # def user_search_api_view(request):
-    #     filters = request.get.items()
-    #     if(filters != None):
-    #         qs = UserProfile.objects.filter(**filters)
-    #         return Response(UserProfileReadSerializer(qs, many=True).data, status=200)
-    #     else:
-    #         return Response({'message': 'No filter was specified!'}, status=400)
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def search_match_api_view(request):
+    qs = UserProfile.objects.filter(room=request.user.userprofile.room)
+    serializer = FriendSerializer(qs, many=True)
+    if serializer.is_valid():
+        return Response(serializer.data, status=200)
+    return Response({'message': 'Invalid serializer data for match'}, status=400)

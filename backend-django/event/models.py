@@ -14,10 +14,3 @@ class Event(models.Model):
     pw_mod = models.TextField(null=True, blank=True)
     name = models.TextField(null=True, blank=True)
     rooms = models.ManyToManyField(Room)
-
-
-class Match(models.Model):
-    users = models.ManyToManyField(User)
-
-    # Set after feedback evaluation to highest common feedback
-    status = models.IntegerField(null=True, blank=True)

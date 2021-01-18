@@ -1,6 +1,5 @@
 from rest_framework import serializers
-from .models import Event, Room, Match
-from accounts.serializers import UserProfileSerializer
+from .models import Event, Room
 
 
 class RoomSerializer(serializers.ModelSerializer):
@@ -15,11 +14,3 @@ class EventSerializer(serializers.ModelSerializer):
     class Meta:
         model = Event
         fields = ['name', 'link', 'date', 'pw_mod', 'rooms']
-
-
-class MatchSerializer(serializers.ModelSerializer):
-    users = UserProfileSerializer(many=True)
-
-    class Meta:
-        model = Match
-        fields = ['users', 'status']

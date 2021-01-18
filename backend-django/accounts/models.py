@@ -1,8 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 # from django.db.models.signals import post_save
-
 # Create your models here.
+from event.models import Room
 
 
 class Hobby(models.Model):
@@ -47,3 +47,14 @@ class UserProfile(models.Model):
     socket = models.TextField(null=True)
     friends = models.ManyToManyField(
         User, related_name="friends", blank=True)
+    matches = models.ManyToManyField(
+        "UserProfile", related_name="match", through="Match")
+    room = models.ForeignKey(Room, on_delete=models.CASCADE)
+
+
+class Match(models.Model):
+    user1 = models.ForeignKey(
+        UserProfile, related_name="First", on_delete=models.CASCADE)
+    user2 = models.ForeignKey(
+        UserProfile, related_name="Second", on_delete=models.CASCADE)
+    status = models.IntegerField(blank=True, null=True)
