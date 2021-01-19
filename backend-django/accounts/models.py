@@ -30,7 +30,7 @@ class UserProfile(models.Model):
     # Relevant for matching
     birthday = models.TextField(null=True, blank=True)
     studies = models.TextField(null=True, blank=True)
-    study_level = models.TextField(null=True, blank=True)
+    status = models.TextField(null=True, blank=True)
     university = models.TextField(null=True, blank=True)
     intent = models.TextField(null=True, blank=True)
     semester = models.TextField(null=True, blank=True)

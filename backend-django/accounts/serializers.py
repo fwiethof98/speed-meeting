@@ -18,14 +18,14 @@ class PreferenceSerializer(serializers.ModelSerializer):
 
 
 class FriendSerializer(serializers.ModelSerializer):
-    name = serializers.SerializerMethodField(read_only=True)
+    username = serializers.SerializerMethodField(read_only=True)
 
     class Meta:
         model = UserProfile
-        fields = ['first_name', 'last_name', 'phone', 'university', 'studies', 'status', 'data_check', 'mail_check',
-                  'socket', 'participating', 'birthday', 'intent']
+        fields = ['first_name', 'last_name', 'phone', 'university', 'studies', 'status',
+                  'birthday', 'intent', 'username']
 
-    def get_name(self, obj):
+    def get_username(self, obj):
         return obj.user.username
 
 
