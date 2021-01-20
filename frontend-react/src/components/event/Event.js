@@ -11,7 +11,7 @@ import {feedback_entries} from '../config'
 import EventCurrent from './EventCurrent'
 import EventNoMatch from './EventNoMatch'
 
-const ENDPOINT = "http://" + window.location.hostname + ":4001"
+const ENDPOINT = window.location.protocol + "//" + window.location.hostname + ":4001"
 
 function Event(props) {
     const [eventDisplay, setEventDisplay] = useState("current")
