@@ -60,7 +60,7 @@ function Preference(props) {
             <PersonForm entries={preference.language.entries} title={preference.language.subtitle} n_columns={2} />
             <PersonForm entries={preference.studies.entries} title={preference.studies.subtitle} n_columns={2} />
         </form>
-        <button className="btn btn-primary" onClick={handleFormSubmit}>Submit</button>
+        <button className="btn btn-primary btn_full_width" onClick={handleFormSubmit}>Submit</button>
     </div>
 }
 

@@ -15,6 +15,12 @@
 
 /* changes sven event */
 
+.btn_full_width{
+  width: 90%;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  display: grid;
+}
 .btn.btn-primary {
   box-shadow: none !important;
 }
@@ -26,6 +32,9 @@
 }
 
 .col-sm-5-login{
+  width: 48%;
+}
+.col-sm-5{
   width: 48%;
 }
 

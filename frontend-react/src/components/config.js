@@ -81,17 +81,17 @@ export const success_page = {
 export const preference = {
     subtitle: "Select y",
     language: {
-        subtitle: "Which language do you prefer?",
-        entries: [{name: "language-german", displayName: "Only speaking German", type: "checkbox"},
-                {name: "language-english", displayName: "Only speaking English", type: "checkbox"}]
+        subtitle: "Language",
+        entries: [{name: "language-german", displayName: "Speaking German", type: "checkbox"},
+                {name: "language-english", displayName: "Speaking English", type: "checkbox"}]
     },
     studies: {
-        subtitle: "Which studies do you prefer?",
+        subtitle: "I want to meet...",
         entries: [{name: "study-same", displayName: "People in my course of study", type: "checkbox"},
-                {name: "study-any", displayName: "People in all courses of study", type: "checkbox"}]
+                {name: "study-any", displayName: "People from different studies and universities", type: "checkbox"}]
     },
     hobbies: {
-        subtitle: "Which activities do you like?",
+        subtitle: "Select your 5 favourite hobbies:",
         entries: [1, 2, 3, 4, 5],
         n_hobbies: 5
     }
@@ -105,13 +105,13 @@ export const feedback_entries = [{name: "feedback-1", displayName: "Nothing", ty
 // CONFIGURATION OF EVENT TABS
 
 export const event = {
-    title: "Welcome to Gathr",
+    title: "Ready to meet new people?",
     subtitle: "",
     title_component: "",
     tab_names: ['Matching', 'Event'],
     tabs: [{
             name: "Matching",
-            subtitle: "Select your five favourite hobbies",
+            subtitle: "Let's get you prepared for matching!",
             component: <Preference />
         },
         {
