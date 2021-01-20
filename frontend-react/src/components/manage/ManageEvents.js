@@ -42,7 +42,7 @@ function ManageEvents(props) {
                 params["meetingID"] = nextEvent.meetingID
                 params["moderatorPW"] = nextEvent.moderatorPW
                 // window.open(bbbCall("create", params))
-                status === 200 && djangoLookup("POST", "/event/start/", {name: eventName}, (startFeedback, status) => {
+                status === 200 && djangoLookup("GET", "/event/start/", {name: eventName}, (startFeedback, status) => {
                     console.log(startFeedback)
                     // status === 200 && djangoLookup("GET", "/room/?action=all", {}, (rooms, status) => {
                     //     for(let i = 0; i < rooms.length; i++) {

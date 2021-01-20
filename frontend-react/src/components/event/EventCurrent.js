@@ -3,13 +3,13 @@ import { djangoLookup } from '../../functions/lookup'
 import {FormEntry} from '../templates/Forms'
 
 function EventCurrent(props) {
-    const {setParticipate} = props
+    const {setParticipate, socket} = props
     const entries = [{name: "participating", displayName: "Yes, I want to join!", type: "checkbox", onClick: ""}]
 
     const handleParticipationBox = () => {
         const participating = document.getElementsByName("participating")[0].checked
         djangoLookup("POST", "/participate/", {participate: participating}, (response, status) => {
-            console.log(response)
+            socket.emit("UpdateMatch", {})
             setParticipate(participating)
         })
     }

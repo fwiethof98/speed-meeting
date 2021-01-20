@@ -56,15 +56,15 @@ def room_search_api_view(request):
     return Response(serializer.data, status=200)
 
 
-@api_view(['POST'])
+@api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def event_start_api_view(request):
-    user_a = User.objects.all()[0]
-    user_b = User.objects.all()[1]
-    user_c = User.objects.all()[2]
-    print(user_a.userprofile.hobbies.all().values_list("name"))
-    print(user_b.userprofile.hobbies.all().values_list("name"))
-    print(user_c.userprofile.hobbies.all().values_list("name"))
+    # user_a = User.objects.all()[0]
+    # user_b = User.objects.all()[1]
+    # user_c = User.objects.all()[2]
+    # print(user_a.userprofile.hobbies.all().values_list("name"))
+    # print(user_b.userprofile.hobbies.all().values_list("name"))
+    # print(user_c.userprofile.hobbies.all().values_list("name"))
     matches = []
     filters = [
         # ["pref_studies", "pref_language", "intent"],

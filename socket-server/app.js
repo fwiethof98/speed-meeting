@@ -1,20 +1,16 @@
 const socketIo = require('socket.io')
 const express = require('express')
 const http = require('http')
+const https = require('https')
 const { formatWithOptions } = require('util')
 
-async function main() {
-    let a = await httprequest()
-}
-main()
 
-async function httprequest() {
+async function httprequest(my_url) {
     return new Promise((resolve, reject) => {
         const options = {
             hostname: 'localhost',
             port: '8000',
-            path:'/api/event/?action=next',
-            method: 'GET',
+            path: my_url
         }
         const req = http.request(options, (res) => {
             let rawData = ''
@@ -45,12 +41,17 @@ io.on('connection', (socket) => {
     var interval
     console.log("New connection: " + socket.id)
     socket.emit("SetSocket", socket.id)
-    httprequest().then(data => {
+    httprequest('/api/event/?action=next').then(data => {
         interval = setInterval(() => myFun(data, socket), 1000)
     }) 
     socket.on("disconnect", () => {
         clearInterval(interval)
         console.log("Client disconnect")
+    })
+    socket.on("UpdateMatch", () => {
+        httprequest('/api/event/start/').then(data => {
+            console.log(data)
+        }) 
     })
     socket.on("EndEvent", () => {
         clearInterval(interval)
