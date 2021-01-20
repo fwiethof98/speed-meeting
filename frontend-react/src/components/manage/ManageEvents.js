@@ -36,15 +36,25 @@ function ManageEvents(props) {
 
     const handleEventModifier = (command) => {
         const eventName = $("#event option:selected").val()
-        if(command === "start") {
+        if(command === "start" || command === "join") {
             djangoLookup("GET", "/event/?action=next", {}, (nextEvent, status) => {
-                let params = {}
-                params["meetingID"] = nextEvent.meetingID
-                params["moderatorPW"] = nextEvent.moderatorPW
-                window.open(bbbCall("create", params))
-                status === 200 && djangoLookup("GET", "/event/start/", {name: eventName}, (startFeedback, status) => {
-                    // console.log(startFeedback)
-                })
+                let create_params = {}, join_params = {}
+                if(command === "start") {
+                    create_params["meetingID"] = nextEvent.meetingID
+                    create_params["moderatorPW"] = nextEvent.moderatorPW
+                    create_params["attendeePW"] = nextEvent.moderatorPW + "1"
+                    create_params["redirect"] = true
+                    window.open(bbbCall("create", create_params))
+                } else {
+                    join_params["fullName"] = "Florian+Wiethof"
+                    join_params["meetingID"] = nextEvent.meetingID
+                    join_params["password"] = nextEvent.moderatorPW
+                    join_params["redirect"] = true
+                    window.open(bbbCall("join", join_params))
+                }
+                // status === 200 && djangoLookup("GET", "/event/start/", {name: eventName}, (startFeedback, status) => {
+                //     // console.log(startFeedback)
+                // })
             })
         } else {
             djangoLookup("POST", "/event/" + command + "/", {name: eventName}, (response, status) => {
@@ -61,6 +71,7 @@ function ManageEvents(props) {
         </form>
         <button type="button" className="btn btn-primary" onClick={() => handleEventModifier("delete")}>Delete</button>
         <button type="button" className="btn btn-primary" onClick={() => handleEventModifier("start")}>Start</button>
+        <button type="button" className="btn btn-primary" onClick={() => handleEventModifier("join")}>Join</button>
     </div>
 }
 

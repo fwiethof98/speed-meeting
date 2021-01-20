@@ -52,7 +52,7 @@ def user_register_api_view(request):  # WORKS
 @api_view(['GET'])
 def user_is_authenticated_view(request):
     if request.user.is_authenticated:
-        return Response({'username': request.user.username}, status=200)
+        return Response({'username': request.user.username, 'first_name': request.user.userprofile.first_name, 'last_name': request.user.userprofile.last_name}, status=200)
     return Response({'message': 'No'}, status=400)
 
 
