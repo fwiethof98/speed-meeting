@@ -8,7 +8,7 @@ import Login from './components/auth/login/Login'
 
 const e = React.createElement
 
-const manageEl = document.getElementById("manage")
+const manageEl = document.getElementById("manage-area")
 if(manageEl) {
   ReactDOM.render(e(Manage, manageEl.dataset), manageEl)
 }

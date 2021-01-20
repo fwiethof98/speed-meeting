@@ -18,12 +18,31 @@ export function IntentForm(props) {
 }
 
 export function PersonForm(props) {
-    const {entries, img_url, title} = props
-    const formEntries = entries.map((entry, index) => {
+    const {entries, img_url, title, n_columns} = props
+    let formEntries = entries.map((entry, index) => {
         return <FormEntry onClick={entry.onClick} displayName={entry.displayName} key={index + entry.name} name={entry.name} description={entry.description} type={entry.type} entries={entry.entries} /> 
     })
-    console.log(formEntries)
-    return <div>
+
+    if(n_columns === 2) {
+        let left_column = [], right_column = []
+        formEntries.map((entry, index) => {
+            if(index % 2 === 0) {
+                left_column.push(entry)
+            } else {
+                right_column.push(entry)
+            }
+        })
+        formEntries = <div>
+                    <div className="col-sm-5">
+                    {left_column}
+                </div>
+                <div className="col-sm-5">
+                    {right_column}
+                </div>
+            </div>
+    }
+
+    return <div className="col-sm-12">
         {img_url && <div className="flash_art">
             <img src={img_url} alt="GATHR" />
         </div>}
@@ -60,7 +79,7 @@ export function FormEntry(props) {
         case "dropdown":    entryElement = <div>{label}<Dropdown entries={entries} name={name} /></div>; break;
         case "radio":       entryElement = <div>{inputField}{label}</div>; break;
         case "checkbox":    inputField = <input id={name} name={name} type={type} className="form-control" onClick={onClick} /> 
-                            entryElement = <div>{inputField}{label}</div>; break;
+                            entryElement = <div style={{textAlign: "center"}}>{inputField}{label}</div>; break;
         case "date":        inputField = <input name={name} type={type} className="form-control" defaultValue="2020-01-01" /> 
                             entryElement = <div>{label}{inputField}</div>; break;
         default:            entryElement = <div>{label}{inputField}</div>; break;

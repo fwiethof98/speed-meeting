@@ -21,7 +21,7 @@ function EventCurrent(props) {
 
     return <div style={{marginTop: 50, marginBottom: 50, textAlign: "center"}}>
         <div className="col-sm-5">
-            <h4>An event is currently in process <br /> Would you like to join?</h4>
+            <h4>There's no match for you this round. <br /> Would you like to join the next?</h4>
             {checkboxes}
         </div>
         <div className="col-sm-5">

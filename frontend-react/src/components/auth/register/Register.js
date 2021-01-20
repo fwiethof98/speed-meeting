@@ -19,6 +19,7 @@ function Register(props) {
                 profileData[profile_entries[i].name] = $('#' + profile_entries[i].name + " option:selected").val()
             }
         }
+        profileData['intent'] = $("input[type=radio][checked=checked]").val()
         // Form error handling
         // if(typeof profileData.intent === 'undefined') {
         //     profileData.intent = 'students'
@@ -40,7 +41,7 @@ function Register(props) {
         djangoLookup("POST", "/register/", profileData, (response, status) => {
             console.log(response)
             if(status === 200) {
-                window.location.href = window.location.hostname
+                window.location.href = '/'
             }
         })
     }

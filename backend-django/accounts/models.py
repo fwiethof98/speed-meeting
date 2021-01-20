@@ -9,12 +9,6 @@ class Hobby(models.Model):
     name = models.TextField(null=True, blank=True)
 
 
-class Preference(models.Model):
-    language = models.TextField(null=True, blank=True)
-    studies = models.TextField(null=True, blank=True)
-    hobbies = models.ManyToManyField(Hobby)
-
-
 class UserProfile(models.Model):
     # Link to user model
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -28,15 +22,17 @@ class UserProfile(models.Model):
     phone = models.TextField(null=True, blank=True)
 
     # Relevant for matching
-    birthday = models.TextField(null=True, blank=True)
+    birthday = models.DateField(null=True, blank=True)
     studies = models.TextField(null=True, blank=True)
     status = models.TextField(null=True, blank=True)
     university = models.TextField(null=True, blank=True)
     intent = models.TextField(null=True, blank=True)
     semester = models.TextField(null=True, blank=True)
 
-    preference = models.OneToOneField(
-        Preference, null=True, on_delete=models.CASCADE)
+    #
+    pref_language = models.TextField(null=True, blank=True)
+    pref_studies = models.TextField(null=True, blank=True)
+    hobbies = models.ManyToManyField(Hobby)
 
     # Mandatory checks
     mail_check = models.BooleanField(null=True, blank=True)
@@ -46,10 +42,16 @@ class UserProfile(models.Model):
     participation = models.BooleanField(null=True, blank=True)
     socket = models.TextField(null=True)
     friends = models.ManyToManyField(
-        User, related_name="friends", blank=True)
-    matches = models.ManyToManyField(
-        "UserProfile", related_name="match", through="Match")
+        "UserProfile", related_name="friends_feedback", blank=True, through="Feedback")
     room = models.ForeignKey(Room, null=True, on_delete=models.CASCADE)
+
+
+class Feedback(models.Model):
+    content = models.TextField(null=True, blank=True)
+    user_a = models.ForeignKey(
+        UserProfile, related_name="user_a", on_delete=models.CASCADE)
+    user_b = models.ForeignKey(
+        UserProfile, related_name="user_b", on_delete=models.CASCADE)
 
 
 class Match(models.Model):

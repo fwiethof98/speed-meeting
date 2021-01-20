@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Hobby, Preference, UserProfile
+from .models import Feedback, Hobby, UserProfile
 # from event.serializers import RoomSerializer
 
 
@@ -7,14 +7,6 @@ class HobbySerializer(serializers.ModelSerializer):
     class Meta:
         model = Hobby
         fields = ['name']
-
-
-class PreferenceSerializer(serializers.ModelSerializer):
-    hobbies = HobbySerializer(many=True)
-
-    class Meta:
-        model = Preference
-        fields = ['language', 'studies', 'hobbies']
 
 
 class FriendSerializer(serializers.ModelSerializer):
@@ -27,6 +19,15 @@ class FriendSerializer(serializers.ModelSerializer):
 
     def get_username(self, obj):
         return obj.user.username
+
+
+class FeedbackSerializer(serializers.ModelSerializer):
+    user_a = FriendSerializer(read_only=True)
+    user_b = FriendSerializer(read_only=True)
+
+    class Meta:
+        model = Feedback
+        fields = ['content', 'user_a', 'user_b']
 
 
 class UserProfileSerializer(serializers.ModelSerializer):

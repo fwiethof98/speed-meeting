@@ -10,6 +10,6 @@ def event_view(request):
 
 
 def manage_view(request):
-    if request.user.username == "wiethof.florian98@gmail":
+    if request.user.username == "wiethof.florian98@gmail.com":
         return render(request, "event/manage.html")
-    return redirect('')
+    return redirect('/')

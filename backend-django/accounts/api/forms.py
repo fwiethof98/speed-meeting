@@ -11,9 +11,6 @@ class LoginForm(forms.Form):
 
     def clean(self):
         cleaned_data = super().clean()
-        print(cleaned_data.get('username'))
-        print(User.objects.filter(
-            username=cleaned_data['username']).count() == 0)
         if not User.objects.filter(username=cleaned_data['username']).count() == 0:
             if User.objects.get(username=cleaned_data['username']).check_password(cleaned_data['password']):
                 return cleaned_data
@@ -23,7 +20,8 @@ class LoginForm(forms.Form):
 class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
-        fields = ['university', 'studies']
+        fields = ['university', 'studies', 'first_name', 'last_name',
+                  'phone', 'birthday', 'status', 'intent', 'semester', 'email']
 
 
 class UserForm(forms.ModelForm):

@@ -1,14 +1,10 @@
 import React from 'react';
-import {ManageItemDatabase} from './Components';
-import './Manage.css'
+import ContainerTemplate from '../templates/ContainerTemplate'
+
+import { manage } from '../config'
 
 function Manage(props) {
-    return <div className="container">
-        <ManageItemDatabase name="meetings" fields={['name', 'attendeePW', 'moderatorPW']} />
-        <ManageItemDatabase name="events" fields={['name', 'date']} />
-        <ManageItemDatabase name="criteria" fields={['name']} />
-        {/* <ManageItemDatabase name="roles" fields={['name']} /> */}
-    </div>
+    return <div><ContainerTemplate tabData={manage} showButtons={false} /></div>
 }
 
 export default Manage;

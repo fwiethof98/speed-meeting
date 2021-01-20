@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import { djangoLookup } from '../../functions/lookup';
-import {Dropdown} from './Dropdowns'
+import {Dropdown} from '../templates/Forms'
 
 export function ManageItemDatabase(props) {
     const {name, fields} = props

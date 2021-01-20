@@ -9,9 +9,18 @@ function LoginForm(props) {
     }
     return <div>
         <form id="login-form">
-            <PersonForm entries={entries} />
-            <button className="btn btn-primary" onClick={handleSubmit}>Login</button>
-            <button className="btn btn-secondary" onClick={handleRegisterButton}>Register</button>
+            <div className="col-sm-5">
+                <PersonForm entries={entries} />
+            </div>
+            <div className="col-sm-5" style={{marginTop: 50}}>
+                <div class="flash_art">
+                    <img src="/static/assets/img/flash_art.png" alt="GATHR" />
+                </div>
+            </div>
+            <div className="col-sm-12">
+                <button className="btn btn-primary" onClick={handleSubmit}>Login</button>
+                <button className="btn btn-secondary" onClick={handleRegisterButton}>Register</button>
+            </div>
         </form>
     </div>
 }

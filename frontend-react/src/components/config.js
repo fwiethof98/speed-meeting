@@ -3,10 +3,13 @@ import {IntentForm} from './templates/Forms'
 import {SuccessContent} from './auth/register/SuccessPage'
 import Preference from './event/Preference'
 import Feedback from './event/Feedback'
-import TimerSocket from './event/TimerSocket'
 import AboutPage from './auth/register/AboutPage'
 import EventWaiting from './event/EventWaiting'
+import EventMatch from './event/EventMatch'
 import EventCurrent from './event/EventCurrent'
+import ManageEvents from './manage/ManageEvents'
+import ManageHobbies from './manage/ManageHobbies'
+import EventNoMatch from './event/EventNoMatch'
 
 // CONFIGURATION OF REGISTER FORM 
 export const profile_entries = [{name: "first_name", displayName: "First Name", type: "text", required: true},
@@ -14,13 +17,13 @@ export const profile_entries = [{name: "first_name", displayName: "First Name", 
                 {name: "birthday", displayName: "Birthday", type: "date", required: true},
                 {name: "email", displayName: "E-Mail", type: "email", required: true},
                 {name: "password", displayName: "Password", type: "password", required: true},
-                {name: "privacy_accept", displayName: "By clicking on the “Finish”-button, I confirm that my data can be used for purposes described in the Privacy Policy.*", type: "checkbox", required: true},
-                {name: "mobile_number", displayName: "Phone number (+xx xxxx xxxxxxxx)", type: "text", required: false},
+                {name: "phone", displayName: "Phone number (+xx xxxx xxxxxxxx)", type: "text", required: false},
                 {name: "university", displayName: "University", type: "dropdown", required: true, entries: ["A) TUM", "B) LMU", "C) Hochschule München", "D) Other"]},
                 {name: "studies", displayName: "Field of Studies", type: "dropdown", required: true, entries: ["", "- Electrical Engineering", "- Biology", "- Chemistry", "- Physics", "- Space Sciences", "- Informatics", "- Computer Engineering", "- Mathematics", "- Medicine & Health", "- Business & Management","- Economics","- Communication & Media", "- Political science", "- Mechanical Engineering", "- Law", "- Philosophy", "- Sport Sciences", "Other Social Sciences", "Other Humanities", "Other Engineering Sciences", "Other Natural Sciences", "Other Arts","Other Studies"]},
-                {name: "study_level", displayName: "Level", type: "dropdown", required: true, entries: ["Bachelor", "Master", "PhD"]},
+                {name: "status", displayName: "Level", type: "dropdown", required: true, entries: ["Bachelor", "Master", "PhD"]},
                 {name: "semester", displayName: "Semester (in your current studies)", type: "dropdown", required: true, entries: [1, 2, 3, 4, 5, 6, 7, 8, 9]},
-                {name: "mail_accept", displayName: "I agree to receive E-Mails reminding me of upcoming events and other useful information related to the services of Gathr.de*", type: "checkbox", required: true}]
+                {name: "data_check", displayName: "By clicking on the “Finish”-button, I confirm that my data can be used for purposes described in the Privacy Policy.*", type: "checkbox", required: true},
+                {name: "mail_check", displayName: "I agree to receive E-Mails reminding me of upcoming events and other useful information related to the services of Gathr.de*", type: "checkbox", required: true}]
 
 export const intent_entries = [{name: "students", description: "No, Simply Connect Me With Other Students", iconName: "groups", text_box: "Choose to get to know a variety of students from Munich!"},
                 {name: "tandem", description: "Yes, Find Tandem Learning Partners", iconName: "menu_book", text_box: "Choose to find new study pals for university, languages, and skill exchanges!"},
@@ -41,7 +44,7 @@ export const register = {
         {
             name: "SIGN-UP",
             subtitle: "Tell us about yourself!",
-            component: <div><PersonForm entries={profile_entries} /><IntentForm entries={intent_entries} /></div>,
+            component: <div><PersonForm entries={profile_entries} n_columns={2} /><IntentForm entries={intent_entries} /></div>,
         }
     ]
 }
@@ -104,7 +107,7 @@ export const feedback_entries = [{name: "feedback-1", displayName: "Nothing", ty
 export const event = {
     title: "Welcome to Gathr",
     subtitle: "",
-    title_component: <TimerSocket />,
+    title_component: "",
     tab_names: ['Matching', 'Event'],
     tabs: [{
             name: "Matching",
@@ -117,23 +120,33 @@ export const event = {
             component: "PLACEHOLDER"
         },
     ],
-    event_tab_options: [
-        {
+    event_tab_options: {
+        waiting: {
             name: "Event",
             subtitle: "",
             component: <EventWaiting />,
         },
-        {
+        match: {
             name: "Event",
             subtitle: "",
-            component: <EventCurrent />,
+            component: <EventMatch />,
         },
-        {
+        feedback: {
             name: "Event",
-            subtitle: "Subtitle",
+            subtitle: "",
             component: <Feedback entries={feedback_entries} />
+        },
+        current: {
+            name: "Event",
+            subtitle: "",
+            component: <EventCurrent />
+        },
+        nomatch: {
+            name: "Event",
+            subtitle: "",
+            component: <EventNoMatch />
         }
-    ]
+    }
 }
 
 
@@ -150,7 +163,39 @@ export const login = {
     tabs: [{
             name: "LOGIN", 
             subtitle: "",
-            component: <PersonForm entries={login_entries} />
+            component: <PersonForm entries={login_entries} n_columns={2} />
+        }
+    ]
+}
+
+// CONFIGURATION OF MANAGE AREA
+
+export const event_entries = [
+        {name: "name", displayName: "Event Title", type: "text"},
+        {name: "meetingID", displayName: "Meeting ID", type: "text"},
+        {name: "date", displayName: "Date", type: "date"},
+        {name: "time", displayName: "Time", type: "time"},
+        {name: "moderatorPW", displayName: "Moderator password", type: "text"}
+]
+
+export const hobby_entries = [
+        {name: "name", displayName: "Hobby name", type: "text"}
+]
+
+export const manage = {
+    title: "Manage Gathr",
+    subtitle: "Creation and deletion of models",
+    title_component: "",
+    tab_names: ['EVENTS', 'HOBBIES'],
+    tabs: [{
+            name: "EVENTS",
+            subtitle: "Create, delete or start events",
+            component: <ManageEvents name="event" />
+        },
+        {
+            name: "HOBBIES",
+            subtitle: "Create or delete hobbies",
+            component: <ManageHobbies name="hobby" />
         }
     ]
 }

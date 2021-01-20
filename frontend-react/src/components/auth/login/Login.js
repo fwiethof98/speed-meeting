@@ -7,7 +7,8 @@ import LoginForm from './LoginForm'
 function Login(props) {
     const handleFormSubmitButton = (event) => {
         event.preventDefault()
-        const formEl = document.getElementById(login.form_name + "-form")
+        const formEl = document.getElementById("login-form")
+        console.log(formEl)
         const formData = new FormData(formEl)
         let profileData = {}
         
@@ -18,7 +19,7 @@ function Login(props) {
         djangoLookup("POST", "/login/", profileData, (response, status) => {
             console.log(response)
             if(status === 200) {
-                window.location.href = ""
+                window.location.href = "/"
             }
         })
     }

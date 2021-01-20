@@ -5,11 +5,15 @@ import $ from 'jquery'
 
 
 function Feedback(props) {
-    const {showEventDisplay, showFeedbackDisplay, entries} = props
+    const {entries, user, setEventDisplay} = props
+
+    console.log(user)
     
-    const persons = [{name: "Florian Wiethof", age: "23", university: "TUM", studies: "Informatics", status: "Bachelor"}]
-    const personCards = persons.map(person => {
-        return <PersonCard name={person.name} age={person.age} university={person.university} studies={person.studies} status={person.status} />
+    const personCards = user.map(person => {
+        console.log(person)
+        const age = Math.floor((new Date() - new Date(person.birthday)) / (1000*60*60*24*365))
+        console.log(age)
+        return <PersonCard name={person.first_name + " " + person.last_name} age={age} university={person.university} studies={person.studies} status={person.status} />
     })
 
     const onClick = (index) => {
@@ -39,15 +43,14 @@ function Feedback(props) {
         let feedbackData = {}
 
         formData.forEach((value, key) => {
-            feedbackData[key] = value
+            feedbackData["content"] = key.replace("feedback-", "")
         })
         console.log(feedbackData)
 
-        // djangoLookup("POST", "/matching/feedback/", feedbackData, (response, status) => {
-        //     console.log(response)
-        // })
-        // showEventDisplay(true)
-        // showFeedbackDisplay(false)
+        djangoLookup("POST", "/friends/", feedbackData, (response, status) => {
+            console.log(response)
+        })
+        setEventDisplay("current")
     }
 
     return <form method="POST" id="feedback-form">

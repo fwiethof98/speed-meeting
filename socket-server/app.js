@@ -5,7 +5,6 @@ const { formatWithOptions } = require('util')
 
 async function main() {
     let a = await httprequest()
-    console.log(a)
 }
 main()
 
@@ -14,7 +13,7 @@ async function httprequest() {
         const options = {
             hostname: 'localhost',
             port: '8000',
-            path:'/api/events/?action=next',
+            path:'/api/event/?action=next',
             method: 'GET',
         }
         const req = http.request(options, (res) => {
@@ -23,7 +22,6 @@ async function httprequest() {
                 rawData += chunk
             })
             res.on('end', () => {
-                console.log(JSON.parse(rawData))
                 resolve(JSON.parse(rawData))
             })
         }).on('error', function (err) {
@@ -61,9 +59,10 @@ io.on('connection', (socket) => {
 })
 
 const myFun = (data, socket) => {
-    const date = new Date(data.date)
+    const date = new Date(data.time)
     const difference = date - new Date()
     const timer = parseMillisecondsToDate(difference)
+    console.log(timer)
     socket.emit("TimerUpdate", {difference: difference, timer: timer})
     
 }

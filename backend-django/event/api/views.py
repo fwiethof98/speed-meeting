@@ -41,13 +41,6 @@ def event_delete_api_view(request):
     return Response({'message': 'Event was deleted'}, status=200)
 
 
-@api_view(['POST'])
-@permission_classes([IsAuthenticated])
-def event_start_api_view(request):
-    name = request.data['name']
-    return Response({'message': f'Event {name} started'}, status=200)
-
-
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def room_search_api_view(request):
@@ -66,31 +59,39 @@ def room_search_api_view(request):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def event_start_api_view(request):
-    # matches = []
-    # filters = [
-    #     ["studies", "language", "intent"],
-    #     ["studies", "language"],
-    #     ["studies", "intent"],
-    #     ["studies"],
-    #     ["language", "intent"],
-    #     ["language"],
-    #     ["intent"],
-    #     [""]
-    # ]
-    # rest_users = User.objects.filter(participating=True)
+    user_a = User.objects.all()[0]
+    user_b = User.objects.all()[1]
+    user_c = User.objects.all()[2]
+    print(user_a.userprofile.hobbies.all().values_list("name"))
+    print(user_b.userprofile.hobbies.all().values_list("name"))
+    print(user_c.userprofile.hobbies.all().values_list("name"))
+    matches = []
+    filters = [
+        # ["pref_studies", "pref_language", "intent"],
+        # ["pref_studies", "pref_language"],
+        # ["studies", "intent"],
+        # ["studies"],
+        # ["language", "intent"],
+        # ["language"],
+        # ["intent"],
+        [""]
+    ]
+    rest_users = User.objects.all()
     # temp = []
-    # for filter in filters:
-    #     temp, rest_users = get_matching_groups(filter, rest_users)
-    #     matches.extend(temp)
-    # for match in matches:
-    #     name = "Welcome, " + match['man'].userprofile.first_name + \
-    #         " and " + match['woman'].userprofile.first_name + "!"
-    #     room = Room(name=name)
-    #     room.save()
-    #     for key in match.keys:
-    #         user = match[key]
-    #         user.room = room
-    #         user.save()
+    for filter in filters:
+        rest_users, temp = get_matching_groups(filter, rest_users)
+        matches.extend(temp)
+    print(matches)
+    print(rest_users)
+    for match in matches:
+        name = "Welcome, " + match['man'].userprofile.first_name + \
+            " and " + match['woman'].userprofile.first_name + "!"
+        room = Room(name=name)
+        room.save()
+        for key in match:
+            user = match[key]
+            user.userprofile.room = room
+            user.userprofile.save()
     return Response({'message': 'Rooms and matches were set up!'}, status=200)
 
 
@@ -101,21 +102,25 @@ def get_matching_groups(filters, users):
     for user in users:
         match_key = ""
         for filter in filters:
-            match_key += user.userprofile.preference[filter]
-        if match_key in groups.keys:
+            if filter != "":
+                val = getattr(user.userprofile, filter)
+                if val != None:
+                    match_key += val
+        if match_key in groups:
             groups[match_key].append(user)
         else:
             groups[match_key] = [user]
 
     temp = []
-    for key in groups.keys:
+    for key in groups:
+        print(key)
         if len(groups[key]) < 2:
             rest_users.extend(groups[key])
         else:
             temp, rest = get_group_matches(groups[key])
             matches.extend(temp)
             rest_users.extend(rest)
-    return matches, rest_users
+    return rest_users, matches
 
 
 def get_group_matches(users):
@@ -123,6 +128,8 @@ def get_group_matches(users):
     maxScore = -1
     matches = []
     match = {}
+    print(women)
+    print(men)
     for woman in women:
         for man in men:
             score = get_hobby_score(man, woman)
@@ -137,8 +144,8 @@ def get_group_matches(users):
 
 
 def get_hobby_score(user_a, user_b):
-    hobby_a_set = set(user_a.userprofile.preference.hobbies)
-    hobby_b_set = set(user_b.userprofile.preference.hobbies)
+    hobby_a_set = set(user_a.userprofile.hobbies.all())
+    hobby_b_set = set(user_b.userprofile.hobbies.all())
     return len(hobby_a_set & hobby_b_set)
 
 

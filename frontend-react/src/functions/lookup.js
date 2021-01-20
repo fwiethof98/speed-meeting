@@ -4,7 +4,7 @@ export function djangoLookup(method, url, data, callback) {
     const xhr = new XMLHttpRequest()
     const jsonData = JSON.stringify(data)
     xhr.responseType = "json"
-    xhr.open(method, process.env.REACT_APP_BACKEND_LOCATION + `/api${url}`)
+    xhr.open(method, 'http://' + window.location.hostname + `/api${url}`)
     const csrftoken = getCookie('csrftoken')
     if (method === "POST" || method === "DELETE"){
       xhr.setRequestHeader("Content-Type", "application/json")
