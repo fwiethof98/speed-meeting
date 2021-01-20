@@ -2,6 +2,12 @@ from rest_framework import serializers
 from .models import Event, Room
 
 
+class RoomReadSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Room
+        fields = ['name', 'id']
+
+
 class RoomSerializer(serializers.ModelSerializer):
     class Meta:
         model = Room

@@ -76,22 +76,54 @@ def user_assign_preference_api_view(request):
 @permission_classes([IsAuthenticated])
 def friend_feedback_api_view(request):
     friend = UserProfile.objects.filter(room=request.user.userprofile.room).exclude(
-        id=request.user.id).first()
+        user=request.user).first()
+    request.user.userprofile.friends.add(friend)
     feedback = Feedback.objects.filter(
         user_a=request.user.userprofile).filter(user_b=friend)
-    print(feedback)
-    # if feedback.count() == 0:
-    #     feedback = Feedback.objects.filter(
-    #         user_a=friend).filter(user_b=request.user.userprofile)
-    # if feedback.count != 0:
-    #     if int(request.data['content']) < int(feedback.content):
-    #         feedback.content = request.data['content']
-    # else:
-    #     feedback = Feedback(user_a=request.user.userprofile,
-    #                         user_b=friend, content=request.data["content"])
-    # feedback.save()
-    # return Response(FeedbackSerializer(feedback).data, status=200)
-    return Response({}, status=400)
+    if feedback.count() == 0:
+        feedback = Feedback.objects.filter(
+            user_a=friend).filter(user_b=request.user.userprofile)
+    if feedback.count() != 0:
+        feedback = feedback.first()
+        if int(request.data['content']) < int(getattr(feedback, 'content')):
+            feedback.content = request.data['content']
+    else:
+        feedback = Feedback(user_a=request.user.userprofile,
+                            user_b=friend, content=request.data["content"])
+    feedback.save()
+    return Response(FeedbackSerializer(feedback).data, status=200)
+
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def set_socket_api_view(request):
+    socket = request.data['socketID']
+    request.user.userprofile.socket = socket
+    request.user.userprofile.save()
+    username = request.user.username
+    return Response({'message': f'Socket for {username} was set to {socket}'})
+
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def search_friends_api_view(request):
+    result = {
+        "cat_1": [],
+        "cat_2": [],
+        "cat_3": []
+    }
+    qs_1 = Feedback.objects.filter(user_a=request.user.userprofile)
+    qs_2 = Feedback.objects.filter(user_b=request.user.userprofile)
+    for feedback in qs_1:
+        content = feedback.content
+        result["cat_" + content].append(feedback.user_b)
+    for feedback in qs_2:
+        content = feedback.content
+        result["cat_" + content].append(feedback.user_a)
+
+    for key in result:
+        result[key] = FriendSerializer(result[key], many=True).data
+    return Response(result, status=200)
 
 
 @api_view(['GET'])
@@ -135,9 +167,15 @@ def delete_hobby_api_view(request):
     return Response({'message': f'Hobby {name} was deleted'}, status=200)
 
 
-@api_view(['POST'])
+@api_view(['GET', 'POST'])
 @permission_classes([IsAuthenticated])
 def user_participate_api_view(request):
+    action = request.GET.get("action")
+    if action != None:
+        request.user.userprofile.participation = False
+        request.user.userprofile.save()
+        return Response({'message': f'User participation was reset'}, status=200)
     participate = request.data['participate']
     request.user.userprofile.participation = participate
+    request.user.userprofile.save()
     return Response({'message': f'User participation was set to {participate}'}, status=200)

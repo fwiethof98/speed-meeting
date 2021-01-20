@@ -25,7 +25,7 @@ function EventCurrent(props) {
             {checkboxes}
         </div>
         <div className="col-sm-5">
-        <div class="flash_art">
+        <div className="flash_art">
             <img src="/static/assets/img/flash_art.png" alt="GATHR" />
         </div>
         </div>

@@ -3,9 +3,10 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
 
 from django.contrib.auth.models import User
+from accounts.models import UserProfile
 
 from ..models import Event, Room
-from .. serializers import EventReadSerializer, EventCreateSerializer, RoomSerializer
+from .. serializers import EventReadSerializer, EventCreateSerializer, RoomReadSerializer, RoomSerializer
 
 
 @api_view(['GET'])
@@ -49,11 +50,34 @@ def room_search_api_view(request):
     serializer = []
     if action == "my":
         qs = request.user.userprofile.room
-        serializer = RoomSerializer(qs)
+        serializer = RoomReadSerializer(qs)
     elif action == "all":
         qs = Room.objects.all()
-        serializer = RoomSerializer(qs, many=True)
+        serializer = RoomReadSerializer(qs, many=True)
     return Response(serializer.data, status=200)
+
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def event_cleanup_api_view(request):
+    if request.user.username == "wiethof.florian98@gmail.com":
+        Event.objects.order_by("time").first().delete()
+        Room.objects.all().delete()
+        return Response({'message': 'Event was cleaned up'}, status=200)
+    return Response({'message': 'Not Florian'}, status=400)
+
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def event_leave_api_view(request):
+    user = UserProfile.objects.filter(socket=request.GET.get("socket"))
+    match = UserProfile.objects.filter(room=user.room).exclude(
+        id=user.id).first()
+    user.socket = None
+    user.save()
+    match.room = None
+    match.save()
+    return Response({"socket": match.userprofile.socket}, status=200)
 
 
 @api_view(['GET'])
@@ -81,11 +105,11 @@ def event_start_api_view(request):
     for filter in filters:
         rest_users, temp = get_matching_groups(filter, rest_users)
         matches.extend(temp)
-    print(matches)
-    print(rest_users)
     for match in matches:
-        name = "Welcome, " + match['man'].userprofile.first_name + \
-            " and " + match['woman'].userprofile.first_name + "!"
+        name = "" + match['man'].userprofile.first_name + \
+            match['woman'].userprofile.first_name
+        if Room.objects.filter(name=name).count() > 0:
+            continue
         room = Room(name=name)
         room.save()
         for key in match:
@@ -113,7 +137,7 @@ def get_matching_groups(filters, users):
 
     temp = []
     for key in groups:
-        print(key)
+        # print(key)
         if len(groups[key]) < 2:
             rest_users.extend(groups[key])
         else:
@@ -128,8 +152,8 @@ def get_group_matches(users):
     maxScore = -1
     matches = []
     match = {}
-    print(women)
-    print(men)
+    # print(women)
+    # print(men)
     for woman in women:
         for man in men:
             score = get_hobby_score(man, woman)

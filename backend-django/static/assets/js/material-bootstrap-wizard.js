@@ -121,7 +121,7 @@ $(document).ready(function(){
                     'visibility':'visible'
                 });
             }
-
+            console.log(index)
             refreshAnimation($wizard, index);
         }
   	});

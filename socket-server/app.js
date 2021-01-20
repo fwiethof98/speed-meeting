@@ -4,11 +4,22 @@ const http = require('http')
 const https = require('https')
 const { formatWithOptions } = require('util')
 
-let update_interval = setInterval(() => {
-    httprequest('/api/event/start/').then(data => {
-        console.log(data)
-    }) 
-}, 15000)
+const minutes_before_first_match = 5
+const minutes_for_each_match = 15
+
+let update_interval
+httprequest('/api/event/?action=next').then(data => {
+    let new_date = new Date()
+    setTimeout(matchUpdateInterval, data.time - new_date + 60000*minutes_before_first_match)
+})
+
+function matchUpdateInterval() {
+    update_interval = setInterval(() => {
+        httprequest('/api/event/start/').then(data => {
+            console.log(data)
+        })
+    }, 60000*minutes_for_each_match)
+}
 
 async function httprequest(my_url) {
     return new Promise((resolve, reject) => {
@@ -51,12 +62,20 @@ io.on('connection', (socket) => {
     }) 
     socket.on("disconnect", () => {
         clearInterval(interval)
+        httprequest('/api/event/leave/?socket=' + socket.id).then(data => {
+            io.to(data.socket).emit("LeaveEvent", "leave")
+        })
         console.log("Client disconnect")
     })
     socket.on("UpdateMatch", () => {
         httprequest('/api/event/start/').then(data => {
             console.log(data)
         }) 
+    })
+    socket.on("LeaveEvent", data => {
+        console.log("User left")
+        console.log(data)
+        io.to(data.socket).emit("LeaveEvent", "leave")
     })
     socket.on("EndEvent", () => {
         clearInterval(interval)
@@ -70,7 +89,7 @@ const myFun = (data, socket) => {
     const difference = date - new Date()
     const timer = parseMillisecondsToDate(difference)
     console.log(timer)
-    socket.emit("TimerUpdate", {difference: difference, timer: timer})
+    socket.emit("TimerUpdate", {difference: difference, timer: timer, eventDate: date})
     
 }
 server.listen(port, () => console.log(`Listening on port ${port}`))

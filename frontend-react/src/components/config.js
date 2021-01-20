@@ -10,6 +10,8 @@ import EventCurrent from './event/EventCurrent'
 import ManageEvents from './manage/ManageEvents'
 import ManageHobbies from './manage/ManageHobbies'
 import EventNoMatch from './event/EventNoMatch'
+import EventEnd from './event/EventEnd'
+import Friends from './event/Friends'
 
 // CONFIGURATION OF REGISTER FORM 
 export const profile_entries = [{name: "first_name", displayName: "First Name", type: "text", required: true},
@@ -108,8 +110,14 @@ export const event = {
     title: "Ready to meet new people?",
     subtitle: "",
     title_component: "",
-    tab_names: ['Matching', 'Event'],
-    tabs: [{
+    tab_names: ["Friends", "Matching", "Event"],
+    tabs: [
+        {
+            name: "Friends",
+            subtitle: "Here are the people you enjoyed the time with!",
+            component: <Friends />
+        },
+        {
             name: "Matching",
             subtitle: "Let's get you prepared for matching!",
             component: <Preference />
@@ -145,6 +153,11 @@ export const event = {
             name: "Event",
             subtitle: "",
             component: <EventNoMatch />
+        },
+        end: {
+            name: "Event",
+            subtitle: "Thanks for participating!",
+            component: <EventEnd />
         }
     }
 }

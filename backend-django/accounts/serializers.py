@@ -15,7 +15,7 @@ class FriendSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserProfile
         fields = ['first_name', 'last_name', 'phone', 'university', 'studies', 'status',
-                  'birthday', 'intent', 'username']
+                  'birthday', 'intent', 'username', 'socket', 'email']
 
     def get_username(self, obj):
         return obj.user.username

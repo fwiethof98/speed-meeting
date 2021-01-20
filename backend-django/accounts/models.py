@@ -43,7 +43,7 @@ class UserProfile(models.Model):
     socket = models.TextField(null=True)
     friends = models.ManyToManyField(
         "UserProfile", related_name="friends_feedback", blank=True, through="Feedback")
-    room = models.ForeignKey(Room, null=True, on_delete=models.CASCADE)
+    room = models.ForeignKey(Room, null=True, on_delete=models.SET_NULL)
 
 
 class Feedback(models.Model):

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { djangoLookup } from '../functions/lookup'
-import { manage } from './config'
 
 function PageLogo(props) {
     const [authenticated, setAuthenticated] = useState([])
@@ -24,7 +23,7 @@ function PageLogo(props) {
                     <a href="/">
                         <div className="logo-container">
                             <div className="logo">
-                                <img src="/static/assets/img/new_logo.png" />
+                                <img src="/static/assets/img/new_logo.png" alt="GATHR" />
                             </div>
                             <div className="brand">
                                 GATHR

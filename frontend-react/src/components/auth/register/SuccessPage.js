@@ -22,7 +22,7 @@ export function SuccessContent(props) {
                 <p class="bold"><br></br>An invitation to the plattform will get to you via e-mail a few days before the event.</p>
                 <h3>What else can I do?</h3>
                 <p class="unterschrift">Tell your friends! - The more people join the event, the more fun it will be!</p>
-                <a class="ref_link" target="_blank" href="https://rebrand.ly/gathr_join_codeWU34">https://rebrand.ly/gathr_join_codeWU34</a>
+                <a class="ref_link" target="_blank" rel="noreferrer" href="https://rebrand.ly/gathr_join_codeWU34">https://rebrand.ly/gathr_join_codeWU34</a>
                 <p class="ref_text bold">Share this link, and they will receive prioritized access to make sure all of you participate in the same event.</p>
                 
                 

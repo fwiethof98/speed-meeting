@@ -1,24 +1,63 @@
-import React from 'react'
-import Timer from '../templates/Timer'
+import React, {useState, useEffect} from 'react'
+import { bbbCall, urlCall } from '../../functions/createApiCall'
+import { djangoLookup, bbbLookup } from '../../functions/lookup'
+import Countdown from '../templates/Timer'
 
 function EventMatch(props) {
-    const {user} = props
+    const {user, match, setParticipate, socket, setEventDisplay, timer, setLeaveError} = props
     const personCards = user.map(person => {
-        return <PersonCard name={person.name} age={person.age} university={person.university} studies={person.studies} status={person.status} />
+        const age = Math.floor((new Date() - new Date(person.birthday)) / (1000*60*60*24*365))
+        return <PersonCard name={person.first_name + " " + person.last_name} age={age} university={person.university} studies={person.studies} status={person.status} />
     })
 
+    const [myUser, setMyUser] = useState([])
+
+    useEffect(() => {
+        djangoLookup("GET", "/authenticated/", {}, (response, status) => {
+            status === 200 && setMyUser(response)
+        })
+    }, [])
+
+    const handleBreakoutJoin = () => {
+        let create_params = {}, join_params = {}
+        create_params['meetingID'] = match.name.replace(" ", "+") + match.id
+        console.log(match.id)
+        create_params['moderatorPW'] = "aVeryDifficultPassword"
+        create_params['attendeePW'] = "justADifficultPassword"
+        create_params["duration"] = 10
+        
+        join_params['meetingID'] = create_params.meetingID
+        join_params['password'] = create_params.moderatorPW
+        let fullName = myUser.first_name + " " + myUser.last_name
+        fullName = fullName.replace(" ", "+")
+        join_params['fullName'] = fullName
+        join_params['redirect'] = true
+
+        bbbLookup("GET", urlCall("create", create_params), (response) => {
+            window.open(bbbCall("join", join_params))
+        })
+    }
+
+    const handleEventLeaveButton = () => {
+        djangoLookup("POST", "/participate/", {participate: false}, (response, status) => {
+            socket.emit("LeaveEvent", user[0])
+            setParticipate(false)
+            setEventDisplay("waiting")
+            setLeaveError({display: true, message: "Your match left the event, please wait for the next round!"})
+        })
+    }
+
     return <div style={{marginTop: 10, textAlign: "center"}}>
+        <h4>You were matched! <br />Join the call <a href="#" onClick={handleBreakoutJoin} >here</a>!</h4>
+            <Countdown minutes={timer.minutes} seconds={timer.seconds} />
         <div className="col-sm-6">
-            <h4>You are in an active video call!</h4>
             {personCards}
-        <Timer minutes={5} seconds={10} />
         </div>
         <div className="col-sm-5">
-            <Chatbox />
+            <IceBreakers />
         </div>
-        <div className="form-inline">
-            <button className="btn btn-danger">Pause</button>
-            <button className="btn btn-warning">Leave</button>
+        <div className="form-inline col-sm-12" style={{textAlign: "center", marginTop:20}}>
+            <button type="button" className="btn btn-warning" onClick={handleEventLeaveButton}>Leave</button>
         </div>
     </div>
 }
@@ -33,14 +72,17 @@ function PersonCard(props) {
     </div>
 }
 
-function Chatbox(props) {
+function IceBreakers(props) {
     return <div>
-            <div style={{height:120, borderColor: "black", borderStyle: "dashed", borderWidth: 2, paddingLeft: 5, textAlign: "left"}}>
+            {/* <div style={{height:120, borderColor: "black", borderStyle: "dashed", borderWidth: 2, paddingLeft: 5, textAlign: "left"}}>
                 Chat
-            </div>
-            <div style={{marginTop:20, borderColor: "black", borderStyle: "dashed", borderWidth: 2, paddingLeft: 5, textAlign: "left"}}>
+            </div> */}
+            <div style={{paddingLeft: 5, textAlign: "left"}}>
                 <h5>Icebreakers</h5>
-                This might be one
+                This might be one <br />
+                This might be one <br />
+                This might be one <br />
+                This might be one <br />
             </div>
         </div>
 }

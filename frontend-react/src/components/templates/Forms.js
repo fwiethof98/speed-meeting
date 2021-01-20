@@ -31,6 +31,7 @@ export function PersonForm(props) {
             } else {
                 right_column.push(entry)
             }
+            return 0
         })
         formEntries = <div>
                     <div className="col-sm-5">

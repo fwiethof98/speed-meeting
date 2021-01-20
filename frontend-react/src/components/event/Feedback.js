@@ -2,17 +2,13 @@ import React from 'react'
 import { djangoLookup } from '../../functions/lookup'
 import { FormEntry } from '../templates/Forms'
 import $ from 'jquery'
+import Countdown from '../templates/Timer'
 
 
 function Feedback(props) {
-    const {entries, user, setEventDisplay} = props
-
-    console.log(user)
-    
+    const {entries, user, setEventDisplay, timer} = props
     const personCards = user.map(person => {
-        console.log(person)
         const age = Math.floor((new Date() - new Date(person.birthday)) / (1000*60*60*24*365))
-        console.log(age)
         return <PersonCard name={person.first_name + " " + person.last_name} age={age} university={person.university} studies={person.studies} status={person.status} />
     })
 
@@ -45,9 +41,8 @@ function Feedback(props) {
         formData.forEach((value, key) => {
             feedbackData["content"] = key.replace("feedback-", "")
         })
-        console.log(feedbackData)
 
-        djangoLookup("POST", "/friends/", feedbackData, (response, status) => {
+        djangoLookup("POST", "/friends/feedback/", feedbackData, (response, status) => {
             console.log(response)
         })
         setEventDisplay("current")
@@ -56,6 +51,7 @@ function Feedback(props) {
     return <form method="POST" id="feedback-form">
         <div style={{paddingLeft:20, paddingRight: 20, marginTop: 10, textAlign: "center"}}>
             <h4>What do you want to do next?</h4>
+            <Countdown minutes={timer.minutes} seconds={timer.seconds} />
             <div className="col-sm-6">
             {personCards}
             </div>

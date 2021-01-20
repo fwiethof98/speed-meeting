@@ -5,7 +5,7 @@ import $ from 'jquery'
 import { hobby_entries } from '../config'
 
 function ManageHobbies(props) {
-    const {name, field} = props
+    const {name} = props
     const [options, setOptions] = useState([])
 
     useEffect(() => {

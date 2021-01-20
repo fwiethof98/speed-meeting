@@ -6,7 +6,7 @@ import {preference} from '../config'
 
 function Preference(props) {
     const [hobbyEntries, setHobbyEntries] = useState([])
-    const [myPref, setMyPref] = useState([])
+    const [alert, setAlert] = useState({display: false, message: "Data successfully submitted"})
 
     useEffect(() => {
         djangoLookup("GET", "/hobby/?action=all", {}, (response, status) => {
@@ -16,18 +16,12 @@ function Preference(props) {
                 }))
             }
         })
-        djangoLookup("GET", "/preference/", {}, (response, status) => {
-            if(status===200) {
-                setMyPref(response)
-            }
-        })
     }, [])
 
     let hobbies = []
     for(let i = 0; i < preference.hobbies.n_hobbies; i++) {
         hobbies.push({name: "hobby" + i, displayName: "Hobby " + i, type: "dropdown", entries: hobbyEntries})
     }
-    console.log(hobbies)
 
     const handleFormSubmit = (event) => {
         event.preventDefault()
@@ -51,6 +45,8 @@ function Preference(props) {
         console.log(preferenceData) 
         djangoLookup("POST", "/preference/assign/", preferenceData, (response, status) => {
             console.log(response)
+            status === 200 && setAlert({display: true, message: "Data successfully submitted!"})
+            status !== 200 && setAlert({display: true, message: "An error occurred, please try again!"})
         })
     }
 
@@ -61,6 +57,9 @@ function Preference(props) {
             <PersonForm entries={preference.studies.entries} title={preference.studies.subtitle} n_columns={2} />
         </form>
         <button className="btn btn-primary btn_full_width" onClick={handleFormSubmit}>Submit</button>
+        <div style={{textAlign: "center", color: "green"}}>
+            {alert.display && alert.message}
+        </div>
     </div>
 }
 

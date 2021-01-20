@@ -15,7 +15,7 @@
 
 /* changes sven event */
 
-.btn_full_width{
+.btn_full_width {
   width: 90%;
   margin-left: auto !important;
   margin-right: auto !important;
@@ -28,30 +28,30 @@
 .flash_art_login {
   width: 100%;
   margin: auto;
-
 }
 
-.col-sm-5-login{
+.col-sm-5-login {
   width: 48%;
 }
-.col-sm-5{
+.col-sm-5 {
   width: 48%;
 }
 
-.col-sm-12-login{
+.col-sm-12-login {
   display: flex;
   align-content: center;
   margin-top: 5%;
 }
 
-.btn-login{
+.btn-login {
   width: 50%;
 }
 /* changes Sven */
 
-.moving-tab{
-  transform:none !important;
-}
+/* .moving-tab {
+  transform: none !important;
+} */
+
 #content_aboutus {
   text-align: center;
   margin-right: 7.2%;
@@ -209,6 +209,8 @@ blockquote p {
   background: #ffffff;
 }
 
+/* ======= ENDE ======= */
+
 body,
 h1,
 h2,
@@ -315,6 +317,8 @@ input[type="file"] > input[type="button"]::-moz-focus-inner {
   -o-transition: 0.55s cubic-bezier(0.6, 0, 0.4, 1);
   transition: 0.55s cubic-bezier(0.6, 0, 0.4, 1);
 }
+
+/* ======= ENDE ======= */
 
 .made-with-mk:hover,
 .made-with-mk:active,
@@ -462,6 +466,8 @@ h2.title {
   color: #00bcd4;
 }
 
+/* ======= ENDE ======= */
+
 .card {
   background-color: #ffffff;
   padding: 10px 0;
@@ -554,8 +560,8 @@ h2.title {
 
 .wizard-card[data-color="green"] .moving-tab {
   background-color: #00abbc;
-  box-shadow: 0 16px 26px -10px #838282,
-    0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(76, 175, 80, 0.2);
+  box-shadow: 0 16px 26px -10px #838282, 0 4px 25px 0px rgba(0, 0, 0, 0.12),
+    0 8px 10px -5px rgba(76, 175, 80, 0.2);
 }
 
 .wizard-card[data-color="green"] .picture:hover {
@@ -754,6 +760,8 @@ h2.title {
   font-weight: 300;
   margin: 10px 0 30px;
 }
+
+/* ======= ENDE ======= */
 
 .wizard-card .choice {
   text-align: center;
@@ -1695,9 +1703,7 @@ fieldset[disabled] .btn.btn-default.active {
 }
 
 .btn.btn-primary {
-  box-shadow: 0 2px 2px 0 #00abbc,
-    0 3px 1px -2px #00abbc, 0 1px 5px 0 #00abbc;
-  
+  box-shadow: 0 2px 2px 0 #00abbc, 0 3px 1px -2px #00abbc, 0 1px 5px 0 #00abbc;
 }
 
 .btn.btn-primary,
@@ -1719,8 +1725,8 @@ fieldset[disabled] .btn.btn-default.active {
 .btn.btn-primary:focus,
 .btn.btn-primary:active,
 .btn.btn-primary:hover {
-  box-shadow: 0 14px 26px -12px#00abbc,
-    0 4px 23px 0px #00abbc, 0 8px 10px -5px#00abbc;
+  box-shadow: 0 14px 26px -12px#00abbc, 0 4px 23px 0px #00abbc,
+    0 8px 10px -5px#00abbc;
 }
 
 .btn.btn-primary.disabled,
@@ -1832,8 +1838,8 @@ fieldset[disabled] .btn.btn-info.active {
 }
 
 .btn.btn-success {
-  box-shadow: 0 2px 2px 0 #00abbc,
-    0 3px 1px -2px rgba(76, 175, 80, 0.2), 0 1px 5px 0 rgba(76, 175, 80, 0.12);
+  box-shadow: 0 2px 2px 0 #00abbc, 0 3px 1px -2px rgba(76, 175, 80, 0.2),
+    0 1px 5px 0 rgba(76, 175, 80, 0.12);
 }
 
 .btn.btn-success,
@@ -1855,8 +1861,8 @@ fieldset[disabled] .btn.btn-info.active {
 .btn.btn-success:focus,
 .btn.btn-success:active,
 .btn.btn-success:hover {
-  box-shadow: 0 14px 26px -12px#00abbc,
-    0 4px 23px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(76, 175, 80, 0.2);
+  box-shadow: 0 14px 26px -12px#00abbc, 0 4px 23px 0px rgba(0, 0, 0, 0.12),
+    0 8px 10px -5px rgba(76, 175, 80, 0.2);
 }
 
 .btn.btn-success.disabled,
