@@ -4,6 +4,11 @@ const http = require('http')
 const https = require('https')
 const { formatWithOptions } = require('util')
 
+let update_interval = setInterval(() => {
+    httprequest('/api/event/start/').then(data => {
+        console.log(data)
+    }) 
+}, 15000)
 
 async function httprequest(my_url) {
     return new Promise((resolve, reject) => {
@@ -33,7 +38,7 @@ const index = require("./routes/index")
 const app = express()
 app.use(index)
 
-const server = http.createServer(app)
+const server = https.createServer(app)
 
 const io = socketIo(server)
 
@@ -56,6 +61,7 @@ io.on('connection', (socket) => {
     socket.on("EndEvent", () => {
         clearInterval(interval)
         console.log("Event finished")
+        clearInterval(update_interval)
     })
 })
 

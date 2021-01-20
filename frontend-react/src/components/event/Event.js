@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from 'react'
-import { djangoLookup } from '../../functions/lookup'
+import React, { useEffect, useRef, useState } from 'react'
+import { bbbLookup, djangoLookup } from '../../functions/lookup'
 import EventMatch from './EventMatch'
 import Feedback from './Feedback'
 import {event} from '../config'
 import openSocket from "socket.io-client"
 import ContainerTemplate from '../templates/ContainerTemplate'
 import Countdown from '../templates/Timer'
-import { bbbCall } from '../../functions/createApiCall'
+import { bbbCall, urlCall } from '../../functions/createApiCall'
 import {feedback_entries} from '../config'
 import EventCurrent from './EventCurrent'
 import EventNoMatch from './EventNoMatch'
 
-const ENDPOINT = "http://" + window.location.hostname + ":4001"
+const ENDPOINT = "http://localhost:4001"
 
 function Event(props) {
     const [eventDisplay, setEventDisplay] = useState("current")
@@ -22,7 +22,12 @@ function Event(props) {
 
     const [socket, setSocket] = useState(false)
     const [timer, setTimer] = useState([])
-    const [difference, setDifference] = useState(0)
+    const [difference, _setDifference] = useState(0)
+    const differenceRef = useRef(difference)
+    const setDifference = data => {
+        differenceRef.current= data
+        _setDifference(data)
+    }
 
     const [participate, setParticipate] = useState(true)
 
@@ -48,21 +53,11 @@ function Event(props) {
         })
         socket.on("TimerUpdate", data => {
             // INITIALIZE MEETING
-            // if(Math.abs(parseInt(data.timer.seconds) % 3) === 0) {
-            //     setEventDisplay(false)
-            //     setFeedbackDisplay(true)
-            // }
-            // if(Math.abs(parseInt(data.timer.seconds) % 3) === 1) {
-            //     setEventDisplay(true)
-            //     setFeedbackDisplay(false)
-            // }
-            // if(Math.abs(parseInt(data.timer.seconds) % 3) === 2) {
-            //     setEventDisplay(true)
-            //     setFeedbackDisplay(true)
-            // }
-            if(data.difference < 0 && difference > 0) {
+            console.log(differenceRef.current)
+            console.log(data.difference)
+            if(data.difference <= 0 && differenceRef.current > 0) {
                 setEventDisplay("current")
-                window.open(bbbCall("join", nextEvent)) // REDIRECT TO MAIN MEETING, SHOW MEETING PAGE
+                // window.open(bbbCall("join", params)) // REDIRECT TO MAIN MEETING, SHOW MEETING PAGE
             }
             if(data.difference < 0) {
                 if((parseInt(timer.minutes) - 5) % 15 < 0 && (parseInt(data.timer.minutes) - 5) % 15 === 0) {
@@ -72,10 +67,10 @@ function Event(props) {
                     setEventDisplay("feedback")
                 }
             }
-            if(parseInt(timer.hours) === 2) {
-                setEventDisplay("end")
-                socket.emit("EndEvent", {})
-            }
+            // if(parseInt(timer.hours) === 2) {
+            //     setEventDisplay("end")
+            //     socket.emit("EndEvent", {})
+            // }
             setTimer(data.timer)
             setDifference(data.difference)
         })
@@ -83,12 +78,7 @@ function Event(props) {
 
     event.title_component = <Countdown days={timer.days} hours={timer.hours} minutes={timer.minutes} seconds={timer.seconds} />
 
-    // false - true = Waiting, 
-    // true - false = Match, 
-    // true - true = Feedback
-    // false - false = Participate
-    
-    event.event_tab_options.current.component = <EventCurrent socket={socket} setParticipate={setParticipate} />
+    event.event_tab_options.current.component = <EventCurrent nextEvent={nextEvent} socket={socket} setParticipate={setParticipate} />
     event.event_tab_options.match.component = <EventMatch socket={socket} user={match} />
     event.event_tab_options.feedback.component = <Feedback setEventDisplay={setEventDisplay} user={match} entries={feedback_entries} />
     event.event_tab_options.nomatch.component = <EventNoMatch socket={socket} setEventDisplay={setEventDisplay} user={match} entries={feedback_entries} />
@@ -99,7 +89,7 @@ function Event(props) {
         else if(eventDisplay && "nomatch") { event.tabs[1] = event.event_tab_options.nomatch }
         else if(eventDisplay && "feedback") { event.tabs[1] = event.event_tab_options.feedback }
     } else {
-        event.tabs[1] = event.event_tab_options[3]
+        event.tabs[1] = event.event_tab_options.current
     }
 
     return <ContainerTemplate tabData={event} showButtons={false} />

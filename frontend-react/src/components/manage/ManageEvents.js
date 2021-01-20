@@ -41,20 +41,9 @@ function ManageEvents(props) {
                 let params = {}
                 params["meetingID"] = nextEvent.meetingID
                 params["moderatorPW"] = nextEvent.moderatorPW
-                // window.open(bbbCall("create", params))
+                window.open(bbbCall("create", params))
                 status === 200 && djangoLookup("GET", "/event/start/", {name: eventName}, (startFeedback, status) => {
-                    console.log(startFeedback)
-                    // status === 200 && djangoLookup("GET", "/room/?action=all", {}, (rooms, status) => {
-                    //     for(let i = 0; i < rooms.length; i++) {
-                    //         let params = {}
-                    //         params["meetingID"] = rooms[i].name + rooms[i].id
-                    //         params["isBreakout"] = true
-                    //         params["parentMeetingID"] = nextEvent.meetingID
-                    //         params["sequence"] = i
-                    //         params["duration"] = 10
-                    //         window.open(bbbCall("create", params))
-                    //     }
-                    // })
+                    // console.log(startFeedback)
                 })
             })
         } else {

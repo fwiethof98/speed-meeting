@@ -23,7 +23,6 @@ export function createApiCall(api_call, params, secret) {
 }
 
 export function urlCall(api_call, params) {
-    console.log(process.env.REACT_APP_BBB_TEST_SECRET);
     return process.env.REACT_APP_BBB_PROXY + "/" + api_call + "/?" + createApiCall(api_call, params, process.env.REACT_APP_BBB_SECRET);
 }
 
