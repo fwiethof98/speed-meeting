@@ -14,7 +14,7 @@ import EventEnd from './EventEnd'
 const ENDPOINT = "http://" + window.location.hostname + ":4001"
 
 function Event(props) {
-    const [eventDisplay, _setEventDisplay] = useState("match")
+    const [eventDisplay, _setEventDisplay] = useState("waiting")
     const eventDisplayRef = useRef(eventDisplay)
     const setEventDisplay = data => {
         eventDisplayRef.current = data
