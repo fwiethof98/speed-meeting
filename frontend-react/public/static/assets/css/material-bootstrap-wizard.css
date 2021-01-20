@@ -13,8 +13,36 @@
  * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
  */
 
+/* changes sven event */
+
+.btn.btn-primary {
+  box-shadow: none !important;
+}
+
+.flash_art_login {
+  width: 100%;
+  margin: auto;
+
+}
+
+.col-sm-5-login{
+  width: 48%;
+}
+
+.col-sm-12-login{
+  display: flex;
+  align-content: center;
+  margin-top: 5%;
+}
+
+.btn-login{
+  width: 50%;
+}
 /* changes Sven */
 
+.moving-tab{
+  transform:none !important;
+}
 #content_aboutus {
   text-align: center;
   margin-right: 7.2%;
@@ -193,7 +221,7 @@ h6,
 }
 
 a {
-  color: #9c27b0;
+  color: #00abbc;
 }
 
 a:hover,
@@ -391,7 +419,7 @@ h6,
 .card-title a,
 .wizard-title,
 .wizard-title a {
-  color: #4caf50;
+  color: #00abbc;
   text-decoration: none;
 }
 
@@ -410,7 +438,7 @@ h2.title {
 }
 
 .text-primary {
-  color: #9c27b0;
+  color: #00abbc;
 }
 
 .text-danger {
@@ -418,7 +446,7 @@ h2.title {
 }
 
 .text-success {
-  color: #4caf50;
+  color: #00abbc;
 }
 
 .text-info {
@@ -479,23 +507,23 @@ h2.title {
 }
 
 .wizard-card[data-color="purple"] .moving-tab {
-  background-color: #9c27b0;
-  box-shadow: 0 16px 26px -10px rgba(156, 39, 176, 0.56),
+  background-color: #00abbc;
+  box-shadow: 0 16px 26px -10px rgba(153, 153, 153, 0.56),
     0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(156, 39, 176, 0.2);
 }
 
 .wizard-card[data-color="purple"] .picture:hover {
-  border-color: #9c27b0;
+  border-color: #00abbc;
 }
 
 .wizard-card[data-color="purple"] .choice:hover .icon,
 .wizard-card[data-color="purple"] .choice.active .icon {
-  border-color: #9c27b0;
-  color: #9c27b0;
+  border-color: #00abbc;
+  color: #00abbc;
 }
 
 .wizard-card[data-color="purple"] .form-group .form-control {
-  background-image: linear-gradient(#9c27b0, #9c27b0),
+  background-image: linear-gradient(#00abbc, #00abbc),
     linear-gradient(#d2d2d2, #d2d2d2);
 }
 
@@ -504,35 +532,35 @@ h2.title {
   input[type="checkbox"]:checked
   + .checkbox-material
   .check {
-  background-color: #9c27b0;
+  background-color: #00abbc;
 }
 
 .wizard-card[data-color="purple"] .radio input[type="radio"]:checked ~ .check {
-  background-color: #9c27b0;
+  background-color: #00abbc;
 }
 
 .wizard-card[data-color="purple"] .radio input[type="radio"]:checked ~ .circle {
-  border-color: #9c27b0;
+  border-color: #00abbc;
 }
 
 .wizard-card[data-color="green"] .moving-tab {
-  background-color: #4caf50;
-  box-shadow: 0 16px 26px -10px rgba(76, 175, 80, 0.56),
+  background-color: #00abbc;
+  box-shadow: 0 16px 26px -10px #838282,
     0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(76, 175, 80, 0.2);
 }
 
 .wizard-card[data-color="green"] .picture:hover {
-  border-color: #4caf50;
+  border-color: #00abbc;
 }
 
 .wizard-card[data-color="green"] .choice:hover .icon,
 .wizard-card[data-color="green"] .choice.active .icon {
-  border-color: #4caf50;
-  color: #4caf50;
+  border-color: #00abbc;
+  color: #00abbc;
 }
 
 .wizard-card[data-color="green"] .form-group .form-control {
-  background-image: linear-gradient(#4caf50, #4caf50),
+  background-image: linear-gradient(#00abbc, #00abbc),
     linear-gradient(#d2d2d2, #d2d2d2);
 }
 
@@ -541,15 +569,15 @@ h2.title {
   input[type="checkbox"]:checked
   + .checkbox-material
   .check {
-  background-color: #4caf50;
+  background-color: #00abbc;
 }
 
 .wizard-card[data-color="green"] .radio input[type="radio"]:checked ~ .check {
-  background-color: #4caf50;
+  background-color: #00abbc;
 }
 
 .wizard-card[data-color="green"] .radio input[type="radio"]:checked ~ .circle {
-  border-color: #4caf50;
+  border-color: #00abbc;
 }
 
 .wizard-card[data-color="blue"] .moving-tab {
@@ -957,11 +985,11 @@ output {
 }
 
 .label.label-primary {
-  background-color: #9c27b0;
+  background-color: #00abbc;
 }
 
 .label.label-success {
-  background-color: #4caf50;
+  background-color: #00abbc;
 }
 
 .label.label-info {
@@ -983,7 +1011,7 @@ output {
 .form-control,
 .form-group .form-control {
   border: 0;
-  background-image: linear-gradient(#9c27b0, #9c27b0),
+  background-image: linear-gradient(#00abbc, #00abbc),
     linear-gradient(#d2d2d2, #d2d2d2);
   background-size: 0 2px, 100% 1px;
   background-repeat: no-repeat;
@@ -1058,7 +1086,7 @@ fieldset[disabled] .form-group .form-control {
 
 .form-group.is-focused .form-control {
   outline: none;
-  background-image: linear-gradient(#9c27b0, #9c27b0),
+  background-image: linear-gradient(#00abbc, #00abbc),
     linear-gradient(#d2d2d2, #d2d2d2);
   background-size: 100% 2px, 100% 1px;
   box-shadow: none;
@@ -1066,7 +1094,7 @@ fieldset[disabled] .form-group .form-control {
 }
 
 .form-group.is-focused .form-control .material-input:after {
-  background-color: #9c27b0;
+  background-color: #00abbc;
 }
 
 .form-group.is-focused.form-info .form-control {
@@ -1075,7 +1103,7 @@ fieldset[disabled] .form-group .form-control {
 }
 
 .form-group.is-focused.form-success .form-control {
-  background-image: linear-gradient(#4caf50, #4caf50),
+  background-image: linear-gradient(#00abbc, #00abbc),
     linear-gradient(#d2d2d2, #d2d2d2);
 }
 
@@ -1141,13 +1169,13 @@ fieldset[disabled] .form-group .form-control {
 }
 
 .form-group.has-success.is-focused .form-control {
-  background-image: linear-gradient(#4caf50, #4caf50),
+  background-image: linear-gradient(#00abbc, #00abbc),
     linear-gradient(#d2d2d2, #d2d2d2);
 }
 
 .form-group.has-success label.control-label,
 .form-group.has-success .help-block {
-  color: #4caf50;
+  color: #00abbc;
 }
 
 .form-group.has-info .form-control {
@@ -1516,7 +1544,7 @@ select.form-control[multiple],
 }
 
 .has-success .form-control-feedback {
-  color: #4caf50;
+  color: #00abbc;
   opacity: 1;
 }
 
@@ -1658,8 +1686,9 @@ fieldset[disabled] .btn.btn-default.active {
 }
 
 .btn.btn-primary {
-  box-shadow: 0 2px 2px 0 rgba(156, 39, 176, 0.14),
-    0 3px 1px -2px rgba(156, 39, 176, 0.2), 0 1px 5px 0 rgba(156, 39, 176, 0.12);
+  box-shadow: 0 2px 2px 0 #00abbc,
+    0 3px 1px -2px #00abbc, 0 1px 5px 0 #00abbc;
+  
 }
 
 .btn.btn-primary,
@@ -1674,15 +1703,15 @@ fieldset[disabled] .btn.btn-default.active {
 .open > .btn.btn-primary.dropdown-toggle,
 .open > .btn.btn-primary.dropdown-toggle:focus,
 .open > .btn.btn-primary.dropdown-toggle:hover {
-  background-color: #9c27b0;
+  background-color: #00abbc;
   color: #ffffff;
 }
 
 .btn.btn-primary:focus,
 .btn.btn-primary:active,
 .btn.btn-primary:hover {
-  box-shadow: 0 14px 26px -12px rgba(156, 39, 176, 0.42),
-    0 4px 23px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(156, 39, 176, 0.2);
+  box-shadow: 0 14px 26px -12px#00abbc,
+    0 4px 23px 0px #00abbc, 0 8px 10px -5px#00abbc;
 }
 
 .btn.btn-primary.disabled,
@@ -1714,7 +1743,7 @@ fieldset[disabled] .btn.btn-primary.active {
 
 .btn.btn-primary.btn-simple {
   background-color: transparent;
-  color: #9c27b0;
+  color: #00abbc;
   box-shadow: none;
 }
 
@@ -1722,7 +1751,7 @@ fieldset[disabled] .btn.btn-primary.active {
 .btn.btn-primary.btn-simple:focus,
 .btn.btn-primary.btn-simple:active {
   background-color: transparent;
-  color: #9c27b0;
+  color: #00abbc;
 }
 
 .btn.btn-info {
@@ -1794,7 +1823,7 @@ fieldset[disabled] .btn.btn-info.active {
 }
 
 .btn.btn-success {
-  box-shadow: 0 2px 2px 0 rgba(76, 175, 80, 0.14),
+  box-shadow: 0 2px 2px 0 #00abbc,
     0 3px 1px -2px rgba(76, 175, 80, 0.2), 0 1px 5px 0 rgba(76, 175, 80, 0.12);
 }
 
@@ -1810,14 +1839,14 @@ fieldset[disabled] .btn.btn-info.active {
 .open > .btn.btn-success.dropdown-toggle,
 .open > .btn.btn-success.dropdown-toggle:focus,
 .open > .btn.btn-success.dropdown-toggle:hover {
-  background-color: #4caf50;
+  background-color: #00abbc;
   color: #ffffff;
 }
 
 .btn.btn-success:focus,
 .btn.btn-success:active,
 .btn.btn-success:hover {
-  box-shadow: 0 14px 26px -12px rgba(76, 175, 80, 0.42),
+  box-shadow: 0 14px 26px -12px#00abbc,
     0 4px 23px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(76, 175, 80, 0.2);
 }
 
@@ -1850,7 +1879,7 @@ fieldset[disabled] .btn.btn-success.active {
 
 .btn.btn-success.btn-simple {
   background-color: transparent;
-  color: #4caf50;
+  color: #00abbc;
   box-shadow: none;
 }
 
@@ -1858,7 +1887,7 @@ fieldset[disabled] .btn.btn-success.active {
 .btn.btn-success.btn-simple:focus,
 .btn.btn-success.btn-simple:active {
   background-color: transparent;
-  color: #4caf50;
+  color: #00abbc;
 }
 
 .btn.btn-warning {
@@ -2317,7 +2346,7 @@ fieldset[disabled] .form-group.is-focused .radio label {
   height: 15px;
   width: 15px;
   border-radius: 100%;
-  background-color: #9c27b0;
+  background-color: #00abbc;
   transform: scale3d(0, 0, 0);
 }
 
@@ -2358,11 +2387,11 @@ fieldset[disabled] .form-group.is-focused .radio label {
 }
 
 .radio input[type="radio"]:checked ~ .check {
-  background-color: #9c27b0;
+  background-color: #00abbc;
 }
 
 .radio input[type="radio"]:checked ~ .circle {
-  border-color: #9c27b0;
+  border-color: #00abbc;
 }
 
 .radio input[type="radio"]:checked ~ .check {
@@ -2490,7 +2519,7 @@ fieldset[disabled] .form-group.is-focused .checkbox label {
 }
 
 .checkbox input[type="checkbox"]:checked + .checkbox-material .check {
-  background: #9c27b0;
+  background: #00abbc;
 }
 
 .checkbox input[type="checkbox"]:checked + .checkbox-material .check:before {
