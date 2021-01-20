@@ -14,7 +14,7 @@ import EventNoMatch from './EventNoMatch'
 const ENDPOINT = "http://" + window.location.hostname + ":4001"
 
 function Event(props) {
-    const [eventDisplay, setEventDisplay] = useState("waiting")
+    const [eventDisplay, setEventDisplay] = useState("current")
 
     const [nextEvent, setNextEvent] = useState([])
     const [nextRoom, setNextRoom] = useState([])
@@ -88,10 +88,10 @@ function Event(props) {
     // true - true = Feedback
     // false - false = Participate
     
-    event.event_tab_options.current.component = <EventCurrent setParticipate={setParticipate} />
-    event.event_tab_options.match.component = <EventMatch user={match} />
+    event.event_tab_options.current.component = <EventCurrent socket={socket} setParticipate={setParticipate} />
+    event.event_tab_options.match.component = <EventMatch socket={socket} user={match} />
     event.event_tab_options.feedback.component = <Feedback setEventDisplay={setEventDisplay} user={match} entries={feedback_entries} />
-    event.event_tab_options.nomatch.component = <EventNoMatch setEventDisplay={setEventDisplay} user={match} entries={feedback_entries} />
+    event.event_tab_options.nomatch.component = <EventNoMatch socket={socket} setEventDisplay={setEventDisplay} user={match} entries={feedback_entries} />
     if(participate) {
         if(eventDisplay === "waiting") { event.tabs[1] = event.event_tab_options.waiting }
         else if(eventDisplay === "current") { event.tabs[1] = event.event_tab_options.current }
