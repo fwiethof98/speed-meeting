@@ -80,9 +80,9 @@ io.on('connection', (socket) => {
         io.to(data.socket).emit("LeaveEvent", "leave")
     })
     socket.on("EndEvent", () => {
-        // clearInterval(interval)
+        clearInterval(interval)
         console.log("Event finished")
-        clearInterval(update_interval)
+        // clearInterval(update_interval)
     })
 })
 
