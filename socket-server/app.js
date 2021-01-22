@@ -10,7 +10,7 @@ const minutes_for_each_match = 15
 let update_interval
 httprequest('/api/event/?action=next').then(data => {
     let new_date = new Date()
-    setTimeout(matchUpdateInterval, data.time - new_date + 60000*minutes_before_first_match)
+    setTimeout(matchUpdateInterval, data.time - new_date + 1000*minutes_before_first_match)
 })
 
 function matchUpdateInterval() {
@@ -18,7 +18,7 @@ function matchUpdateInterval() {
         httprequest('/api/event/start/').then(data => {
             console.log(data)
         })
-    }, 60000*minutes_for_each_match)
+    }, 1000*minutes_for_each_match)
 }
 
 async function httprequest(my_url) {
@@ -62,9 +62,11 @@ io.on('connection', (socket) => {
     }) 
     socket.on("disconnect", () => {
         clearInterval(interval)
-        httprequest('/api/event/leave/?socket=' + socket.id).then(data => {
-            io.to(data.socket).emit("LeaveEvent", "leave")
-        })
+        // httprequest('/api/event/leave/?socket=' + socket.id).then(data => {
+        //     if("socket" in data) {
+        //         io.to(data.socket).emit("LeaveEvent", "leave")
+        //     }
+        // })
         console.log("Client disconnect")
     })
     socket.on("UpdateMatch", () => {

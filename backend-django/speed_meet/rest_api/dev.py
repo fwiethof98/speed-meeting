@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 class DevAuthentication(authentication.BasicAuthentication):
     def authenticate(self, request):
         # return(User.objects.first(), None)
+        return(User.objects.get(username="wiethof.florian98@gmail.com"), None)
         user_address = request.META['REMOTE_ADDR']
         if "HTTP_ORIGIN" in request.META:
             user_address += request.META["HTTP_ORIGIN"]

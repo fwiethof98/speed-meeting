@@ -1,0 +1,66 @@
+id,birthday,email,first_name,last_name,mail_check,phone,mail_check,studies,status,university,intent,semester,password
+8,2020-01-01,raghav01mohan@gmail.com,Raghav,Mohan,1,015756389772,1,- Electrical Engineering,Bachelor,A) TUM,students,1,ILoveOW29
+9,2001-06-08,alza.dinaya@tum.de,Alza,Dinaya,1,015251745297,1,- Electrical Engineering,Bachelor,A) TUM,tandem,3,gathr.passwort
+10,2002-09-21,qcandsteve@gmail.com,Lichuan,Qin,1,017658937387,1,- Electrical Engineering,Bachelor,A) TUM,tandem,1,-Asd131032
+11,1996-08-09,elenacarlin96@gmail.com,Elena,Carlin,1,+393468340928,1,- Biology,Master,A) TUM,students,1,zag422
+12,2001-02-11,schuleundstudium1@gmx.de,Jonas,Daiber,1,+49 176 21486381,1,- Electrical Engineering,Bachelor,A) TUM,students,1,a123456789
+15,2002-04-09,miebing@t-online.de,Maxi,Liebing,1,+4917698703747,1,- Electrical Engineering,Bachelor,A) TUM,tandem,1,maxi2987
+16,1997-09-23,anasecuiu@yahoo.com,Ana,Secuiu,1,0176/69509338,1,- Informatics,Master,A) TUM,tandem,1,babyshark77;
+18,1997-09-04,maike.kachelriess@gmail.com,Maike,Kachelrieß,1,+49 1515 9402437,1,- Business & Management,Bachelor,B) LMU,students,7,mpfg-mpfg1
+19,2020-01-01,marcmhartmann@yahoo.de,Marc,Hartmann,1,+491715836332,1,- Business & Management,Master,A) TUM,founder,1,Gathr2021
+20,1997-10-07,claire.registraties@gmail.com,Claire,Post,1,+31615603919,1,Other Engineering Sciences,Master,A) TUM,students,2,Herfst123
+22,1999-03-14,moisacastrob@hotmail.com,Moises,Castro,1,+4917620136951,1,- Electrical Engineering,Bachelor,A) TUM,students,1,14m03c99
+23,1992-02-10,orjichidinmamaureen@gmail.com,Maureen,Orji,1,015166773968,1,- Business & Management,Master,A) TUM,students,1,Qwertyuiop@2020!
+24,1998-10-15,lukaskeisenberg@gmail.com,Lukas,Eisenberg,1,+4915784840661,1,- Business & Management,Master,A) TUM,founder,1,konfi2011
+25,1995-01-24,maximilian@pigtie.de,Maximilian,Klinke,1,+4915779075951,1,- Physics,Master,A) TUM,founder,5,2vhCg63d55FDiTR
+26,1996-02-09,louisa.levetzow@gmail.com,Louisa,Levetzow,1,016093810680,1,- Business & Management,Master,A) TUM,founder,4,kleiner@MANN
+27,1997-05-14,ge65fax@mytum.de,Angela,Nnaka,1,+36702132069,1,- Business & Management,Master,A) TUM,students,1,RandomPassword1
+28,1994-11-05,v.goegl@mail.de,Vincent,Gögl,1,017684867154,1,- Mathematics,PhD,B) LMU,students,1,12341234
+29,1998-03-05,ddekimova@gmail.com,Daria,Ekimova,1,+49 1602392356,1,- Business & Management,Master,A) TUM,sports,1,edv9053279
+30,1997-05-31,ibrahim.ouerghi.25@gmail.com,Brahim,Ouerghi,1,01751926170,1,- Business & Management,Bachelor,A) TUM,founder,5,Barhoumok@25
+31,2020-01-01,marc.sinner@t-online.de,Marc,Sinner,1,017620773613,1,- Informatics,Master,A) TUM,founder,1,Umberto123
+32,1992-06-12,almahdc@gmail.com,Alma,Hodžić,1,015770954847,1,- Business & Management,Master,A) TUM,founder,5,password12#
+33,1990-10-20,eng_ahmed2055@yahoo.com,Ahmed,Ebada,1,01794170592,1,- Computer Engineering,PhD,A) TUM,students,1,’هقخ9090
+34,1998-12-22,alereynaud998@gmail.com,Alessandro,Reynaud,1,+393478331044,1,- Business & Management,Master,A) TUM,sports,1,22decembre1998
+35,1996-11-15,renner.jk@googlemail.com,Julia,Renner,1,+491713391443,1,- Business & Management,Master,A) TUM,tandem,1,Herz1996!
+36,1999-06-13,renner.ace@googlemail.com,Alexa,Renner,1,00491713391446,1,- Law,Bachelor,B) LMU,tandem,5,Sister1306!
+37,1996-03-01,bilgeyag@gmail.com,Bilge,Yag,1,+90 552 4402903,1,- Business & Management,Master,A) TUM,students,1,Hipnoz1695!
+38,1997-07-02,cerenkaraca215@gmail.com,Ceren,Karaca,1,17655708959,1,- Business & Management,Master,A) TUM,students,1,Sebtu6-gufbug-defvut
+39,1996-11-18,somantariq90@yahoo.com,Soman,Tariq,1,+49 176 57797651,1,- Business & Management,Master,A) TUM,students,1,Chennai1
+40,1992-12-20,devy.cendana@tum.de,Devy,Cendana,1,+491628186200,1,- Business & Management,Master,A) TUM,students,1,Aacalipa1
+41,1998-08-31,sofia.g.carneiro@gmail.com,Sofia,Carneiro,1,+49 17624068201,1,- Business & Management,Master,A) TUM,students,1,eu s0u linda
+42,1996-05-03,nhingo0503@gmail.com,Nhi,Ngo,1,+49 1706096456,1,- Business & Management,Bachelor,A) TUM,tandem,1,0503n1996
+43,1995-07-23,fiorecontre@hotmail.com,Fiorella,Contreras,1,+4917664841977,1,- Business & Management,Master,A) TUM,students,1,shalala
+44,1995-01-10,teresa.pfaffhausen@googlemail.com,Teresa,Pfaffhausen,1,01636806567,1,- Business & Management,Master,A) TUM,students,1,BXER4grAZqgSsfU
+45,1998-03-15,cristian.posadas@tum.de,Cristian,Posadas,1,+4915142120915,1,- Business & Management,Master,A) TUM,students,1,Cris@19981
+46,1995-11-06,kroyerjackie@gmail.com,Jackie,Kroyer,1,+4915122497270,1,- Business & Management,Master,A) TUM,students,1,Mallorca2018
+47,2001-03-08,ilieva0803@abv.bg,Aleksandra,Ilieva,1,+359884694060,1,- Business & Management,Bachelor,B) LMU,students,1,alens2001
+48,1997-06-27,bezgiekin@gmail.com,Ezgi Ekin,Bilgili,1,Na,1,- Business & Management,Master,A) TUM,students,1,Manyak1988!
+49,1997-01-01,zahidhamza608@gmail.com,Hamza,Zaho,1,015732631709,1,- Informatics,Bachelor,A) TUM,students,1,gg112233
+50,2000-06-13,antanasbenediktas@gmail.com,Antanas Benediktas,Alekna,1,+4915733788609,1,Other Humanities,Bachelor,B) LMU,students,3,4JzHuX7AcHwqcbF
+51,1990-09-21,mostafa.kheyrollahi@gmail.com,Mostafa,Kh,1,015901967747,1,Other Studies,Master,A) TUM,students,5,Mosi2297?
+52,1997-05-02,eckstein.anna-lena@web.de,Anna-Lena,Eckstein,1,015162963451,1,- Business & Management,Master,A) TUM,students,1,Parathan#12
+53,2020-01-01,yrh99514@zwoho.com,Yang Richard,Zwo,1,+49 152 5551 530,1,- Informatics,Bachelor,A) TUM,students,3,taiwan
+54,1998-02-16,pritish.bhavnani@tum.de,Pritish,Bhavnani,1,99,1,- Business & Management,Master,A) TUM,students,1,Microsoft@8
+55,1997-09-25,ge78vac@mytum.de,Karlotta,Fölster,1,+491782308819,1,- Business & Management,Master,A) TUM,students,1,GLotti<3
+56,1994-04-06,sylui94@gmail.com,Sing Yi,Lui,1,+60165570108,1,- Political science,Master,A) TUM,tandem,3,hanceyuy0101
+57,1998-04-13,jyohannj@gmail.com,Jyohan,Joglekar,1,+4915258482376,1,Other Studies,Master,A) TUM,students,3,samsungrv520
+58,1999-04-19,vera.mail-x@web.de,Vera,Frieß,1,+4915738404111,1,Other Studies,Bachelor,C) Hochschule München,sports,2,meetnewpeople21
+59,1987-07-25,Aline.Scherff@campus.lmu.de,Aline,Scherff,1,NA,1,- Medicine & Health,PhD,B) LMU,students,8,Zoeli9bat
+60,2020-01-01,jenny1354@web.de,Jenny,Birzl,1,+4915751500316,1,- Business & Management,Bachelor,A) TUM,students,7,Gathr12!
+61,1993-10-06,rutuja.joshi@tum.de,Rutuja,Joshi,1,017642078003,1,- Mechanical Engineering,Master,A) TUM,students,4,qwerty1234
+62,2000-06-04,ivan.ipsic@gmail.com,Ivan,Ipšić,1,00385919338264,1,Other Engineering Sciences,Bachelor,A) TUM,students,1,krcka123
+63,1995-03-10,ahmad.mohamed.emad@gmail.com,ahmad,emad,1,+4917642753343,1,- Electrical Engineering,Master,A) TUM,sports,4,m5xtBQYwuj8yUQW
+64,2002-04-22,george.koutras9@gmail.com,George,Koutras,1,+49 17664360031,1,- Electrical Engineering,Bachelor,A) TUM,students,1,G.koutras1968
+65,1997-12-22,priyankparmar97@gmail.com,Priyank,Parmar,1,±33613592044,1,- Physics,Master,A) TUM,students,1,12345qwert
+66,1997-02-06,himanshu0arora0@gmail.com,Himanshu,Arora,1,+49 15206268080,1,- Business & Management,Master,A) TUM,students,1,hellohello
+67,2020-01-01,isaifookhan@gmail.com,Saif,Imran,1,+4915901395737,1,- Computer Engineering,Master,D) Other,students,1,pakistan
+68,2020-01-01,janis.eberle@tum.de,Janis,Eberle,1,+49 15204894071,1,- Electrical Engineering,Bachelor,A) TUM,tandem,1,uBT!tum!1316:gat
+69,1997-11-28,santiagoav97@hotmail.com,Santiago,Alarcón,1,+4917685622308,1,- Electrical Engineering,Bachelor,A) TUM,students,5,MkEiTsAsLLICA1
+71,1995-04-04,vanshkharbanda93@gmail.com,Vansh,Kharbanda,1,+4915175392518,1,- Physics,Master,B) LMU,students,3,t414B266DK
+72,1994-05-28,johnson830528@gmail.com,BO-HONG,LIN,1,++49015906803136,1,- Business & Management,Master,A) TUM,sports,1,830528
+73,1995-09-16,hitanshsingla@gmail.com,Hitansh,Singla,1,+4915159462244,1,- Informatics,Master,B) LMU,founder,5,Spiderman1!
+74,1995-07-08,daniel.reitz@tum.de,Daniel,Reitz,1,+4915757195219,1,- Business & Management,Master,A) TUM,students,1,skikurs09
+75,2020-01-01,nora.kira@web.de,Nora,Krüger,1,+4915158335960,1,Other Natural Sciences,Bachelor,D) Other,students,5,norakira18
+76,2000-07-09,erik.opgenorth@outlook.com,Erik,Opgenorth,1,01623098933,1,- Business & Management,Bachelor,A) TUM,students,1,erik2000
+78,2020-01-01,eng_ahmed2055@yahoo.com,Ahmed,Ebada,1,01794170592,1,- Computer Engineering,PhD,D) Other,founder,8,’هقخ9090

@@ -12,7 +12,8 @@ from .views import (
     user_register_api_view,
     user_participate_api_view,
     friend_feedback_api_view,
-    set_socket_api_view
+    set_socket_api_view,
+    user_import_api_view
 )
 
 urlpatterns = [
@@ -25,6 +26,7 @@ urlpatterns = [
     path('match/', search_match_api_view),
     path('socket/', set_socket_api_view),
     path('participate/', user_participate_api_view),
+    path('import/', user_import_api_view),
     path('authenticated/', user_is_authenticated_view),
     path('friends/', search_friends_api_view),
     path('friends/feedback/', friend_feedback_api_view)

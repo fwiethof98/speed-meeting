@@ -12,13 +12,14 @@ app.use((req, res, next) => {
 
 app.get('/:type', (req, res, next) => {
     console.log(req.params)
-    console.log('https://bbb.fs.ei.tum.de/bigbluebutton/api/' + req.url.slice(1).replace('/', ''))
+    console.log('https://bbb.gathr.de/bigbluebutton/api/' + req.url.slice(1).replace('/', ''))
     request(
-        {url: 'https://bbb.fs.ei.tum.de/bigbluebutton/api/' + req.url.slice(1).replace('/', '')},
+        {url: 'https://bbb.gathr.de/bigbluebutton/api/' + req.url.slice(1).replace('/', '')},
         (error, response, body) => {
             if(error || response.statusCode !==200) {
                 console.log("shit...")
             }
+            console.log(body)
             res.send(body)
         }
     )

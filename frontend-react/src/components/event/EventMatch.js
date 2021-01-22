@@ -11,6 +11,10 @@ function EventMatch(props) {
     })
 
     const [myUser, setMyUser] = useState([])
+    console.log(user[0].hobbies)
+    const hobbies = user[0].hobbies.map(hobby => {
+        return <div><p>{hobby}</p><br /></div>
+    })
 
     useEffect(() => {
         djangoLookup("GET", "/authenticated/", {}, (response, status) => {
@@ -54,7 +58,7 @@ function EventMatch(props) {
             {personCards}
         </div>
         <div className="col-sm-5">
-            <IceBreakers />
+            <IceBreakers hobbies={hobbies} intent={user.intent} />
         </div>
         <div className="form-inline col-sm-12" style={{textAlign: "center", marginTop:20}}>
             <button type="button" className="btn btn-warning" onClick={handleEventLeaveButton}>Leave</button>
@@ -73,17 +77,16 @@ function PersonCard(props) {
 }
 
 function IceBreakers(props) {
+    const {hobbies, intent} = props
     return <div>
             {/* <div style={{height:120, borderColor: "black", borderStyle: "dashed", borderWidth: 2, paddingLeft: 5, textAlign: "left"}}>
                 Chat
             </div> */}
             <div style={{paddingLeft: 5, textAlign: "left"}}>
-                <h5>Icebreakers</h5>
-                This might be one <br />
-                This might be one <br />
-                This might be one <br />
-                This might be one <br />
+                <h5>Hobbies:</h5>
+                {hobbies}
             </div>
+        
         </div>
 }
 

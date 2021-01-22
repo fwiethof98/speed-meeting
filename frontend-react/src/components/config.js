@@ -9,6 +9,7 @@ import EventMatch from './event/EventMatch'
 import EventCurrent from './event/EventCurrent'
 import ManageEvents from './manage/ManageEvents'
 import ManageHobbies from './manage/ManageHobbies'
+import ManageUsers from './manage/ManageUsers'
 import EventNoMatch from './event/EventNoMatch'
 import EventEnd from './event/EventEnd'
 import Friends from './event/Friends'
@@ -199,7 +200,7 @@ export const manage = {
     title: "Manage Gathr",
     subtitle: "Creation and deletion of models",
     title_component: "",
-    tab_names: ['EVENTS', 'HOBBIES'],
+    tab_names: ['EVENTS', 'HOBBIES', 'USERS'],
     tabs: [{
             name: "EVENTS",
             subtitle: "Create, delete or start events",
@@ -209,6 +210,11 @@ export const manage = {
             name: "HOBBIES",
             subtitle: "Create or delete hobbies",
             component: <ManageHobbies name="hobby" />
+        },
+        {
+            name: "USERS",
+            subtitle: "Create or delete hobbies",
+            component: <ManageUsers />
         }
     ]
 }

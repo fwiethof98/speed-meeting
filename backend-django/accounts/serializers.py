@@ -11,11 +11,12 @@ class HobbySerializer(serializers.ModelSerializer):
 
 class FriendSerializer(serializers.ModelSerializer):
     username = serializers.SerializerMethodField(read_only=True)
+    hobbies = HobbySerializer(read_only=True, many=True)
 
     class Meta:
         model = UserProfile
         fields = ['first_name', 'last_name', 'phone', 'university', 'studies', 'status',
-                  'birthday', 'intent', 'username', 'socket', 'email']
+                  'birthday', 'intent', 'username', 'socket', 'email', 'hobbies']
 
     def get_username(self, obj):
         return obj.user.username

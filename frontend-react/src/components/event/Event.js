@@ -9,7 +9,6 @@ import Countdown from '../templates/Timer'
 import {feedback_entries} from '../config'
 import EventCurrent from './EventCurrent'
 import EventNoMatch from './EventNoMatch'
-import EventEnd from './EventEnd'
 
 const ENDPOINT = "http://" + window.location.hostname + ":4001"
 
@@ -20,12 +19,29 @@ function Event(props) {
         eventDisplayRef.current = data
         _setEventDisplay(data)
     }
+    const [meetingCounter, _setMeetingCounter] = useState(0)
+    const meetingCounterRef = useRef(meetingCounter)
+    const setMeetingCounter = data => {
+        meetingCounterRef.current = data
+        _setMeetingCounter(data)
+    }
 
     const [leaveError, setLeaveError] = useState({display: false, message: "This is an error"})
 
     const [nextEvent, setNextEvent] = useState([])
-    const [nextRoom, setNextRoom] = useState([])
-    const [match, setMatch] = useState([])
+    const [nextRoom, _setNextRoom] = useState([])
+    const nextRoomRef = useRef(nextRoom)
+    const setNextRoom = data => {
+        nextRoomRef.current = data
+        _setNextRoom(data)
+    }
+
+    const [match, _setMatch] = useState([])
+    const matchRef = useRef(match)
+    const setMatch = data => {
+        matchRef.current = data
+        _setMatch(data)
+    }
 
     const [socket, setSocket] = useState(false)
     const [timer, _setTimer] = useState({days: "-1", hours: "0", minutes: "0", seconds: "0"})
@@ -50,7 +66,12 @@ function Event(props) {
         _setTimer(data)
     }
 
-    const [participate, setParticipate] = useState(true)
+    const [participate, _setParticipate] = useState(true)
+    const participateRef = useRef(participate)
+    const setParticipate = data => {
+        participateRef.current = data
+        _setParticipate(data)
+    }
 
     if(!socket) {
         setSocket(openSocket(ENDPOINT, {transports: ['websocket']}))
@@ -66,6 +87,7 @@ function Event(props) {
         })
         djangoLookup("GET", "/match/", {}, (response, status) => {
             status === 200 && setMatch(response)
+            console.log(response)
         })
     }, [])
 
@@ -87,31 +109,53 @@ function Event(props) {
             let n_rounds = 3
             
             let match_duration = talk_duration + feedback_duration
-            let event_duration = begin_to_first_match + n_rounds * match_duration
             if(timerRef.current.seconds < 0 && eventDisplayRef.current === "waiting") {
                 djangoLookup("GET", "/event/?action=next", {}, (response, status) => {
                     status === 200 && setNextEvent(response)
                 })
                 setEventDisplay("current")
             }
-            if(parseInt(timerRef.current.seconds) <= -begin_to_first_match) {
-                let match_time = (Math.abs(parseInt(timerRef.current.minutes)) - begin_to_first_match + Math.abs(parseInt(timerRef.current.hours) * 60)) % match_duration
-
-                if(match_time === 0 && eventDisplayRef.current === "current") {
+            if(parseInt(timerRef.current.seconds) + parseInt(timerRef.current.minutes) * 60 <= -begin_to_first_match) {
+                let match_time = (Math.abs(parseInt(timerRef.current.seconds)) - begin_to_first_match + Math.abs(parseInt(timerRef.current.minutes) * 60)) % match_duration
+                if(match_time === 0 && eventDisplayRef.current === "current" && meetingCounterRef.current !== n_rounds) {
+                    setMeetingCounter(meetingCounterRef.current + 1)
+                    if(participateRef.current === true) {
+                        djangoLookup("GET", "/room/?action=my", {}, (response, status) => {
+                            status === 200 && setNextRoom(response)
+                        })
+                        djangoLookup("GET", "/match/", {}, (response, status) => {
+                            status === 200 && setMatch(response)
+                            console.log(response)
+                        })
+                        if(matchRef.current.length === 0) {
+                            setEventDisplay("nomatch")
+                        } else {
+                            setEventDisplay("match")
+                        }
+                        let date = new Date()
+                        setTimeRef(new Date(date.getTime() + match_duration*1000))
+                    }
+                } else if(match_time === talk_duration && eventDisplayRef.current === "match") {
+                    setEventDisplay("feedback")
+                    let date = new Date()
+                    setTimeRef(new Date(date.getTime() + feedback_duration*1000))
+                } else if(match_time === 0 && eventDisplayRef.current === "feedback" || eventDisplayRef.current === "nomatch") {
+                    setMeetingCounter(meetingCounterRef.current + 1)
                     djangoLookup("GET", "/room/?action=my", {}, (response, status) => {
                         status === 200 && setNextRoom(response)
                     })
                     djangoLookup("GET", "/match/", {}, (response, status) => {
                         status === 200 && setMatch(response)
                     })
-                    setEventDisplay("match")
+                    if(matchRef.current.length === 0) {
+                        setEventDisplay("nomatch")
+                    } else {
+                        setEventDisplay("match")
+                    }
                     let date = new Date()
-                    setTimeRef(new Date(date.getTime() + match_duration*60000))
-                } else if(match_time === talk_duration && eventDisplayRef.current === "match") {
-                    setEventDisplay("feedback")
-                    let date = new Date()
-                    setTimeRef(new Date(date.getTime() + feedback_duration*60000))
-                } else if(match_time === event_duration) {
+                    setTimeRef(new Date(date.getTime() + match_duration*1000))
+                } else if(meetingCounterRef.current === n_rounds) {
+                    console.log("meeting ended")
                     setEventDisplay("end")
                     socket.emit("EndEvent")
                     djangoLookup("GET", "/event/?action=next", {}, (response, status) => {
@@ -133,20 +177,21 @@ function Event(props) {
         </div>
 
     event.event_tab_options.current.component = <EventCurrent leaveError={leaveError} nextEvent={nextEvent} socket={socket} setEventDisplay={setEventDisplay} setParticipate={setParticipate} />
-    event.event_tab_options.match.component = <EventMatch setParticipate={setParticipate} setLeaveError={setLeaveError} timer={matchTimer} setEventDisplay={setEventDisplay} nextEvent={nextEvent} match={nextRoom} socket={socket} user={match} />
+    event.event_tab_options.match.component = <EventMatch setParticipate={setParticipate} setLeaveError={setLeaveError} timer={matchTimer} setEventDisplay={setEventDisplay} nextEvent={nextEvent} match={nextRoomRef.current} socket={socket} user={match} />
     event.event_tab_options.feedback.component = <Feedback timer={feedbackTimer} setEventDisplay={setEventDisplay} user={match} entries={feedback_entries} />
-    event.event_tab_options.nomatch.component = <EventNoMatch socket={socket} setEventDisplay={setEventDisplay} user={match} entries={feedback_entries} />
+    event.event_tab_options.nomatch.component = <EventNoMatch timer={matchTimer} setParticipate={setParticipate} socket={socket} setEventDisplay={setEventDisplay} user={match} entries={feedback_entries} />
     if(participate) {
         if(eventDisplay === "waiting") { event.tabs[2] = event.event_tab_options.waiting }
         else if(eventDisplay === "current") { event.tabs[2] = event.event_tab_options.current }
-        else if(eventDisplay === "match" && match.length !== 0) { event.tabs[2] = event.event_tab_options.match }
-        else if(eventDisplay === "match" && match.length === 0) { event.tabs[2] = event.event_tab_options.nomatch }
+        else if(eventDisplay === "match") { event.tabs[2] = event.event_tab_options.match }
+        else if(eventDisplay === "nomatch") { event.tabs[2] = event.event_tab_options.nomatch }
         else if(eventDisplay === "feedback") { event.tabs[2] = event.event_tab_options.feedback }
         else if(eventDisplay === "end") { event.tabs[2] = event.event_tab_options.end }
     } else {
-        event.tabs[2] = event.event_tab_options.waiting
+        if(eventDisplay === "waiting") { event.tabs[2] = event.event_tab_options.waiting }
+        else if(eventDisplay === "current") { event.tabs[2] = event.event_tab_options.current }
+        else if(eventDisplay === "end") { event.tabs[2] = event.event_tab_options.end }
     }
-    console.log(eventDisplay)
     return <ContainerTemplate tabData={event} showButtons={false} />
 }
 
@@ -166,7 +211,14 @@ function parseMillisecondsToDate(milliseconds) {
 function prettifyDate(date) {
     let weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
     let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-    return weekdays[date.getDay()] + ", " + date.getDate() + ". " + months[date.getMonth()] + " " + date.getFullYear() + ", " + date.getHours() + ":" + date.getMinutes()
+    const displayTwoDigits = (number) => {
+        if(number < 10) {
+            return "0" + number
+        } else {
+            return number
+        }
+    }
+    return weekdays[date.getDay()] + ", " + date.getDate() + ". " + months[date.getMonth()] + " " + date.getFullYear() + ", " + displayTwoDigits(date.getHours()) + ":" + displayTwoDigits(date.getMinutes())
 }
 
 export default Event

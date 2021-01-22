@@ -70,41 +70,42 @@ def event_cleanup_api_view(request):
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def event_leave_api_view(request):
-    user = UserProfile.objects.filter(socket=request.GET.get("socket"))
+    user = UserProfile.objects.filter(socket=request.GET.get("socket")).first()
     match = UserProfile.objects.filter(room=user.room).exclude(
-        id=user.id).first()
-    user.socket = None
-    user.save()
-    match.room = None
-    match.save()
-    return Response({"socket": match.userprofile.socket}, status=200)
+        id=user.id)
+    if match.count() > 0:
+        match = match.first()
+        user.socket = None
+        user.save()
+        match.room = None
+        match.save()
+        return Response({"socket": match.socket}, status=200)
+    else:
+        return Response({"message": "No match available"}, status=400)
 
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def event_start_api_view(request):
-    # user_a = User.objects.all()[0]
-    # user_b = User.objects.all()[1]
-    # user_c = User.objects.all()[2]
-    # print(user_a.userprofile.hobbies.all().values_list("name"))
-    # print(user_b.userprofile.hobbies.all().values_list("name"))
-    # print(user_c.userprofile.hobbies.all().values_list("name"))
+    Room.objects.all().delete()
     matches = []
     filters = [
-        # ["pref_studies", "pref_language", "intent"],
-        # ["pref_studies", "pref_language"],
-        # ["studies", "intent"],
-        # ["studies"],
-        # ["language", "intent"],
-        # ["language"],
-        # ["intent"],
-        [""]
+        ["pref_studies", "pref_language", "intent"],
+        ["pref_studies", "pref_language"],
+        ["pref_studies", "intent"],
+        ["pref_studies"],
+        ["pref_language", "intent"],
+        ["pref_language"],
+        ["intent"],
+        [""],
+        ["rest"]
     ]
-    rest_users = User.objects.all()
-    # temp = []
+    rest_users = User.objects.all().order_by("?")
+    temp = []
     for filter in filters:
         rest_users, temp = get_matching_groups(filter, rest_users)
         matches.extend(temp)
+        rest_users.extend(rest_users)
     for match in matches:
         name = "" + match['man'].userprofile.first_name + \
             match['woman'].userprofile.first_name
@@ -127,9 +128,16 @@ def get_matching_groups(filters, users):
         match_key = ""
         for filter in filters:
             if filter != "":
-                val = getattr(user.userprofile, filter)
-                if val != None:
-                    match_key += val
+                if filter == "pref_studies":
+                    if getattr(user.userprofile, filter) == "same":
+                        match_key += getattr(user.userprofile, "studies")
+                elif filter == "pref_language":
+                    if getattr(user.userprofile, filter) != None:
+                        match_key += getattr(user.userprofile, filter)
+                else:
+                    val = getattr(user.userprofile, filter)
+                    if val != None:
+                        match_key += val
         if match_key in groups:
             groups[match_key].append(user)
         else:
@@ -141,30 +149,32 @@ def get_matching_groups(filters, users):
         if len(groups[key]) < 2:
             rest_users.extend(groups[key])
         else:
-            temp, rest = get_group_matches(groups[key])
+            temp, rest = get_group_matches(groups[key], filters[0])
             matches.extend(temp)
             rest_users.extend(rest)
     return rest_users, matches
 
 
-def get_group_matches(users):
+def get_group_matches(users, filter):
     men, women = split_list(users)
-    maxScore = -1
+    unmatched = []
     matches = []
-    match = {}
-    # print(women)
-    # print(men)
-    for woman in women:
-        for man in men:
-            score = get_hobby_score(man, woman)
-            if score > maxScore:
-                match = {"man": man, "woman": woman}
+    for i in range(len(women)):
+        maxScore = -1
+        match = {}
+        for j in range(len(men)):
+            score = get_hobby_score(men[j], women[i])
+            if score > maxScore and (not men[j] in women[i].userprofile.friends.all() or filter == "rest"):
+                match = {"man": men[j], "woman": women[i]}
                 maxScore = score
-        men.remove(match["man"])
-        women.remove(match["woman"])
-        matches.append(match)
+        if "man" in match.keys():
+            men.remove(match["man"])
+            matches.append(match)
+        else:
+            unmatched.append(women[i])
 
-    return matches, women
+    unmatched.extend(men)
+    return matches, unmatched
 
 
 def get_hobby_score(user_a, user_b):

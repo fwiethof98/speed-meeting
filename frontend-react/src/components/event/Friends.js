@@ -6,6 +6,7 @@ function Friends(props) {
     const [friends, setFriends] = useState([])
     useEffect(() => {
         djangoLookup("GET", "/friends/", {}, (response, status) => {
+            console.log(response)
             for (const [key, value] of Object.entries(response)) {
                 response[key] = value.map(friend => {
                     const age = Math.floor((new Date() - new Date(friend.birthday)) / (1000*60*60*24*365))

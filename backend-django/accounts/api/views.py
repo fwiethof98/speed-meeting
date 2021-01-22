@@ -10,6 +10,8 @@ from .forms import UserForm, UserProfileForm, LoginForm
 from ..serializers import FriendSerializer, HobbySerializer, FeedbackSerializer
 from ..models import Feedback, Hobby, UserProfile
 
+import os
+
 #### AUTHENTICATION ####
 # login, register, logout
 
@@ -75,9 +77,9 @@ def user_assign_preference_api_view(request):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def friend_feedback_api_view(request):
+    print(request.data)
     friend = UserProfile.objects.filter(room=request.user.userprofile.room).exclude(
         user=request.user).first()
-    request.user.userprofile.friends.add(friend)
     feedback = Feedback.objects.filter(
         user_a=request.user.userprofile).filter(user_b=friend)
     if feedback.count() == 0:
@@ -91,6 +93,8 @@ def friend_feedback_api_view(request):
         feedback = Feedback(user_a=request.user.userprofile,
                             user_b=friend, content=request.data["content"])
     feedback.save()
+    request.user.userprofile.friends.add(friend)
+    request.user.userprofile.save()
     return Response(FeedbackSerializer(feedback).data, status=200)
 
 
@@ -115,6 +119,7 @@ def search_friends_api_view(request):
     qs_1 = Feedback.objects.filter(user_a=request.user.userprofile)
     qs_2 = Feedback.objects.filter(user_b=request.user.userprofile)
     for feedback in qs_1:
+        print(feedback)
         content = feedback.content
         result["cat_" + content].append(feedback.user_b)
     for feedback in qs_2:
@@ -179,3 +184,31 @@ def user_participate_api_view(request):
     request.user.userprofile.participation = participate
     request.user.userprofile.save()
     return Response({'message': f'User participation was set to {participate}'}, status=200)
+
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def user_import_api_view(request):
+    csv_path = os.path.join(os.path.dirname(__file__), 'data.csv')
+    with open(csv_path, 'r') as f:
+        field_names = f.readline().replace("\n", "").split(",")
+        for line in f:
+            user_data = line.split(",")
+            new_user = {}
+            for index, field in enumerate(user_data):
+                if index != 0:
+                    new_user[field_names[index]] = field
+            new_user["username"] = new_user["email"]
+            form = UserForm(new_user)
+            print(new_user)
+            if form.is_valid():
+                user = form.save()
+                form = UserProfileForm(new_user)
+                if form.is_valid():
+                    profile = form.save(commit=False)
+                    profile.user = user
+                    profile.save()
+                    user.set_password(new_user['password'])
+                    user.save()
+                    print("Another user created")
+    return Response({'message': 'All users were imported'}, status=200)

@@ -1,9 +1,10 @@
 import React from 'react'
 import { djangoLookup } from '../../functions/lookup'
 import {FormEntry} from '../templates/Forms'
+import Countdown from '../templates/Timer'
 
 function EventCurrent(props) {
-    const {setParticipate, socket} = props
+    const {setParticipate, socket, timer} = props
     const entries = [{name: "participating", displayName: "Yes, I want to join!", type: "checkbox", onClick: ""}]
 
     const handleParticipationBox = () => {
@@ -21,6 +22,7 @@ function EventCurrent(props) {
 
     return <div style={{marginTop: 50, marginBottom: 50, textAlign: "center"}}>
         <div className="col-sm-5">
+            <Countdown minutes={timer.minutes} seconds={timer.seconds} />
             <h4>There's no match for you this round. <br /> Would you like to join the next?</h4>
             {checkboxes}
         </div>
