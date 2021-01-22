@@ -13,7 +13,7 @@ import EventNoMatch from './EventNoMatch'
 const ENDPOINT = "http://" + window.location.hostname + ":4001"
 
 function Event(props) {
-    const [eventDisplay, _setEventDisplay] = useState("waiting")
+    const [eventDisplay, _setEventDisplay] = useState("current")
     const eventDisplayRef = useRef(eventDisplay)
     const setEventDisplay = data => {
         eventDisplayRef.current = data
