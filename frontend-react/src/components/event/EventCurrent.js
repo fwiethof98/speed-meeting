@@ -25,9 +25,9 @@ function EventCurrent(props) {
             join_params["meetingID"] = nextEvent.meetingID
             join_params["redirect"] = true
             join_params["password"] = nextEvent.moderatorPW + "1"
+            window.open(bbbCall("join", join_params))
             setParticipate(participating)
             setEventDisplay("match")
-            window.open(bbbCall("join", join_params))
         })
     }
 
