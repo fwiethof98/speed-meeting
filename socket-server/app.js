@@ -74,11 +74,11 @@ io.on('connection', (socket) => {
             console.log(data)
         }) 
     })
-    socket.on("LeaveEvent", data => {
-        console.log("User left")
-        console.log(data)
-        io.to(data.socket).emit("LeaveEvent", "leave")
-    })
+    // socket.on("LeaveEvent", data => {
+    //     console.log("User left")
+    //     console.log(data)
+    //     io.to(data.socket).emit("LeaveEvent", "leave")
+    // })
     socket.on("EndEvent", () => {
         clearInterval(interval)
         console.log("Event finished")

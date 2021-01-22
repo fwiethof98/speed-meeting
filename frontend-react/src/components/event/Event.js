@@ -115,6 +115,7 @@ function Event(props) {
                 })
                 setEventDisplay("current")
             }
+            console.log(meetingCounterRef.current)
             if(parseInt(timerRef.current.seconds) + parseInt(timerRef.current.minutes) * 60 <= -begin_to_first_match) {
                 let match_time = (Math.abs(parseInt(timerRef.current.seconds)) - begin_to_first_match + Math.abs(parseInt(timerRef.current.minutes) * 60)) % match_duration
                 if(match_time === 0 && eventDisplayRef.current === "current" && meetingCounterRef.current !== n_rounds) {
