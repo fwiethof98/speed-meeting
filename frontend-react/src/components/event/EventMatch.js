@@ -10,11 +10,13 @@ function EventMatch(props) {
         return <PersonCard name={person.first_name + " " + person.last_name} age={age} university={person.university} studies={person.studies} status={person.status} />
     })
     const [myUser, setMyUser] = useState([])
-    
-    console.log(user[0].hobbies)
-    const hobbies = user[0].hobbies.map(hobby => {
-        return <div><p>{hobby}</p><br /></div>
-    })
+    let hobbies = ""
+    if(user[0] !== undefined) {
+        console.log(user[0].hobbies)
+        hobbies = user[0].hobbies.map(hobby => {
+            return <div><p>{hobby}</p><br /></div>
+        })
+    }
 
     useEffect(() => {
         djangoLookup("GET", "/authenticated/", {}, (response, status) => {
